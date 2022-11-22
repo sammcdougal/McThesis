@@ -14,6 +14,9 @@
 \usepackage{tocloft}     % Use tocloft to introduce single spacing on long chapter name
 \setlength\cftparskip{-2pt}
 \usepackage[nottoc,notlof,notlot]{tocbibind} 
+\usepackage{graphicx}
+\usepackage{subcaption}
+
 \renewcommand\bibname{References}
 \renewcommand\cftchapafterpnum{\vskip\baselineskip}  
 \renewcommand\cftsecafterpnum{\vskip\baselineskip \normalfont}
@@ -59,7 +62,7 @@
 \keywords{LEO Satellites, USRP, Navigation, Signals of Opportunity}
 
 % Put the Thesis Adviser here. 
-\adviser{Thaddeus Roppel}
+\adviser{Scott Martin}
 
 
 % Put the committee here (including the adviser), one \professor for each. 
@@ -119,13 +122,282 @@ The words for this will come when the time is right.
  \chapter { Introduction}  % Use \\ for long titles  
 
 \section { \normalfont Motivation}
-This is where the motivation for the thesis will been
+
+With growing interest in using low Earth Orbit satellites as forms of navigation due to interferences with current GNSSs, a LEO signal simulation tool can be useful for both signals of Opportunity (SOOP) and LEO for navigation. Signal simulation tools are helpful for the design of receivers. These tools allow for testing of signal types before satellites are launched and signals can be replicated with prior knowledge of the signal.  
+
+Global navigation satellite systems (GNSSs) have become an integral part of modern society. Whether it is directions to the grocery store, land surveying, or autonomous vehicles, the ability to know where we are and where we are supposed to go is important. Current GNSSs, such as Global Positioning System (GPS), use radio frequencies (RF) to determine position and velocity solutions. Methods for calculating positions and velocities from GPS satellites can be found in Misra et al (2012).
+
+GPS was designed for the purpose of navigation. It operates in medium Earth orbit (MEO) which has a wide range of altitudes from 2,000 kilometers to 35,000 kilometers. Specifically, GPS satellites orbit at an altitude around 22,000 kilometers with an orbital period of 12 hours. MEO was chosen for GPS as it allowed for fewer satellites in the constellation to calculate a positioning solution. For comparison, low Earth orbit (LEO) satellites have orbits with altitudes from 500 kilometers to 2000 kilometers, and LEO satellites have orbital periods between 90 and 120 minutes. One major difference between current LEO constellations and GNSSs is the original mission design. Current LEO constellations, such as Iridium and Orbcomm, are designed for communications. The Iridium constellation uses global coverage for satellite phones, where the Orbcomm constellation uses ``LEO satellites to provide worldwide geographic coverage for sending and receiving alphanumeric packages," (Orabi et al, 2021). The data messages on these satellites are unknown as they are proprietary to the companies who sent them into space. This makes it difficult to design receivers and evaluate the navigation performance of these signals. However, while we do not know the data messages, we can input our own navigation message on a similar signal. This allows us to test receiver algorithms for the signal type and calculate satellite positions and velocities through the navigation message. These constellations and their signals have been exploited for navigation as seen in Orabi et al (2021). In addition to current LEO constellations, there is a growing interest for navigation satellites in LEO. Reid et al explains the benefits of using LEO satellites as the fast changing geometry increases positioning accuracy and higher signal powers may be useful in areas of dense foliage due to the higher signal power (2020). With current interests in LEO navigation, a signal simulation tool can be very useful as developing and launching satellites is very expensive.
+
+Simulation tools allow for fast testing and validation of desired scenarios. Current navigation simulation tools are mainly focused on GNSSs. Powell (2016) designs a signal simulation tool for ``Rapid Testing of Interference Mitigation Techniques" for GPS. In his thesis, Powell outlines structures for creating a low cost signal simulation tool that can be used to test different scenarios. GNSS signal simulators can also be used to test software defined receivers (SDRs). This testing can help with the validation of receiver architectures and signal tracking techniques. A LEO satellite signal simulator can be useful for testing different signal types, constellation geometries, and possible errors. The results of a simulation are only as good as the simulator itself. While high end signal simulators exist, they can be expensive and require technical prowess to operate. A low cost version can be valuable and still operate at a high level of fidelity with more ease of use. 
+
+The flexibility of a simulation tool is crucial. It saves time, money, and resources when testing different scenarios. One of the biggest advantages to this simulation tool is the ability to interchange different pieces quickly and efficiently. Whether it is the constellation type, data message, or signal structure, changes can be made easily to accommodate varying test plans. 
 
 \section { Prior Work }
 Will input some information on prior research in this area. Mention Russell Powell GPS signal simulator.
 
+Prior work of Kassas lab in terms of measurements.
+
+Use of LEO as SOOP
+
+Hypothetical LEO for full navigation.
+
 \section { Contributions}
-Will give my Contributions in this thesis.
+This thesis will describe the process of designing a modular simulation tool for LEO satellites. The versitility of the simulator allows the user to test different scenarios. 
+
+\chapter{Background}
+
+\section{Satellite Orbit Zones}
+LEO, MEO, GEO.
+
+What does each zone contain, How many satellites are in each zone, what are pros and cons of each zone.
+
+\section{Low Earth Orbit Satellites}
+This section will provide information on LEO satellites.
+
+\subsection{LEO Characteristics}
+
+Orbit altitudes
+
+Orbit period
+
+Doppler frequencies
+
+Increased number of satellites
+
+\subsection{Current LEO Constellations}
+Current LEO constellations were not designed for navigation, specifically. Most are used for satellite communications, 
+
+\subsection{LEO Measurements}
+Maybe a section on pulling measurements from LEO satellites and how to use the measurements. 
+
+\section{Signals}
+This section will describe different signal types used in satellite communications.
+
+\subsection{Time Division Multiple Access}
+TDMA signals. Talk about specific constellations, why it is used, how it opperates, how it is modulated. 
+
+\subsection{Code Division Multiple Access}
+CDMA signal. Will mention things such as how codes are generated, why they are important, what they allow the user to do.
+
+\subsection{Frequency Division Multiple Access}
+FDMA signals. What constellations use this signal type, why is it used, how does it opperate. 
+
+\section{Modulation}
+This will probably be a brief section on Modulation type
+
+\subsection{Binary Phase Shift Keying}
+
+BPSK Modulation, how it works, who uses it, why is it used.
+
+\subsection{Quadrature Phase Shift Keying}
+
+QPSK modulation. QPSK modulation has data on the in-phase and quadrature branches of the signal.
+
+
+
+\chapter {Simulation Tool}
+In this section, the function and versitility of the simulator will be described.
+
+\section{Simulator Overview}
+
+The overall structure of the simulation is shown in figure \ref{fig:SimDiagram}.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=4.0in]{OverallSimulationDiagram}
+    \caption{Overall Simulation Diagram}
+    \label{fig:SimDiagram}
+\end{figure}
+
+The simulation begins with the simulation settings file. This is a configuration file where all of the settings will be declared. This includes, but is not limited to, the satellite trajectories, signal power, and simulation length. The simulation settings file is fed into each block of the simulation tool. First, it goes into the measurement generation block. The measurement generation block is where the satellite positions and velocities are propagated, ranges and range rates are calculated, and transmit and received times are produced. Those terms are pushed into the signal simulation. Inside the signal simulation block the signal is generated and packaged into a bin file. Finally, the bin file is sent to a receiver where it is picked up, processed, and decoded to produce measurements. The following subsections will address each part of the simulation.
+
+\section{Simulation Settings}
+
+The simulation settings is a configuration file where all of the constants and settings used throughout the simulation are declared. All of the settings are stored in a MATLAB structure labeled `settings'. A MATLAB structure is a data storing type where different variables can be tied to one overall variable. The purpose for incorporating all of the settings and variables in one script is to ensure all variables are in one place. This helps the user find a variable quickly and efficiently. It also aids the user by ensuring consistency across all parts of the simulation. 
+
+In part, the simulation settings allow this tool to be modular. The file begins with constants such as the speed of light, rotation rate of the Earth, Earth gravitational constants, and time constants. These will likely stay the same across any and all simulations. Next is the input of user time. This time is in the format of year, month, day, hour, minute, second and determines the start time of the simulation. Following the time starting point is the duration of the simulation in seconds and the measurement simulation sampling frequency in hertz. The next setting is the user position. Currently, the simulation allows for a static receiver with initial position defined in latitude, longitude, and altitude (LLA); however, the addition of a dynamic receiver can be made. Once the LLA position has been defined, the Earth centered Earth fixed (ECEF) position can be calculated. Next is the introduction of measurement error terms. The first set are weather terms for the error caused by the troposphere (Misra et al, 2012). These inputs are temperature in Celsius and Kelvin, barometric pressure in millibars, and humidity as a percentage. This is followed by clock settings. Here the user declares what type of clock to use and whether the clock error is to be simulated, indicated by an on or off switch. Next is the satellite propagation settings. This simulation uses a simplified general perturbation (SGP) model for calculating satellite positions and velocities. Here the user will input a two line element (TLE) file name along with other information used in parsing the TLE. The propagation settings also includes a mask angle setting. The mask angle input is in degrees and allows the user to reject  satellites under the specified elevation angle. After the satellite propagation settings are the signal settings. Here the user decides the carrier frequency, sampling frequency, code frequency, number of symbols in the data message, and signal type. One specific signal type is time division multiple access (TDMA). A TDMA signal uses time slots in the form of bursts to decipher different signals, whereas frequency division multiple access (FDMA) uses different frequency channels. If the declared signal type is TDMA, then the burst period will need to be calculated. This is followed by the noise and signal power.
+
+The simulation settings file is integral to this simulation tool. All other components of this simulator are dependent on it. These specific dependencies will be explained in detail in the remaining subsections.
+
+\section{Measurement Simulation}
+The next block of the simulation tool is the measurement generation. The measurement generation is where the ranges, range rates, and times are calculated. The purpose of this section is to have a set of truth values that will be used later in the simulation. The block diagram for the measurement generation is shown in figure \ref{fig:MeasBlock}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=3.5in]{MeasurementGenBlockDiagram}
+    \caption{Measurement Generation Block Diagram}
+    \label{fig:MeasBlock}
+\end{figure}
+
+The measurement generation begins the same as all  other blocks: inputting the simulation settings file. Again, this allows the user to have all of the same settings, constants, and configurations across all platforms. User positions are generated based on the initial input in the settings file. If a static receiver is declared, then the user position will remain the same and be populated at the set measurement sampling frequency. Along with the population of user positions, satellite positions and velocities are also propagated at this time. For this simulation, a simplified general perturbation (SGP) two line element (TLE) propagator is used to give truth values for satellite positions and velocities. The SGP4 TLE propagator outputs satellite positions and velocities in meters and meters per second, respectively, for the Earth centered inertial (ECI) and ECEF coordinate frames. Figure \ref{fig:bothpropsats} shows the propagated satellite orbits in view for the Iridium and Orbcomm constellations over the duration of the simulation. 
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Iridium_sats_over_auburn.jpg}
+        \caption{Propagated Iridium Satellites in View}
+        \label{fig:IridSatsOverAub}
+    \end{subfigure} %
+    \begin{subfigure}{.42\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Orbcomm_sats_over_auburn.jpg}
+        \caption{Propagated Orbcomm Satellites in View}
+        \label{fig:OrbSatOverAub}
+    \end{subfigure}
+    \caption{Propagated Satellites from SGP4}
+    \label{fig:bothpropsats}
+\end{figure}
+
+
+With both the user position and satellite positions, a visibility analysis can be performed on the satellites. Another important output of the satellite propagation is the elevation angles of the satellites with respect to the user. The visibility analysis takes the elevation angles and finds the satellites that are above the mask angle to eliminate them from the simulation. The output of the visibility analysis is a list of satellites and the times that they are in view. This greatly reduces the computation time for the rest of the simulation because the simulator only has to compute values and signals for the specified satellites that are in view. An option the user has for a data message type is Kepler orbital parameters or classical orbital elements (COE). The calculation of COE uses the ECI satellite positions and velocities calculated previously. These terms are: \textit{h} magnitude of angular momentum; \textit{e} eccentricity; \textit{RAAN} right ascension of the ascending node, \textit{i} inclination angle; \textit{w} argument of perigee; \textit{TA} true anomaly; \textit{a} semi major axis. This process is described in (Curtis 2008).
+
+After the visibility analysis, errors will be generated for the satellites that are in view. The first error generated is clock error. Clock bias and drift are generated for the receiver and the satellites. This option can be turned off and the errors will be incorporated as zeros in the simulation. Next the tropospheric delay is calculated from the settings defined previously. Finally, the addition of white Gaussian noise is added for errors not modeled (i.e. Ionosphere delay, multipath, etc). Simultaneously, the true satellite to receiver ranges are calculated along with the range rates. Their equations are show below.
+\begin{equation}
+    r = \sqrt{(x^{(k)}_{sv} - x_u)^2 + (y^{(k)}_{sv} - y_u)^2 + (z^{(k)}_{sv} - z_u)^2}
+    \label{eqn:rangeeqn}
+\end{equation}
+\begin{equation}
+    \dot{r} = (\mathbf{v}^{k} - \mathbf{v}_r) \cdot \mathbf{1}
+    \label{eqn:rangerate}
+\end{equation}
+
+Having generated ranges, range rates, and errors, the receiver observed pseudorange and Doppler measurements can be calculated. The equations for pseudorange, pseudorange rate, and Doppler are equations \ref{eqn:pseudorange}, \ref{eqn:pseudorangerate}, and \ref{eqn:doppler}, respectively.
+\begin{equation}
+    \rho^{(k)} = r^{(k)} - b_{sv} + b_r + T +\epsilon
+    \label{eqn:pseudorange}
+\end{equation}
+
+\begin{equation}
+    \dot{\rho} = \dot{r} + \dot{b_r} - \dot{b_{sv}} + \epsilon
+    \label{eqn:pseudorangerate}
+\end{equation}
+
+\begin{equation}
+    f^{(k)}_{Doppler} = \frac{\dot{\rho}}{-\lambda}
+    \label{eqn:doppler}
+\end{equation}
+
+
+Where in equation \ref{eqn:pseudorange}, $\rho$ is the observed pseudorange calculated from range \textit{r} to the $k^{th}$ satellite, satellite clock bias $b_{sv}$, receiver clock bias $b_{r}$ in meters, troposphere delay \textit{T},  and additional noise for errors not modeled $\epsilon$. In Equation \ref{eqn:pseudorangerate}, $\dot{r}$ is the calculated range rate, $\dot{b_r}$ is the receiver clock drift, $\dot{b_{sv}}$ is the satellite clock drift, and un-modeled errors $\epsilon$, all with units of meters per second. In equation \ref{eqn:doppler}, $f^{k}_{Doppler}$ is the Doppler frequency of the $k^{th}$ satellite, $\dot{\rho}$ is the pseudorange rate, and $\lambda$ is the wavelength of the carrier. Once the pseudorange and Doppler measurements have been calculated, the observed receive time of the signal can be calculated. It is important to calculate the received time of the signal based on the pseudorange because the signal is generated at the received level. The received time is calculated as 
+\begin{equation}
+    t_{rx} = t_{tx} + \frac{\rho}{c}
+    \label{receivetime}
+\end{equation}
+where $t_{tx}$ is the transmit time, $\rho$ is the pseudorange calculated in equation \ref{eqn:pseudorange}, and \textit{c} is the speed of light. For a TDMA signal, burst timing needs to be calculated. For example, if the burst timing 70 milliseconds, then a burst will at $t=0s$, $t=0.07s$, $t=0.14s$ and so on. For this instance, the received time of the signal is also calculated on the burst interval using equation \ref{receivetime}.
+
+The final outputs from the measurement generation are pseudoranges, Doppler Measurements, transmit times, received times, satellite positions, and satellite velocities. Classical orbital elements will be another output if the user has declared to use them for the navigation message. Once the measurements are calculated, the signal can be generated.
+
+\section{Signal Simulation}
+
+The signal simulation begins directly after the measurement generation. The current simulation is for a TDMA signal. The beginning of the simulation begins the transmission of a burst. Only one burst occurs within the specified burst period. Figure \ref{fig:SigSimBlock} gives an overview of the signal simulation.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=3.5in]{SignalSimBlock}
+    \caption{Signal Simulation Block Diagram}
+    \label{fig:SigSimBlock}
+\end{figure}
+
+
+The simulation starts by determining what satellite is transmitting and stores it into an array. This process is probabilistic and one satellite in view is chosen at random to transmit. This process is performed for each burst at the start of the signal simulation. Once the burst transmission list has been determined, the first part of the signal is generated. The first part of the output file will be signal noise. The signal noise will be the length of the first transit time in terms of samples. For example, if the first transit time is 0.003009 seconds and the sampling frequency is one megahertz, the first 3009 samples will be noise. Next a bin file is generated and signal noise is written to the file. 
+
+With the calculated received times and designated satellites, we can generate the signal in blocks. We start by gathering the information for the data message. In this case, we gather satellite positions and velocities, satellite number, and transit time. Next, we convert those terms into fixed point binary strings. The data bits are generated in a separate function that is specific to the data message type. The length of each word is predetermined inside the data bit generation function.  The fractional length is determine based on the amount of precision the user desires. The decision to sign the word is also declared.  The outputs of the bit generation function are two row vectors of in-phase and quadrature bits. Non return to zero (NRZ) coding is used to represent the binary ones and zeros. The number of samples in the signal block is determined by examining the begin time of the current burst and the begin time of the next burst. The difference in time is calculated and multiplied it by the signal sampling frequency in order to calculate the number of samples in the block. Next is the generation of the signal shown in figure \ref{fig:SigGenBlock}. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=3.5in]{SignalGenBlockDiagram}
+    \caption{Signal Generation Block Diagram}
+    \label{fig:SigGenBlock}
+\end{figure}
+
+A section of signal noise is generated for the amount of samples in the signal block. The signal noise and data message are input to the signal generation block. We start by loading in settings, Doppler frequency, preamble, and sync message. The sync message was chosen to be a 127 bit long gold code with an appended zero due to its autocorrelation abilities (Dinan, 1998).  We then combine the preamble and sync messages on their respective branches along with the in-phase and quadrature bit vectors to produce our full data message. From there we up-sample via zero insertion and filtering with a root-raised-cosine (RRC) pulse shaping filter. The amplitude of the signal is calculated as equation \ref{eqn:amplitude} and the phase is calculated in equation \ref{eqn:phase}
+
+\begin{equation}
+    A = \sqrt{Ips^2 + Qps^2}
+    \label{eqn:amplitude}
+\end{equation}
+
+\begin{equation}
+    \theta = tan^{-1} \frac{Qps}{Ips}
+    \label{eqn:phase}
+\end{equation}
+where \textit{Ips} and \textit{Qps} are the pulse shaped in-phase and quadrature branches respectively. The signal is generated through an exponential function in equation \ref{eqn:signal}
+
+\begin{equation}
+    A e^{j2\pi (f_{Doppler}t + \theta)}
+    \label{eqn:signal}
+\end{equation}
+where \textit{A} is the amplitude and $\theta$ is the phase. From here the declared signal power is added along side the signal noise. The output of the signal generation function is a full IQ signal with signal noise. The signal is then split into real and imaginary parts, where they are interleaved and written to the bin file. To save computational memory, the signal variables are cleared with each iteration. This process is performed for each block of signal throughout the simulation. At the end of the simulation, if there is a received time outside the bounds of the simulation time, then the simulation will end the file with signal noise.
+
+\section{Receiver}
+- Include stuff about burst receiver
+
+- Include stuff about a possible continuous receiver and how it works
+
+- Decoding of the bits
+
+- 
+
+
+\chapter{Testing Setup}
+- Mention things about the configuration:
+
+    - satellite orbits
+
+    - signal type
+
+    - USRP playback and record
+
+    - why important
+
+    - how it works
+
+    - how USRPs work in brief
+
+\chapter{Results}
+    - continuous signal tracking results
+
+    - positioning results
+
+    - comparison of burst signal to continuous
+
+    - positioning algorithms
+
+    - batch recursive least squares
+
+    - continuous signal and moving rover
+
+    - 2d positioning and 3d positioning
+
+    - possible aided doppler positioning techniques
+
+    - How many bursts were detected and accurately decoded
+
+
+
+
+\chapter{Conclusions and Future Work}
+- The simulator works well 
+
+- addition of more signals
+
+- addition of multiple constellation
+
+- addition of more error terms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \begin{thebibliography}
 The bibliography will be in this section. Will need to figure out how to input from zotero    
 \end{thebibliography}
