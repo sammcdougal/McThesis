@@ -7,25 +7,25 @@
 \contentsline {chapter}{\numberline {2}Background}{4}%
 \contentsline {section}{\numberline {2.1}Satellite Orbit Zones}{4}%
 \contentsline {section}{\numberline {2.2}Low Earth Orbit Satellites}{4}%
-\contentsline {subsection}{\numberline {2.2.1}LEO Characteristics}{4}%
-\contentsline {subsection}{\numberline {2.2.2}Current LEO Constellations}{4}%
+\contentsline {subsection}{\numberline {2.2.1}LEO Characteristics}{5}%
+\contentsline {subsection}{\numberline {2.2.2}Current LEO Constellations}{5}%
 \contentsline {subsection}{\numberline {2.2.3}LEO Measurements}{5}%
-\contentsline {section}{\numberline {2.3}Signals}{5}%
+\contentsline {section}{\numberline {2.3}Channel Access Methods}{5}%
 \contentsline {subsection}{\numberline {2.3.1}Time Division Multiple Access}{5}%
-\contentsline {subsection}{\numberline {2.3.2}Code Division Multiple Access}{5}%
-\contentsline {subsection}{\numberline {2.3.3}Frequency Division Multiple Access}{5}%
-\contentsline {section}{\numberline {2.4}Modulation}{5}%
-\contentsline {subsection}{\numberline {2.4.1}Binary Phase Shift Keying}{5}%
-\contentsline {subsection}{\numberline {2.4.2}Quadrature Phase Shift Keying}{5}%
-\contentsline {chapter}{\numberline {3}Simulation Tool}{6}%
-\contentsline {section}{\numberline {3.1}Simulator Overview}{6}%
-\contentsline {section}{\numberline {3.2}Simulation Settings}{7}%
-\contentsline {section}{\numberline {3.3}Measurement Simulation}{8}%
-\contentsline {section}{\numberline {3.4}Signal Simulation}{11}%
-\contentsline {section}{\numberline {3.5}Receiver}{14}%
-\contentsline {chapter}{\numberline {4}Testing Setup}{15}%
-\contentsline {chapter}{\numberline {5}Results}{16}%
-\contentsline {chapter}{\numberline {6}Conclusions and Future Work}{17}%
-\contentsline {chapter}{References}{18}%
-\contentsline {chapter}{Appendices}{19}%
-\contentsline {chapter}{\numberline {A}Notes on the style-file project}{20}%
+\contentsline {subsection}{\numberline {2.3.2}Code Division Multiple Access}{6}%
+\contentsline {subsection}{\numberline {2.3.3}Frequency Division Multiple Access}{6}%
+\contentsline {section}{\numberline {2.4}Modulation}{6}%
+\contentsline {subsection}{\numberline {2.4.1}Binary Phase Shift Keying}{6}%
+\contentsline {subsection}{\numberline {2.4.2}Quadrature Phase Shift Keying}{6}%
+\contentsline {chapter}{\numberline {3}Simulation Tool}{7}%
+\contentsline {section}{\numberline {3.1}Simulator Overview}{7}%
+\contentsline {section}{\numberline {3.2}Simulation Settings}{8}%
+\contentsline {section}{\numberline {3.3}Measurement Simulation}{9}%
+\contentsline {section}{\numberline {3.4}Signal Simulation}{12}%
+\contentsline {section}{\numberline {3.5}Receiver}{15}%
+\contentsline {chapter}{\numberline {4}Testing Setup}{16}%
+\contentsline {chapter}{\numberline {5}Results}{17}%
+\contentsline {chapter}{\numberline {6}Conclusions and Future Work}{18}%
+\contentsline {chapter}{References}{19}%
+\contentsline {chapter}{Appendices}{20}%
+\contentsline {chapter}{\numberline {A}Notes on the style-file project}{21}%
