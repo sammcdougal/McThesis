@@ -156,7 +156,11 @@ With regard to space vehicles, there are three orbital zones. These zones are lo
 
 Include some image of orbital zones. That way users can see with respect to the earth how far away each satellite is. 
 
+
+The furthest of the orbit zones is GEO. These satellites have an orbit altitude of 35,786 kilometers. Geosynchronous orbits are positioned at this precise altitude to allow the satellite orbit period to equal the same time as the rotation of the Earth for one day. The length of the orbit lasts one sidereal day. To an observer on Earth, the satellite would appear to stay in the same place throughout the course of its life. Another form of geosynchronous orbit is the geostationary orbit. Geostationary orbits are geosynchronous orbits specifically located at the Earth's equator and have a near zero inclination angle. 
+
 Find information on how many satellites are in GEO. Find information on what satellites are in GEO. What kind of missions happen in GEO. Why are GEO orbits useful 
+
 
 Information on GPS satellites in MEO. What other satellites are in MEO. Why was MEO chosen for specific mission types. Reference GPS textbook. 
 
@@ -176,7 +180,7 @@ Doppler frequencies
 Increased number of satellites
 
 \subsection{Current LEO Constellations}
-Current LEO constellations were not designed for navigation, specifically. Most are used for satellite communications, 
+Current LEO constellations were not designed for navigation, specifically. Most are used for satellite communications, internet, and Earth observations. 
 
 \subsection{LEO Measurements}
 Maybe a section on pulling measurements from LEO satellites and how to use the measurements. 
@@ -188,10 +192,12 @@ Channel access methods are
 \subsection{Time Division Multiple Access}
 TDMA signals. Talk about specific constellations, why it is used, how it opperates, how it is modulated. 
 
-Time division multiple access signals 
+Time division multiple access signals use time to differentiate incoming signals. This results in the signal being burst-like in nature and non-continuous between received signals. 
 
 \subsection{Code Division Multiple Access}
 CDMA signal. Will mention things such as how codes are generated, why they are important, what they allow the user to do.
+
+CDMA signal uses deterministic binary sequence codes to differentiate incoming signals. A code is modulated onto a continuous carrier wave. These codes are designed specifically to have small cross correlation in order to eliminate errors and deciphur different satellite's signals in the same frequency band. The gold code, also known as a chipping sequence, 
 
 \subsection{Frequency Division Multiple Access}
 FDMA signals. What constellations use this signal type, why is it used, how does it opperate. 
@@ -237,7 +243,7 @@ The next block of the simulation tool is the measurement generation. The measure
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=3.5in]{MeasurementGenBlockDiagram}
+    \includegraphics[width=4in]{MeasurementGenBlockDiagram}
     \caption{Measurement Generation Block Diagram}
     \label{fig:MeasBlock}
 \end{figure}
