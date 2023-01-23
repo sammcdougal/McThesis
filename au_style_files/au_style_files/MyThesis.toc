@@ -28,4 +28,3 @@
 \contentsline {chapter}{\numberline {6}Conclusions and Future Work}{18}%
 \contentsline {chapter}{References}{19}%
 \contentsline {chapter}{Appendices}{20}%
-\contentsline {chapter}{\numberline {A}Notes on the style-file project}{21}%

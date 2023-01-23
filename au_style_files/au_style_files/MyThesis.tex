@@ -16,7 +16,6 @@
 \usepackage[nottoc,notlof,notlot]{tocbibind} 
 \usepackage{graphicx}
 \usepackage{subcaption}
-
 \renewcommand\bibname{References}
 \renewcommand\cftchapafterpnum{\vskip\baselineskip}  
 \renewcommand\cftsecafterpnum{\vskip\baselineskip \normalfont}
@@ -56,7 +55,7 @@
 % Put the title, author, and date in. 
 \title{A Software Signal Simulation of Low Earth Orbit Satellites for Investigative Analysis}
 \author{Samuel McDougal} 
-\date{May 10, 2010} %date of graduation
+\date{Sometime Spring 2023} %date of graduation
 \copyrightyear{2023} %copyright year
 
 \keywords{LEO Satellites, USRP, Navigation, Signals of Opportunity}
@@ -127,7 +126,7 @@ With growing interest in using low Earth Orbit satellites as forms of navigation
 
 Global navigation satellite systems (GNSSs) have become an integral part of modern society. Whether it is directions to the grocery store, land surveying, or autonomous vehicles, the ability to know where we are and where we are supposed to go is important. Current GNSSs, such as Global Positioning System (GPS), use radio frequencies (RF) to determine position and velocity solutions. Methods for calculating positions and velocities from GPS satellites can be found in Misra et al (2012).
 
-GPS was designed for the purpose of navigation. It operates in medium Earth orbit (MEO) which has a wide range of altitudes from 2,000 kilometers to 35,000 kilometers. Specifically, GPS satellites orbit at an altitude around 22,000 kilometers with an orbital period of 12 hours. MEO was chosen for GPS as it allowed for fewer satellites in the constellation to calculate a positioning solution. For comparison, low Earth orbit (LEO) satellites have orbits with altitudes from 500 kilometers to 2000 kilometers, and LEO satellites have orbital periods between 90 and 120 minutes. One major difference between current LEO constellations and GNSSs is the original mission design. Current LEO constellations, such as Iridium and Orbcomm, are designed for communications. The Iridium constellation uses global coverage for satellite phones, where the Orbcomm constellation uses ``LEO satellites to provide worldwide geographic coverage for sending and receiving alphanumeric packages," (Orabi et al, 2021). The data messages on these satellites are unknown as they are proprietary to the companies who sent them into space. This makes it difficult to design receivers and evaluate the navigation performance of these signals. However, while we do not know the data messages, we can input our own navigation message on a similar signal. This allows us to test receiver algorithms for the signal type and calculate satellite positions and velocities through the navigation message. These constellations and their signals have been exploited for navigation as seen in Orabi et al (2021). In addition to current LEO constellations, there is a growing interest for navigation satellites in LEO. Reid et al explains the benefits of using LEO satellites as the fast changing geometry increases positioning accuracy and higher signal powers may be useful in areas of dense foliage due to the higher signal power (2020). With current interests in LEO navigation, a signal simulation tool can be very useful as developing and launching satellites is very expensive.
+GPS was designed for the purpose of navigation. It operates in medium Earth orbit (MEO) which has a wide range of altitudes from 2,000 kilometers to 35,000 kilometers. Specifically, GPS satellites orbit at an altitude around 22,000 kilometers with an orbital period of 12 hours. MEO was chosen for GPS as it allowed for fewer satellites in the constellation to calculate a positioning solution. For comparison, low Earth orbit (LEO) satellites have orbits with altitudes from 500 kilometers to 2000 kilometers, and LEO satellites have orbital periods between 90 and 120 minutes. One major difference between current LEO constellations and GNSSs is the original mission design. Current LEO constellations, such as Iridium and Orbcomm, are designed for communications. The Iridium constellation uses global coverage for satellite phones, where the Orbcomm constellation uses ``LEO satellites to provide worldwide geographic coverage for sending and receiving alphanumeric packages," \cite{orabiOpportunisticNavigationDoppler2021}. The data messages on these satellites are unknown as they are proprietary to the companies who sent them into space. This makes it difficult to design receivers and evaluate the navigation performance of these signals. However, while we do not know the data messages, we can input our own navigation message on a similar signal. This allows us to test receiver algorithms for the signal type and calculate satellite positions and velocities through the navigation message. These constellations and their signals have been exploited for navigation as seen in \cite{orabiOpportunisticNavigationDoppler2021}. In addition to current LEO constellations, there is a growing interest for navigation satellites in LEO. Reid et al explains the benefits of using LEO satellites as the fast changing geometry increases positioning accuracy and higher signal powers may be useful in areas of dense foliage due to the higher signal power (2020). With current interests in LEO navigation, a signal simulation tool can be very useful as developing and launching satellites is very expensive.
 
 Simulation tools allow for fast testing and validation of desired scenarios. Current navigation simulation tools are mainly focused on GNSSs. Powell (2016) designs a signal simulation tool for ``Rapid Testing of Interference Mitigation Techniques" for GPS. In his thesis, Powell outlines structures for creating a low cost signal simulation tool that can be used to test different scenarios. GNSS signal simulators can also be used to test software defined receivers (SDRs). This testing can help with the validation of receiver architectures and signal tracking techniques. A LEO satellite signal simulator can be useful for testing different signal types, constellation geometries, and possible errors. The results of a simulation are only as good as the simulator itself. While high end signal simulators exist, they can be expensive and require technical prowess to operate. A low cost version can be valuable and still operate at a high level of fidelity with more ease of use. 
 
@@ -269,7 +268,7 @@ The measurement generation begins the same as all  other blocks: inputting the s
 \end{figure}
 
 
-With both the user position and satellite positions, a visibility analysis can be performed on the satellites. Another important output of the satellite propagation is the elevation angles of the satellites with respect to the user. The visibility analysis takes the elevation angles and finds the satellites that are above the mask angle to eliminate them from the simulation. The output of the visibility analysis is a list of satellites and the times that they are in view. This greatly reduces the computation time for the rest of the simulation because the simulator only has to compute values and signals for the specified satellites that are in view. An option the user has for a data message type is Kepler orbital parameters or classical orbital elements (COE). The calculation of COE uses the ECI satellite positions and velocities calculated previously. These terms are: \textit{h} magnitude of angular momentum; \textit{e} eccentricity; \textit{RAAN} right ascension of the ascending node, \textit{i} inclination angle; \textit{w} argument of perigee; \textit{TA} true anomaly; \textit{a} semi major axis. This process is described in (Curtis 2008).
+With both the user position and satellite positions, a visibility analysis can be performed on the satellites. Another important output of the satellite propagation is the elevation angles of the satellites with respect to the user. The visibility analysis takes the elevation angles and finds the satellites that are above the mask angle to eliminate them from the simulation. The output of the visibility analysis is a list of satellites and the times that they are in view. This greatly reduces the computation time for the rest of the simulation because the simulator only has to compute values and signals for the specified satellites that are in view. An option the user has for a data message type is Kepler orbital parameters or classical orbital elements (COE). The calculation of COE uses the ECI satellite positions and velocities calculated previously. These terms are: \textit{h} magnitude of angular momentum; \textit{e} eccentricity; \textit{RAAN} right ascension of the ascending node, \textit{i} inclination angle; \textit{w} argument of perigee; \textit{TA} true anomaly; \textit{a} semi major axis. This process is described in. \cite{curtisOrbitalMechanicsEngineering2008}.
 
 After the visibility analysis, errors will be generated for the satellites that are in view. The first error generated is clock error. Clock bias and drift are generated for the receiver and the satellites. This option can be turned off and the errors will be incorporated as zeros in the simulation. Next the tropospheric delay is calculated from the settings defined previously. Finally, the addition of white Gaussian noise is added for errors not modeled (i.e. Ionosphere delay, multipath, etc). Simultaneously, the true satellite to receiver ranges are calculated along with the range rates. Their equations are show below.
 \begin{equation}
@@ -310,6 +309,7 @@ The final outputs from the measurement generation are pseudoranges, Doppler Meas
 \section{Signal Simulation}
 
 The signal simulation begins directly after the measurement generation. The current simulation is for a TDMA signal. The beginning of the simulation begins the transmission of a burst. Only one burst occurs within the specified burst period. Figure \ref{fig:SigSimBlock} gives an overview of the signal simulation.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=3.5in]{SignalSimBlock}
@@ -351,15 +351,14 @@ where \textit{A} is the amplitude and $\theta$ is the phase. From here the decla
 \section{Receiver}
 - Include stuff about burst receiver
 
-- Include stuff about a possible continuous receiver and how it works
+- Maximum likilehood burst detection
+    - find source for this so I can talk about it in detail.
+
 
 - Decoding of the bits
-
-- 
-
-
+ 
 \chapter{Testing Setup}
-- Mention things about the configuration:
+    - Mention things about the configuration:
 
     - satellite orbits
 
@@ -374,23 +373,34 @@ where \textit{A} is the amplitude and $\theta$ is the phase. From here the decla
     - how USRPs work in brief
 
 \chapter{Results}
-    - continuous signal tracking results
 
     - positioning results
 
-    - comparison of burst signal to continuous
+    - Doppler Positioning 
+
+    - comparison of constellations 
 
     - positioning algorithms
 
     - batch recursive least squares
-
-    - continuous signal and moving rover
 
     - 2d positioning and 3d positioning
 
     - possible aided doppler positioning techniques
 
     - How many bursts were detected and accurately decoded
+
+    - Possible testing configurations   
+        
+        - Full clean data (no clock, no noise, no trop)
+
+        - Full clean data run through USRP 
+
+        - Simulated dirty set with trop error, clock error, sig noise
+
+        - Run this simulation for 2 different satellite constellations
+
+        - See if I have to run it for a dynamic rover
 
 
 
@@ -408,73 +418,22 @@ where \textit{A} is the amplitude and $\theta$ is the phase. From here the decla
 
 
 
+%\begin{thebibliography}{99}
+    \bibliography{MyLibrary}
+    \bibliographystyle{IEEEtr}
+%\end{thebibliography}
 
 
 
 
-
-
-
-
-
-\begin{thebibliography}
-The bibliography will be in this section. Will need to figure out how to input from zotero    
-\end{thebibliography}
-
-\appendix
+\begin{appendix}
 \chapter*{Appendices\addcontentsline{toc}{chapter}{Appendices}}
 
-\chapter{Notes on the style-file project}
 
 \begin{singlespace}
-These style-files have been modified by Christopher Wilson to support the new Electronic Thesis and Dissertation process. The following was written before the ETD guidelines update on Fall 2009. Changes to the original appendix have been shown in italics. 
 
-These style-files for use with \LaTeX{} {\it were} maintained by Darrel
-Hankerson\footnote{Mathematics and Statistics, 221 Parker Hall,
-844-3641, {\tt hankedr@auburn.edu}} and Ed
-Slaminka\footnote{Mathematics and Statistics, 218 Parker,
-{\tt slamiee@auburn.edu}}.
-
-In 1990, department heads and other representatives met with Dean Doorenbos
-and Judy Bush-Crofton (then responsible for manuscript approval). This
-meeting was prompted by a memorandum\footnote{Originally, the memorandum
-was presented to Professor Larry Wit. A copy is available on request.} from
-members of the mathematics departments concerning the {\em Thesis and
-Dissertation Guide\/} and the approval process. There was wide agreement
-among the participants (including Dean Doorenbos) to support the basic
-recommendations outlined in the memorandum. The revised {\em Guide\/}
-reflected some (but not all) of the agreements of the meeting.
-
-Ms Bush-Crofton was supportive of the plan to obtain ``official approval''
-of these style files.\footnote{Followup memoranda gave a definition of
-``official approval.'' Copies will be sent on request.}  Unfortunately, Ms
-Bush-Crofton left the Graduate School before the process was completed. In
-1994, we were revisiting some of the same problems which were
-resolved at the 1990 meeting.
-
-In Summer 1994, I sent several memoranda to Ms Ilga Trend of the Graduate
-School, reminding her of the agreements made at the 1990 meeting.
-Professors A. Scottedward Hodel and Stan Reeves provided additional
-support.  In short, it is essential that the Graduate School honor its
-commitments of the 1990 meeting. It should be emphasized that Dean
-Doorenbos is to thank for the success of that meeting.
-
-Maintaining these \LaTeX{} files has been more work than expected, in
-part due to continuing changes in requirement by the graduate school.
-The Graduate School occasionally has complete memory loss about the
-agreements of the 1990 meeting. If the Graduate School rejects your
-manuscript based on items controlled by the style-files, ask
-your advisor to contact the Graduate school (and copy to me) to urge
-cooperation.
-
-Finally, there have been several requests for additions to the package
-(mostly formatting changes for figures, etc.). While such changes are not
-really part of the thesis-style package, it could be beneficial to collect
-these options and distribute with the package (making it easier on the next
-student).  I'm especially interested in changes needed by various
-departments.
 
 \end{singlespace}
-
+\end{appendix}
 \end{document}
 
