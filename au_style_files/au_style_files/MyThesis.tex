@@ -16,7 +16,8 @@
 \usepackage[nottoc,notlof,notlot]{tocbibind} 
 \usepackage{graphicx}
 \usepackage{subcaption}
-\renewcommand\bibname{References}
+\usepackage[style=numeric,sorting=none]{biblatex}
+\addbibresource{MyLibrary.bib}
 \renewcommand\cftchapafterpnum{\vskip\baselineskip}  
 \renewcommand\cftsecafterpnum{\vskip\baselineskip \normalfont}
 \renewcommand\cftsubsecafterpnum{\vskip\baselineskip \normalfont}
@@ -124,17 +125,18 @@ The words for this will come when the time is right.
 
 With growing interest in using low Earth Orbit satellites as forms of navigation due to interferences with current GNSSs, a LEO signal simulation tool can be useful for both signals of Opportunity (SOOP) and LEO for navigation. Signal simulation tools are helpful for the design of receivers. These tools allow for testing of signal types before satellites are launched and signals can be replicated with prior knowledge of the signal.  
 
+ 
+
+\section { Prior Work }
+
 Global navigation satellite systems (GNSSs) have become an integral part of modern society. Whether it is directions to the grocery store, land surveying, or autonomous vehicles, the ability to know where we are and where we are supposed to go is important. Current GNSSs, such as Global Positioning System (GPS), use radio frequencies (RF) to determine position and velocity solutions. Methods for calculating positions and velocities from GPS satellites can be found in \cite{misraGlobalPositioningSystem2012}.
+
 
 GPS was designed for the purpose of navigation. It operates in medium Earth orbit (MEO) which has a wide range of altitudes from 2,000 kilometers to 35,000 kilometers. Specifically, GPS satellites orbit at an altitude around 22,000 kilometers with an orbital period of 12 hours. MEO was chosen for GPS as it allowed for fewer satellites in the constellation to calculate a positioning solution. For comparison, low Earth orbit (LEO) satellites have orbits with altitudes from 500 kilometers to 2000 kilometers, and LEO satellites have orbital periods between 90 and 120 minutes. One major difference between current LEO constellations and GNSSs is the original mission design. Current LEO constellations, such as Iridium and Orbcomm, are designed for communications. The Iridium constellation uses global coverage for satellite phones, where the Orbcomm constellation uses ``LEO satellites to provide worldwide geographic coverage for sending and receiving alphanumeric packages," \cite{orabiOpportunisticNavigationDoppler2021}. The data messages on these satellites are unknown as they are proprietary to the companies who sent them into space. This makes it difficult to design receivers and evaluate the navigation performance of these signals. However, while we do not know the data messages, we can input our own navigation message on a similar signal. This allows us to test receiver algorithms for the signal type and calculate satellite positions and velocities through the navigation message. These constellations and their signals have been exploited for navigation as seen in \cite{orabiOpportunisticNavigationDoppler2021}. In addition to current LEO constellations, there is a growing interest for navigation satellites in LEO. Reid et al explains the benefits of using LEO satellites as the fast changing geometry increases positioning accuracy and higher signal powers may be useful in areas of dense foliage due to the higher signal power \cite{reidSatelliteNavigationAge2020}. With current interests in LEO navigation, a signal simulation tool can be very useful as developing and launching satellites is very expensive.
 
 Simulation tools allow for fast testing and validation of desired scenarios. Current navigation simulation tools are mainly focused on GNSSs. Powell (2016) designs a signal simulation tool for ``Rapid Testing of Interference Mitigation Techniques" for GPS. In his thesis, Powell outlines structures for creating a low cost signal simulation tool that can be used to test different scenarios. GNSS signal simulators can also be used to test software defined receivers (SDRs). This testing can help with the validation of receiver architectures and signal tracking techniques. A LEO satellite signal simulator can be useful for testing different signal types, constellation geometries, and possible errors. The results of a simulation are only as good as the simulator itself. While high end signal simulators exist, they can be expensive and require technical prowess to operate. A low cost version can be valuable and still operate at a high level of fidelity with more ease of use. 
 
-The flexibility of a simulation tool is crucial. It saves time, money, and resources when testing different scenarios. One of the biggest advantages to this simulation tool is the ability to interchange different pieces quickly and efficiently. Whether it is the constellation type, data message, or signal structure, changes can be made easily to accommodate varying test plans. 
-
-\section { Prior Work }
-Will input some information on prior research in this area. Mention Russell Powell GPS signal simulator.
-
+The flexibility of a simulation tool is crucial. It saves time, money, and resources when testing different scenarios. One of the biggest advantages to this simulation tool is the ability to interchange different pieces quickly and efficiently. Whether it is the constellation type, data message, or signal structure, changes can be made easily to accommodate varying test plans.
 Prior work of Kassas lab in terms of measurements.
 
 Use of LEO as SOOP
@@ -143,6 +145,10 @@ Hypothetical LEO for full navigation.
 
 \section { Contributions}
 This thesis will describe the process of designing a modular simulation tool for LEO satellites. The versitility of the simulator allows the user to test different scenarios. 
+
+\section{Thesis Outline}
+In Chapter 2, the background of satellite orbits, signal types, and modulation types are discussed. In Chapter 3, the simulation tool is described in detail. Chapter 4 dives into the simulation and testing configurations used for this thesis. The results from the testing configurations are discussed in Chapter 5. Conclusions and future work are discussed in Chapter 6 followed by a list of references and an Appendix.
+
 
 \chapter{Background}
 
@@ -419,8 +425,10 @@ where \textit{A} is the amplitude and $\theta$ is the phase. From here the decla
 
 
 %\begin{thebibliography}{99}
-    \bibliography{My Library}
-    \bibliographystyle{IEEEtr}
+    % \bibliography{My Library}
+    % \bibliographystyle{IEEEtr}
+
+\printbibliography
 %\end{thebibliography}
 
 

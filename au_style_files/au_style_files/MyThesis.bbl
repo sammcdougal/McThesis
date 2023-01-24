@@ -1,19 +1,214 @@
-\begin{thebibliography}{1}
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
 
-\bibitem{orabiOpportunisticNavigationDoppler2021}
-M.~Orabi, J.~Khalife, and Z.~Kassas, ``Opportunistic {{Navigation}} with
-  {{Doppler Measurements}} from {{Iridium Next}} and {{Orbcomm LEO
-  Satellites}},''
 
-\bibitem{reidSatelliteNavigationAge2020}
-T.~G. Reid, B.~Chan, A.~Goel, K.~Gunning, B.~Manning, J.~Martin, A.~Neish,
-  A.~Perkins, and P.~Tarantino, ``Satellite {{Navigation}} for the {{Age}} of
-  {{Autonomy}},'' in {\em 2020 {{IEEE}}/{{ION Position}}, {{Location}} and
-  {{Navigation Symposium}} ({{PLANS}})}, pp.~342--352.
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{misraGlobalPositioningSystem2012}{book}{}
+      \name{author}{2}{}{%
+        {{hash=dea7a47016ffef1ba4d9247167187255}{%
+           family={Misra},
+           familyi={M\bibinitperiod},
+           given={Pratap},
+           giveni={P\bibinitperiod}}}%
+        {{hash=d1f03e41902631e4ef274a6a749fca7e}{%
+           family={Enge},
+           familyi={E\bibinitperiod},
+           given={Per},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Lincoln, Massachusetts}%
+      }
+      \list{publisher}{1}{%
+        {Ganga-Jamuna Press}%
+      }
+      \strng{namehash}{431df6603cfa4e1eba84d547576caf59}
+      \strng{fullhash}{431df6603cfa4e1eba84d547576caf59}
+      \strng{bibnamehash}{431df6603cfa4e1eba84d547576caf59}
+      \strng{authorbibnamehash}{431df6603cfa4e1eba84d547576caf59}
+      \strng{authornamehash}{431df6603cfa4e1eba84d547576caf59}
+      \strng{authorfullhash}{431df6603cfa4e1eba84d547576caf59}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Revised Second Edition}
+      \field{isbn}{978-0-9709544-2-8}
+      \field{pagetotal}{569}
+      \field{title}{Global Positioning System; Signals, Measurements, and Performance}
+      \field{year}{2012}
+      \field{dateera}{ce}
+    \endentry
+    \entry{orabiOpportunisticNavigationDoppler2021}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=87fe8cc386a2eb9a6ff5550c8faccceb}{%
+           family={Orabi},
+           familyi={O\bibinitperiod},
+           given={Mohamad},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ca35a33b3bb5566f0c569a1ee6ec0c1e}{%
+           family={Khalife},
+           familyi={K\bibinitperiod},
+           given={Joe},
+           giveni={J\bibinitperiod}}}%
+        {{hash=5e20bbdf0356c6041c5a47623d53fa4a}{%
+           family={Kassas},
+           familyi={K\bibinitperiod},
+           given={Zak},
+           giveni={Z\bibinitperiod}}}%
+      }
+      \strng{namehash}{622b18c593e1507a4f408f292fd54801}
+      \strng{fullhash}{622b18c593e1507a4f408f292fd54801}
+      \strng{bibnamehash}{622b18c593e1507a4f408f292fd54801}
+      \strng{authorbibnamehash}{622b18c593e1507a4f408f292fd54801}
+      \strng{authornamehash}{622b18c593e1507a4f408f292fd54801}
+      \strng{authorfullhash}{622b18c593e1507a4f408f292fd54801}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A framework for opportunistic navigation with multi-constellation low Earth orbit ({LEO}) satellite signals is pro-posed. A receiver architecture suitable for processing both time division ({TDMA}) and frequency division multiple access({FMDA}) signals from Orbcomm and Iridium {NEXT} satellites is presented to produce Doppler frequency measurements from multi-constellation {LEO} satellites. An extended Kalman filter({EKF})-based estimator is formulated to solve for a stationary receiver’s position using the resulting Doppler measurements. Experimental results are presented showing receiver positioning with one Orbcomm satellite and four Iridium {NEXT} satellites with an unprecedented final position error 22.7 m.}
+      \field{day}{23}
+      \field{month}{4}
+      \field{title}{Opportunistic Navigation with Doppler Measurements from Iridium Next and Orbcomm {LEO} Satellites}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \verb{doi}
+      \verb 10.1109/AERO50100.2021.9438454
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:C\:\\Users\\sam0185\\Zotero\\storage\\6ABXIXWS\\Orabi et al. - 2021 - Opportunistic Navigation with Doppler Measurements.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{reidSatelliteNavigationAge2020}{inproceedings}{}
+      \name{author}{9}{}{%
+        {{hash=301b82f1b6b63d2acd6f19ace467c080}{%
+           family={Reid},
+           familyi={R\bibinitperiod},
+           given={Tyler\bibnamedelima G.R.},
+           giveni={T\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=b05477d3fb03cbac9c42f3781e68acb6}{%
+           family={Chan},
+           familyi={C\bibinitperiod},
+           given={Bryan},
+           giveni={B\bibinitperiod}}}%
+        {{hash=b9f86630475050f998c1380d54906d21}{%
+           family={Goel},
+           familyi={G\bibinitperiod},
+           given={Ashish},
+           giveni={A\bibinitperiod}}}%
+        {{hash=13d83d687168ae9efd358673c1fb736e}{%
+           family={Gunning},
+           familyi={G\bibinitperiod},
+           given={Kazuma},
+           giveni={K\bibinitperiod}}}%
+        {{hash=d163d7ba6744ddac526eeb77fc3c92bb}{%
+           family={Manning},
+           familyi={M\bibinitperiod},
+           given={Brian},
+           giveni={B\bibinitperiod}}}%
+        {{hash=bcc380481fa77836b11467371afabfa0}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={Jerami},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a33aca421b80d68a82774a3f330c2e37}{%
+           family={Neish},
+           familyi={N\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=09b2060d4545cc2d5cb7d5a07c557521}{%
+           family={Perkins},
+           familyi={P\bibinitperiod},
+           given={Adrien},
+           giveni={A\bibinitperiod}}}%
+        {{hash=c597cb11b09b203dd99dca68666aa917}{%
+           family={Tarantino},
+           familyi={T\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{8af4debce2c9f36615d0e071282eae36}
+      \strng{fullhash}{0661293d373148aa126cdde91572356b}
+      \strng{bibnamehash}{8af4debce2c9f36615d0e071282eae36}
+      \strng{authorbibnamehash}{8af4debce2c9f36615d0e071282eae36}
+      \strng{authornamehash}{8af4debce2c9f36615d0e071282eae36}
+      \strng{authorfullhash}{0661293d373148aa126cdde91572356b}
+      \field{sortinit}{4}
+      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A bstract-Global Navigation Satellite Systems ({GNSS}) brought navigation to the masses. Coupled with smartphones, the blue dot in the palm of our hands has forever changed the way we interact with the world. Looking forward, cyber-physical systems such as self-driving cars and aerial mobility are pushing the limits of what localization technologies including {GNSS} can provide. This autonomous revolution requires a solution that supports safety-critical operation, centimeter positioning, and cyber-security for millions of users. To meet these demands, we propose a navigation service from Low Earth Orbiting ({LEO}) satellites which deliver precision in-part through faster motion, higher power signals for added robustness to interference, constellation autonomous integrity monitoring for integrity, and encryption / authentication for resistance to spoofing attacks. This paradigm is enabled by the `New Space' movement, where highly capable satellites and components are now built on assembly lines and launch costs have decreased by more than tenfold. Such a ubiquitous positioning service enables a consistent and secure standard where trustworthy information can be validated and shared, extending the electronic horizon from sensor line of sight to an entire city. This enables the situational awareness needed for true safe operation to support autonomy at scale.}
+      \field{booktitle}{2020 {IEEE}/{ION} Position, Location and Navigation Symposium ({PLANS})}
+      \field{eventtitle}{2020 {IEEE}/{ION} Position, Location and Navigation Symposium ({PLANS})}
+      \field{month}{4}
+      \field{note}{{ISSN}: 2153-3598}
+      \field{title}{Satellite Navigation for the Age of Autonomy}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \field{pages}{342\bibrangedash 352}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1109/PLANS46316.2020.9109938
+      \endverb
+      \verb{file}
+      \verb IEEE Xplore Abstract Record:C\:\\Users\\sam0185\\Zotero\\storage\\VEJENDHI\\9109938.html:text/html;IEEE Xplore Full Text PDF:C\:\\Users\\sam0185\\Zotero\\storage\\7MBGVGKZ\\Reid et al. - 2020 - Satellite Navigation for the Age of Autonomy.pdf:application/pdf
+      \endverb
+      \keyw{Aerial Mobility,Autonomous Vehicles,{GNSS},Localization,Low Earth Orbit ({LEO}),New Space,Security,{UAS}}
+    \endentry
+    \entry{curtisOrbitalMechanicsEngineering2008}{book}{}
+      \name{author}{1}{}{%
+        {{hash=55a7280b2d9a909f02706fed0fe1f209}{%
+           family={Curtis},
+           familyi={C\bibinitperiod},
+           given={Howard\bibnamedelima D.},
+           giveni={H\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Amsterdam Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier Butterworth Heinemann}%
+      }
+      \strng{namehash}{55a7280b2d9a909f02706fed0fe1f209}
+      \strng{fullhash}{55a7280b2d9a909f02706fed0fe1f209}
+      \strng{bibnamehash}{55a7280b2d9a909f02706fed0fe1f209}
+      \strng{authorbibnamehash}{55a7280b2d9a909f02706fed0fe1f209}
+      \strng{authornamehash}{55a7280b2d9a909f02706fed0fe1f209}
+      \strng{authorfullhash}{55a7280b2d9a909f02706fed0fe1f209}
+      \field{sortinit}{5}
+      \field{sortinithash}{5dd416adbafacc8226114bc0202d5fdd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1. ed., reprinted}
+      \field{isbn}{978-0-7506-6169-0}
+      \field{langid}{english}
+      \field{pagetotal}{673}
+      \field{series}{Elsevier Aerospace engineering series}
+      \field{title}{Orbital mechanics for engineering students}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \verb{file}
+      \verb Curtis - 2008 - Orbital mechanics for engineering students.pdf:C\:\\Users\\sam0185\\Zotero\\storage\\ANT6RHQ5\\Curtis - 2008 - Orbital mechanics for engineering students.pdf:application/pdf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
 
-\bibitem{curtisOrbitalMechanicsEngineering2008}
-H.~D. Curtis, {\em Orbital Mechanics for Engineering Students}.
-\newblock Elsevier {{Aerospace}} Engineering Series, {Elsevier Butterworth
-  Heinemann}, 1. ed., reprinted~ed.
-
-\end{thebibliography}
