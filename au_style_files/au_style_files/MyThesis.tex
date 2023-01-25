@@ -121,8 +121,6 @@ acknowledgments
 
 \section { \normalfont Motivation}
 
-With growing interest in using low Earth Orbit (LEO) satellites as forms of navigation due to interferences with current GNSSs, a LEO signal simulation tool can be useful for both signals of Opportunity (SOOP) and LEO for navigation. Signal simulation tools are helpful for the design of receivers.   
-
 Low Earth orbit (LEO) satellites for navigation have gained interest as an alternitive source of position, navigation and timing (PNT) to GNSS due to GNSS being susceptible to interferences such as jamming, spoofing, and multipath. Many current LEO satellites are not designed for navigation, however their signals have been exploited for opportunistic navigation. Many of these constellations have data messages that are unknown to the user which makes receiver design difficult. While there are a few high fidelity LEO simulators on the market, they can be expensive. These tools allow for testing of signal types before satellites are launched and signals can be replicated with prior knowledge of the signal. The development of a signal simulation tool that allows for testing of different signal types, satellite constellations, and receiver patterns is a necessaary tool for developing software and hardware receivers for LEO satellites.  
 
 \section { Prior Work }
@@ -143,6 +141,13 @@ Hypothetical LEO for full navigation.
 
 \section { Contributions}
 This thesis will describe the process of designing a modular simulation tool for LEO satellites. The versitility of the simulator allows the user to test different scenarios. 
+
+\begin{itemize}
+    \item Description of LEO satellite signal simulation tool that generates realistic IQ signals to be used for currrent and emerging constellations
+    \item Investigation of USRP playback and record to realistic introduce hardware errors
+    \item Examine possible positioning techniques for TDMA signals
+    
+\end{itemize}
 
 \section{Thesis Outline}
 In Chapter 2, the background of satellite orbits, signal types, and modulation types are discussed. In Chapter 3, the simulation tool is described in detail. Chapter 4 dives into the simulation and testing configurations used for this thesis. The results from the testing configurations are discussed in Chapter 5. Conclusions and future work are discussed in Chapter 6 followed by a list of references and an Appendix.
