@@ -124,6 +124,7 @@ acknowledgments
 Low Earth orbit (LEO) satellites for navigation have gained interest as an alternitive source of position, navigation and timing (PNT) to GNSS due to GNSS being susceptible to interferences such as jamming, spoofing, and multipath. Many current LEO satellites are not designed for navigation, however their signals have been exploited for opportunistic navigation. Many of these constellations have data messages that are unknown to the user which makes receiver design difficult. While there are a few high fidelity LEO simulators on the market, they can be expensive. These tools allow for testing of signal types before satellites are launched and signals can be replicated with prior knowledge of the signal. The development of a signal simulation tool that allows for testing of different signal types, satellite constellations, and receiver patterns is a necessaary tool for developing software and hardware receivers for LEO satellites.  
 
 \section { Prior Work }
+With the growing interest in finding navigation possibilities with LEO satellites, there are recent studies in positioning techniques. 
 
 Global navigation satellite systems (GNSSs) have become an integral part of modern society. Whether it is directions to the grocery store, land surveying, or autonomous vehicles, the ability to know where we are and where we are supposed to go is important. Current GNSSs, such as Global Positioning System (GPS), use radio frequencies (RF) to determine position and velocity solutions. Methods for calculating positions and velocities from GPS satellites can be found in \cite{misraGlobalPositioningSystem2012}.
 
@@ -141,7 +142,7 @@ Hypothetical LEO for full navigation.
 
 \section { Contributions}
 This thesis will describe the process of designing a modular simulation tool for LEO satellites. The versitility of the simulator allows the user to test different scenarios. 
-
+The contributions from this thesis are listed below:
 \begin{itemize}
     \item Description of LEO satellite signal simulation tool that generates realistic IQ signals to be used for currrent and emerging constellations
     \item Investigation of USRP playback and record to realistic introduce hardware errors
