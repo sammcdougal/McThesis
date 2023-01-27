@@ -7,6 +7,12 @@ Pratap Misra and Per Enge.
 \newblock Ganga-Jamuna Press, Lincoln, Massachusetts, revised second edition
   edition, 2012.
 
+\bibitem{powellMultipleAntennaSoftwareGPS}
+Russell Powell.
+\newblock {\em A {Multiple}-{Antenna} {Software} {GPS} {Signal} {Simulator}
+  {forRapid} {Testing} of {Interference} {Mitigation} {Techniques}}.
+\newblock PhD thesis.
+
 \bibitem{orabiOpportunisticNavigationDoppler2021}
 Mohamad Orabi, Joe Khalife, and Zak Kassas.
 \newblock Opportunistic {Navigation} with {Doppler} {Measurements} from
