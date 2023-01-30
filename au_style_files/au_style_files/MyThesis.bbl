@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{misraGlobalPositioningSystem2012}
 Pratap Misra and Per Enge.
@@ -13,11 +13,56 @@ Russell Powell.
   {forRapid} {Testing} of {Interference} {Mitigation} {Techniques}}.
 \newblock PhD thesis.
 
-\bibitem{orabiOpportunisticNavigationDoppler2021}
-Mohamad Orabi, Joe Khalife, and Zak Kassas.
-\newblock Opportunistic {Navigation} with {Doppler} {Measurements} from
-  {Iridium} {Next} and {Orbcomm} {LEO} {Satellites}.
-\newblock April 2021.
+\bibitem{dongIFGPSSignal2003}
+Lei Dong.
+\newblock {\em {IF} {GPS} {Signal} {Simulator} {Development} and
+  {Verification}}.
+\newblock PhD thesis, University of Calgary, Alberta, Calgary, Canada, November
+  2003.
+
+\bibitem{corbellDesignValidationAccurate2000}
+Phillip~Martin Corbell.
+\newblock {\em Design and {Validation} of an {Accurate} {GPS} {Signal} and
+  {Receiver} {Truth} {Model} for {Comparing} {Advanced} receiver {Processing}
+  {Techniques}}.
+\newblock PhD thesis, Air Force Institute of Technology, Wright-Patterson Air
+  Force Base, Ohio, March 2000.
+
+\bibitem{psiakiNavigationUsingCarrier2021}
+Mark~L. Psiaki.
+\newblock Navigation using carrier {Doppler} shift from a {LEO} constellation:
+  {TRANSIT} on steroids.
+\newblock {\em NAVIGATION}, 68(3):621--641, September 2021.
+
+\bibitem{hsuAssessmentUsingDoppler2014}
+Wu-Hung Hsu and Shau-Shiun Jan.
+\newblock Assessment of using {Doppler} shift of {LEO} satellites to aid {GPS}
+  positioning.
+\newblock In {\em 2014 {IEEE}/{ION} {Position}, {Location} and {Navigation}
+  {Symposium} - {PLANS} 2014}, pages 1155--1161, Monterey, CA, USA, May 2014.
+  IEEE.
+
+\bibitem{lopezImprovingArgosDoppler2014}
+Remy Lopez, Jean-Pierre Malarde, Francois Royer, and Philippe Gaspar.
+\newblock Improving {Argos} {Doppler} {Location} {Using} {Multiple}-{Model}
+  {Kalman} {Filtering}.
+\newblock {\em IEEE Transactions on Geoscience and Remote Sensing},
+  52(8):4744--4755, August 2014.
+
+\bibitem{khalifeReceiverDesignDoppler2019}
+Joe~J. Khalife and Zaher~M. Kassas.
+\newblock Receiver {Design} for {Doppler} {Positioning} with {Leo}
+  {Satellites}.
+\newblock In {\em {ICASSP} 2019 - 2019 {IEEE} {International} {Conference} on
+  {Acoustics}, {Speech} and {Signal} {Processing} ({ICASSP})}, pages
+  5506--5510, May 2019.
+\newblock ISSN: 2379-190X.
+
+\bibitem{tanNewMethodPositioning2019}
+Zizhong Tan, Honglei Qin, Li~Cong, and Chao Zhao.
+\newblock New {Method} for {Positioning} {Using} {IRIDIUM} {Satellite}
+  {Signals} of {Opportunity}.
+\newblock {\em IEEE Access}, PP:1--1, June 2019.
 
 \bibitem{reidSatelliteNavigationAge2020}
 Tyler~G.R. Reid, Bryan Chan, Ashish Goel, Kazuma Gunning, Brian Manning, Jerami
@@ -26,6 +71,19 @@ Tyler~G.R. Reid, Bryan Chan, Ashish Goel, Kazuma Gunning, Brian Manning, Jerami
 \newblock In {\em 2020 {IEEE}/{ION} {Position}, {Location} and {Navigation}
   {Symposium} ({PLANS})}, pages 342--352, April 2020.
 \newblock ISSN: 2153-3598.
+
+\bibitem{moralesInertialNavigationSystem2018}
+Joshua~J. Morales, Joe Khalife, Ali~A. Abdallah, Christian~T. Ardito, and
+  Zak~M. Kassas.
+\newblock Inertial {Navigation} {System} {Aiding} with {Orbcomm} {LEO}
+  {Satellite} {Doppler} {Measurements}.
+\newblock pages 2718--2725, Miami, Florida, October 2018.
+
+\bibitem{orabiOpportunisticNavigationDoppler2021}
+Mohamad Orabi, Joe Khalife, and Zak Kassas.
+\newblock Opportunistic {Navigation} with {Doppler} {Measurements} from
+  {Iridium} {Next} and {Orbcomm} {LEO} {Satellites}.
+\newblock April 2021.
 
 \bibitem{curtisOrbitalMechanicsEngineering2008}
 Howard~D. Curtis.

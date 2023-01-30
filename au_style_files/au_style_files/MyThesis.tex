@@ -125,28 +125,33 @@ Low Earth orbit (LEO) satellites for navigation have gained interest as an alter
 
 \section { Prior Work }
 
-There are recent studies in positioning techniques with the growing interest in finding navigation possibilities with LEO satellites 
+There are recent studies in positioning techniques with the growing interest in finding navigation possibilities with LEO satellites. Currently, global navigation satellite systems (GNSSs) are an integral part of modern society. Whether it is directions to the grocery store, land surveying, or autonomous vehicles, the knowledge of where something is and where it is supposed to go is important. Current GNSSs, such as Global Positioning System (GPS), use radio frequencies (RF) to determine position and velocity solutions. Methods for calculating positions and velocities from GPS satellites can be found in \cite{misraGlobalPositioningSystem2012}. 
 
-Global navigation satellite systems (GNSSs) have become an integral part of modern society. Whether it is directions to the grocery store, land surveying, or autonomous vehicles, the ability to know where we are and where we are supposed to go is important. Current GNSSs, such as Global Positioning System (GPS), use radio frequencies (RF) to determine position and velocity solutions. Methods for calculating positions and velocities from GPS satellites can be found in \cite{misraGlobalPositioningSystem2012}.
+Simulation tools allow for fast testing and validation of desired scenarios. Current navigation simulation tools are mainly focused on GNSSs. One source, \cite{powellMultipleAntennaSoftwareGPS} designs a signal simulation tool for ``Rapid Testing of Interference Mitigation Techniques" for GPS. In his thesis, Powell outlines structures for creating a low cost signal simulation tool that can be used to test different scenarios. He begins by generating a file of simulation settings. This is followed by a scenario simulation where satellites are propagated, measurements are generated, and the navigation message populated. Next the signal is generated for the satellites in view and the data is stored in a bin file. GNSS signal simulators can also be used to test software defined receivers (SDRs). Powell validates his simulation by comparing the generated signal performance to the performance of a hardware gps receiver and examining the position, velocity, carrier to noise ratio, and Doppler frequencies. Powell found that the simulator described in his thesis was capable of producing realistic single and multi antenna signals. 
+
+Other GPS signal simulators designed in MATLAB can be found in  \cite{dongIFGPSSignal2003} and \cite{corbellDesignValidationAccurate2000}.
+
+A LEO satellite signal simulator can be useful for testing different signal types, constellation geometries, and possible errors. The results of a simulation are only as good as the simulator itself. While high end signal simulators exist, they can be expensive and require technical prowess to operate. A low cost version can be valuable and still operate at a high level of fidelity with more ease of use. 
 
 
-GPS was designed for the purpose of navigation. It operates in medium Earth orbit (MEO) which has a wide range of altitudes from 2,000 kilometers to 35,000 kilometers. Specifically, GPS satellites orbit at an altitude around 22,000 kilometers with an orbital period of 12 hours. MEO was chosen for GPS as it allowed for fewer satellites in the constellation to calculate a positioning solution. For comparison, low Earth orbit (LEO) satellites have orbits with altitudes from 500 kilometers to 2000 kilometers, and LEO satellites have orbital periods between 90 and 120 minutes. One major difference between current LEO constellations and GNSSs is the original mission design. 
-
-Simulation tools allow for fast testing and validation of desired scenarios. Current navigation simulation tools are mainly focused on GNSSs. One source, \cite{powellMultipleAntennaSoftwareGPS} designs a signal simulation tool for ``Rapid Testing of Interference Mitigation Techniques" for GPS. In his thesis, Powell outlines structures for creating a low cost signal simulation tool that can be used to test different scenarios. GNSS signal simulators can also be used to test software defined receivers (SDRs). This testing can help with the validation of receiver architectures and signal tracking techniques. A LEO satellite signal simulator can be useful for testing different signal types, constellation geometries, and possible errors. The results of a simulation are only as good as the simulator itself. While high end signal simulators exist, they can be expensive and require technical prowess to operate. A low cost version can be valuable and still operate at a high level of fidelity with more ease of use. 
 
 The flexibility of a simulation tool is crucial. It saves time, money, and resources when testing different scenarios. One of the biggest advantages to this simulation tool is the ability to interchange different pieces quickly and efficiently. Whether it is the constellation type, data message, or signal structure, changes can be made easily to accommodate varying test plans.
 
-Prior work of Kassas lab in terms of measurements.
+Prior work of Kassas lab in terms of measurements. 
 
 Insert of sterling thompson work 
 
-Insert of Psiaki Work
+Insert of Psiaki Work \cite{psiakiNavigationUsingCarrier2021}
 
-Insert of Animal tracking with leo satellites paper.
+Insert of more doppler stuff \cite{hsuAssessmentUsingDoppler2014}
 
-Use of LEO as SOOP
+Insert of Animal tracking with leo satellites paper. \cite{lopezImprovingArgosDoppler2014}
 
-Hypothetical LEO for full navigation.
+Use of LEO as SOOP \cite{khalifeReceiverDesignDoppler2019} \cite{tanNewMethodPositioning2019}
+
+Hypothetical LEO for full navigation. \cite{reidSatelliteNavigationAge2020}
+
+Morales work \cite{moralesInertialNavigationSystem2018}
 
 \section { Contributions}
 This thesis will describe the process of designing a modular simulation tool for LEO satellites. The versitility of the simulator allows the user to test different scenarios. 
@@ -436,7 +441,7 @@ where \textit{A} is the amplitude and $\theta$ is the phase. From here the decla
 
 
 \bibliographystyle{unsrt}
-\bibliography{My Library}
+\bibliography{MyLibrary}
 
 
 
