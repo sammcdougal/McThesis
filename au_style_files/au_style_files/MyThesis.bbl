@@ -7,12 +7,6 @@ Pratap Misra and Per Enge.
 \newblock Ganga-Jamuna Press, Lincoln, Massachusetts, revised second edition
   edition, 2012.
 
-\bibitem{powellMultipleAntennaSoftwareGPS}
-Russell Powell.
-\newblock {\em A {Multiple}-{Antenna} {Software} {GPS} {Signal} {Simulator}
-  {forRapid} {Testing} of {Interference} {Mitigation} {Techniques}}.
-\newblock PhD thesis.
-
 \bibitem{dongIFGPSSignal2003}
 Lei Dong.
 \newblock {\em {IF} {GPS} {Signal} {Simulator} {Development} and
@@ -27,6 +21,19 @@ Phillip~Martin Corbell.
   {Techniques}}.
 \newblock PhD thesis, Air Force Institute of Technology, Wright-Patterson Air
   Force Base, Ohio, March 2000.
+
+\bibitem{powellMultipleAntennaSoftwareGPS}
+Russell Powell.
+\newblock {\em A {Multiple}-{Antenna} {Software} {GPS} {Signal} {Simulator}
+  {forRapid} {Testing} of {Interference} {Mitigation} {Techniques}}.
+\newblock PhD thesis.
+
+\bibitem{thompsonSingleDifferencedDoppler2021}
+Sterling Thompson.
+\newblock Single {Differenced} {Doppler} {Positioning} with {Low} {Earth}
+  {Orbit} {Signals} of {Opportunity} and {Angle} of {Arival} {Estimation}.
+\newblock In {\em Proceedings of the 2021 {International} {Technical}
+  {Meeting}}, pages 497--509, Long Beach, CA, January 2021.
 
 \bibitem{psiakiNavigationUsingCarrier2021}
 Mark~L. Psiaki.
