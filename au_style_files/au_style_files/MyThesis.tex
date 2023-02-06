@@ -130,7 +130,7 @@ There are recent studies in positioning techniques with the growing interest in 
 Simulation tools allow for fast testing and validation of desired scenarios. Current navigation simulation tools are mainly focused on GNSSs such as \cite{dongIFGPSSignal2003} and \cite{corbellDesignValidationAccurate2000}. One source, \cite{powellMultipleAntennaSoftwareGPS} designs a signal simulation tool for ``Rapid Testing of Interference Mitigation Techniques" for GPS. In his thesis, Powell outlines structures for creating a low cost signal simulation tool that can be used to test different scenarios. He begins by generating a file of simulation settings. This is followed by a scenario simulation where satellites are propagated, measurements are generated, and the navigation message populated. Next the signal is generated for the satellites in view and the data is stored in a bin file. GNSS signal simulators can also be used to test software defined receivers (SDRs). Powell validates his simulation by comparing the generated signal performance to the performance of a hardware gps receiver and examining the position, velocity, carrier to noise ratio, and Doppler frequencies. Powell found that the simulator described in his thesis was capable of producing realistic single and multi antenna signals. 
 
 
-
+One of the areas of research for LEO satellites is using the Doppler frequency measurements from the LEO satellites in order to aid navigation solutions or colaberate with IMUs for opportunistic navigation. 
 
 
 
@@ -383,19 +383,18 @@ where \textit{A} is the amplitude and $\theta$ is the phase. From here the decla
 - Decoding of the bits
  
 \chapter{Testing Setup}
-    - Mention things about the configuration:
+\begin{itemize}
+    \item     - Mention things about the configuration:
+    \item     - satellite orbits
+    \item     - signal type
+    \item     - USRP playback and record
+    \item     - why important
+    \item     - how it works
+    \item     - how USRPs work in brief
 
-    - satellite orbits
 
-    - signal type
+\end{itemize}
 
-    - USRP playback and record
-
-    - why important
-
-    - how it works
-
-    - how USRPs work in brief
 
 \chapter{Results}
 
