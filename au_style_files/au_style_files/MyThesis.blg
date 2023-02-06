@@ -1,51 +1,55 @@
-This is BibTeX, Version 0.99d (TeX Live 2022)
+This is BibTeX, Version 0.99d
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: MyThesis.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: unsrt.bst
+Reallocating 'name_of_file' (item size: 1) to 10 items.
 Database file #1: MyLibrary.bib
 Warning--empty school in powellMultipleAntennaSoftwareGPS
 Warning--empty year in powellMultipleAntennaSoftwareGPS
+Warning--empty journal in bahramiGNSSDopplerPositioning
+Warning--empty year in bahramiGNSSDopplerPositioning
 Warning--empty booktitle in moralesInertialNavigationSystem2018
 Warning--empty booktitle in orabiOpportunisticNavigationDoppler2021
-You've used 14 entries,
+You've used 16 entries,
             1791 wiz_defined-function locations,
-            546 strings with 7196 characters,
-and the built_in function-call counts, 3726 in all, are:
-= -- 360
-> -- 133
-< -- 5
-+ -- 51
-- -- 37
-* -- 239
-:= -- 551
-add.period$ -- 46
-call.type$ -- 14
-change.case$ -- 11
+            554 strings with 7419 characters,
+and the built_in function-call counts, 4009 in all, are:
+= -- 381
+> -- 138
+< -- 6
++ -- 54
+- -- 38
+* -- 247
+:= -- 584
+add.period$ -- 50
+call.type$ -- 16
+change.case$ -- 13
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 189
-empty$ -- 355
-format.name$ -- 37
-if$ -- 860
+cite$ -- 22
+duplicate$ -- 208
+empty$ -- 392
+format.name$ -- 38
+if$ -- 930
 int.to.chr$ -- 0
-int.to.str$ -- 14
-missing$ -- 13
-newline$ -- 75
-num.names$ -- 14
-pop$ -- 53
+int.to.str$ -- 16
+missing$ -- 14
+newline$ -- 83
+num.names$ -- 15
+pop$ -- 66
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 107
+skip$ -- 123
 stack$ -- 0
-substring$ -- 253
-swap$ -- 66
-text.length$ -- 5
+substring$ -- 257
+swap$ -- 72
+text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 4
-while$ -- 35
-width$ -- 16
-write$ -- 164
-(There were 4 warnings)
+warning$ -- 6
+while$ -- 37
+width$ -- 18
+write$ -- 178
+(There were 6 warnings)

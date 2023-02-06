@@ -127,32 +127,15 @@ Low Earth orbit (LEO) satellites for navigation have gained interest as an alter
 
 There are recent studies in positioning techniques with the growing interest in finding navigation possibilities with LEO satellites. Currently, global navigation satellite systems (GNSSs) are an integral part of modern society. Whether it is directions to the grocery store, land surveying, or autonomous vehicles, the knowledge of where something is and where it is supposed to go is important. Current GNSSs, such as Global Positioning System (GPS), use radio frequencies (RF) to determine position and velocity solutions. Methods for calculating positions and velocities from GPS satellites can be found in \cite{misraGlobalPositioningSystem2012}. 
 
-Simulation tools allow for fast testing and validation of desired scenarios. Current navigation simulation tools are mainly focused on GNSSs such as \cite{dongIFGPSSignal2003} and \cite{corbellDesignValidationAccurate2000}. One source, \cite{powellMultipleAntennaSoftwareGPS} designs a signal simulation tool for ``Rapid Testing of Interference Mitigation Techniques" for GPS. In his thesis, Powell outlines structures for creating a low cost signal simulation tool that can be used to test different scenarios. He begins by generating a file of simulation settings. This is followed by a scenario simulation where satellites are propagated, measurements are generated, and the navigation message populated. Next the signal is generated for the satellites in view and the data is stored in a bin file. GNSS signal simulators can also be used to test software defined receivers (SDRs). Powell validates his simulation by comparing the generated signal performance to the performance of a hardware gps receiver and examining the position, velocity, carrier to noise ratio, and Doppler frequencies. Powell found that the simulator described in his thesis was capable of producing realistic single and multi antenna signals. 
+The flexibility of a simulation tool is crucial. It saves time, money, and resources when testing different scenarios. One of the biggest advantages to this simulation tool is the ability to interchange different pieces quickly and efficiently. Whether it is the constellation type, data message, or signal structure, changes can be made easily to accommodate varying test plans. Current navigation simulation tools are mainly focused on GNSSs such as \cite{dongIFGPSSignal2003} and \cite{corbellDesignValidationAccurate2000}. One source, \cite{powellMultipleAntennaSoftwareGPS} designs a signal simulation tool for ``Rapid Testing of Interference Mitigation Techniques" for GPS. In his thesis, Powell outlines structures for creating a low cost signal simulation tool that can be used to test different scenarios. He begins by generating a file of simulation settings. This is followed by a scenario simulation where satellites are propagated, measurements are generated, and the navigation message populated. Next the signal is generated for the satellites in view and the data is stored in a bin file. GNSS signal simulators can also be used to test software defined receivers (SDRs). Powell validates his simulation by comparing the generated signal performance to the performance of a hardware gps receiver and examining the position, velocity, carrier to noise ratio, and Doppler frequencies. Powell found that the simulator described in his thesis was capable of producing realistic single and multi antenna signals. 
 
 
-One of the areas of research for LEO satellites is using the Doppler frequency measurements from the LEO satellites in order to aid navigation solutions or colaberate with IMUs for opportunistic navigation. 
+One of the main areas of research for LEO satellites is using the Doppler frequency measurements from the LEO satellites in order to gain a navigation solution \cite{hsuAssessmentUsingDoppler2014} \cite{psiakiNavigationUsingCarrier2021}. Doppler positioning has been used in GNSS \cite{bahramiGNSSDopplerPositioning}, and was even the precursor to GPS \cite{TransitSatelliteSpacebased}. The Transit satellite system was initially used for US naval ships to gain a rough position. In \cite{thompsonSingleDifferencedDoppler2021}, Thompson uses a double differenced Doppler technique to position a moving rover with LEO satellites using angle of arrival (AOA) estimates to remove the need of satellite state knowledge. The Argos satellite system uses Doppler measurements for animal tracking \cite{lopezImprovingArgosDoppler2014}
+  
 
+Another area of research with LEO satellites is to use their measurements and colaberate with IMUs for opportunistic navigation\cite{khalifeReceiverDesignDoppler2019} and \cite{tanNewMethodPositioning2019}. In \cite{moralesInertialNavigationSystem2018}, the Orbcomm constellation is used to to aid an inertial navigation system (INS) in a tightly-coupled fashion. Here they used the LEO satellite Doppler measurements and TLE files to estimate the position of a moving UAV without GNSS signals. For the experiment, the UAV was without GPS and had 2 Orbcomm satellites. They claim that this navigation framework lowered the UAV final position error by 72 percent when compared to solely using the IMU.
 
-
-The flexibility of a simulation tool is crucial. It saves time, money, and resources when testing different scenarios. One of the biggest advantages to this simulation tool is the ability to interchange different pieces quickly and efficiently. Whether it is the constellation type, data message, or signal structure, changes can be made easily to accommodate varying test plans.
-
-Prior work of Kassas lab in terms of measurements. 
-
-
-Insert of sterling thompson work. Here, Thompson uses a double differenced Doppler technique to position a moving rover with LEO satellites.  \cite{thompsonSingleDifferencedDoppler2021}
-
-Insert of Psiaki Work \cite{psiakiNavigationUsingCarrier2021} This source aims to use Doppler observables from LEO satellites in order to gain a positioning solution. 
-
-Insert of more doppler stuff \cite{hsuAssessmentUsingDoppler2014}
-
-Insert of Animal tracking with leo satellites paper. \cite{lopezImprovingArgosDoppler2014}
-
-Use of LEO as SOOP \cite{khalifeReceiverDesignDoppler2019} \cite{tanNewMethodPositioning2019}
-
-One possibility is to deploy a new constellation in LEO specifically for navigation.  \cite{reidSatelliteNavigationAge2020}
-
-
-In \cite{moralesInertialNavigationSystem2018}, the Orbcomm constellation is used to to aid an inertial navigation system (INS) in a tightly-coupled fashion. Here they used the LEO satellite Doppler measurements and TLE files to estimate the position of a moving UAV without GNSS signals. For the experiment, the UAV was without GPS and had 2 Orbcomm satellites. They claim that this navigation framework lowered the UAV final position error by 72 percent when compared to solely using the IMU.
+One possibility is to deploy a new constellation in LEO specifically for navigation  \cite{reidSatelliteNavigationAge2020}.
 
 
 A LEO satellite signal simulator can be useful for testing different signal types, constellation geometries, and possible errors. The results of a simulation are only as good as the simulator itself. While high end signal simulators exist, they can be expensive and require technical prowess to operate. A low cost version can be valuable and still operate at a high level of fidelity with more ease of use. 
@@ -188,7 +171,7 @@ The furthest of the orbit zones is GEO. These satellites have an orbit altitude 
 Find information on how many satellites are in GEO. Find information on what satellites are in GEO. What kind of missions happen in GEO. Why are GEO orbits useful 
 
 
-Information on GPS satellites in MEO. What other satellites are in MEO. Why was MEO chosen for specific mission types. Reference GPS textbook. 
+Information on GPS satellites in MEO. What other satellites are in MEO. Why was MEO chosen for specific mission types. Reference GPS textbook. \cite{misraGlobalPositioningSystem2012}
 
 Lead into LEO section. 
 

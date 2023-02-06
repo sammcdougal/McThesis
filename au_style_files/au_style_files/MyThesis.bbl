@@ -28,19 +28,6 @@ Russell Powell.
   {forRapid} {Testing} of {Interference} {Mitigation} {Techniques}}.
 \newblock PhD thesis.
 
-\bibitem{thompsonSingleDifferencedDoppler2021}
-Sterling Thompson.
-\newblock Single {Differenced} {Doppler} {Positioning} with {Low} {Earth}
-  {Orbit} {Signals} of {Opportunity} and {Angle} of {Arival} {Estimation}.
-\newblock In {\em Proceedings of the 2021 {International} {Technical}
-  {Meeting}}, pages 497--509, Long Beach, CA, January 2021.
-
-\bibitem{psiakiNavigationUsingCarrier2021}
-Mark~L. Psiaki.
-\newblock Navigation using carrier {Doppler} shift from a {LEO} constellation:
-  {TRANSIT} on steroids.
-\newblock {\em NAVIGATION}, 68(3):621--641, September 2021.
-
 \bibitem{hsuAssessmentUsingDoppler2014}
 Wu-Hung Hsu and Shau-Shiun Jan.
 \newblock Assessment of using {Doppler} shift of {LEO} satellites to aid {GPS}
@@ -48,6 +35,27 @@ Wu-Hung Hsu and Shau-Shiun Jan.
 \newblock In {\em 2014 {IEEE}/{ION} {Position}, {Location} and {Navigation}
   {Symposium} - {PLANS} 2014}, pages 1155--1161, Monterey, CA, USA, May 2014.
   IEEE.
+
+\bibitem{psiakiNavigationUsingCarrier2021}
+Mark~L. Psiaki.
+\newblock Navigation using carrier {Doppler} shift from a {LEO} constellation:
+  {TRANSIT} on steroids.
+\newblock {\em NAVIGATION}, 68(3):621--641, September 2021.
+
+\bibitem{bahramiGNSSDopplerPositioning}
+Mojtaba Bahrami.
+\newblock {GNSS} {Doppler} {Positioning} ({An} {Overview}).
+\newblock page~17.
+
+\bibitem{TransitSatelliteSpacebased}
+Transit {Satellite}: {Space}-based {Navigation}.
+
+\bibitem{thompsonSingleDifferencedDoppler2021}
+Sterling Thompson.
+\newblock Single {Differenced} {Doppler} {Positioning} with {Low} {Earth}
+  {Orbit} {Signals} of {Opportunity} and {Angle} of {Arival} {Estimation}.
+\newblock In {\em Proceedings of the 2021 {International} {Technical}
+  {Meeting}}, pages 497--509, Long Beach, CA, January 2021.
 
 \bibitem{lopezImprovingArgosDoppler2014}
 Remy Lopez, Jean-Pierre Malarde, Francois Royer, and Philippe Gaspar.
@@ -71,6 +79,13 @@ Zizhong Tan, Honglei Qin, Li~Cong, and Chao Zhao.
   {Signals} of {Opportunity}.
 \newblock {\em IEEE Access}, PP:1--1, June 2019.
 
+\bibitem{moralesInertialNavigationSystem2018}
+Joshua~J. Morales, Joe Khalife, Ali~A. Abdallah, Christian~T. Ardito, and
+  Zak~M. Kassas.
+\newblock Inertial {Navigation} {System} {Aiding} with {Orbcomm} {LEO}
+  {Satellite} {Doppler} {Measurements}.
+\newblock pages 2718--2725, Miami, Florida, October 2018.
+
 \bibitem{reidSatelliteNavigationAge2020}
 Tyler~G.R. Reid, Bryan Chan, Ashish Goel, Kazuma Gunning, Brian Manning, Jerami
   Martin, Andrew Neish, Adrien Perkins, and Paul Tarantino.
@@ -78,13 +93,6 @@ Tyler~G.R. Reid, Bryan Chan, Ashish Goel, Kazuma Gunning, Brian Manning, Jerami
 \newblock In {\em 2020 {IEEE}/{ION} {Position}, {Location} and {Navigation}
   {Symposium} ({PLANS})}, pages 342--352, April 2020.
 \newblock ISSN: 2153-3598.
-
-\bibitem{moralesInertialNavigationSystem2018}
-Joshua~J. Morales, Joe Khalife, Ali~A. Abdallah, Christian~T. Ardito, and
-  Zak~M. Kassas.
-\newblock Inertial {Navigation} {System} {Aiding} with {Orbcomm} {LEO}
-  {Satellite} {Doppler} {Measurements}.
-\newblock pages 2718--2725, Miami, Florida, October 2018.
 
 \bibitem{orabiOpportunisticNavigationDoppler2021}
 Mohamad Orabi, Joe Khalife, and Zak Kassas.
