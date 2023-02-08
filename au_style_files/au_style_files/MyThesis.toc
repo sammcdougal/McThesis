@@ -9,13 +9,13 @@
 \contentsline {section}{\numberline {2.1}Satellite Orbit Zones}{4}%
 \contentsline {section}{\numberline {2.2}Low Earth Orbit Satellites}{5}%
 \contentsline {subsection}{\numberline {2.2.1}LEO Characteristics}{5}%
-\contentsline {subsection}{\numberline {2.2.2}Current LEO Constellations}{6}%
+\contentsline {subsection}{\numberline {2.2.2}Current LEO Constellations}{5}%
 \contentsline {subsection}{\numberline {2.2.3}LEO Measurements}{6}%
 \contentsline {section}{\numberline {2.3}Channel Access Methods}{6}%
 \contentsline {subsection}{\numberline {2.3.1}Time Division Multiple Access}{6}%
 \contentsline {subsection}{\numberline {2.3.2}Code Division Multiple Access}{6}%
 \contentsline {subsection}{\numberline {2.3.3}Frequency Division Multiple Access}{6}%
-\contentsline {section}{\numberline {2.4}Modulation}{7}%
+\contentsline {section}{\numberline {2.4}Modulation}{6}%
 \contentsline {subsection}{\numberline {2.4.1}Binary Phase Shift Keying}{7}%
 \contentsline {subsection}{\numberline {2.4.2}Quadrature Phase Shift Keying}{7}%
 \contentsline {chapter}{\numberline {3}Simulation Tool}{8}%
