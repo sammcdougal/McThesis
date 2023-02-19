@@ -94,6 +94,15 @@ Tyler~G.R. Reid, Bryan Chan, Ashish Goel, Kazuma Gunning, Brian Manning, Jerami
   {Symposium} ({PLANS})}, pages 342--352, April 2020.
 \newblock ISSN: 2153-3598.
 
+\bibitem{usdepartmentofcommerceSatellites}
+NOAA US~Department~of Commerce.
+\newblock Satellites.
+\newblock Publisher: NOAA's National Weather Service.
+
+\bibitem{garnerGOESOverviewHistory2015}
+Rob Garner.
+\newblock {GOES} {Overview} and {History}, March 2015.
+
 \bibitem{GLONASSInterfaceControl1998a}
 {GLONASS} {Interface} {Control} {Document}.
 \newblock page~47, 1998.
@@ -103,6 +112,12 @@ Mohamad Orabi, Joe Khalife, and Zak Kassas.
 \newblock Opportunistic {Navigation} with {Doppler} {Measurements} from
   {Iridium} {Next} and {Orbcomm} {LEO} {Satellites}.
 \newblock April 2021.
+
+\bibitem{IridiumNEXTReview2019}
+Iridium {NEXT}: {In} {Review}, February 2019.
+
+\bibitem{Starlink}
+Starlink.
 
 \bibitem{curtisOrbitalMechanicsEngineering2008}
 Howard~D. Curtis.
