@@ -1,55 +1,55 @@
-This is BibTeX, Version 0.99d
+This is BibTeX, Version 0.99d (TeX Live 2022)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: MyThesis.aux
-Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: unsrt.bst
-Reallocating 'name_of_file' (item size: 1) to 10 items.
 Database file #1: MyLibrary.bib
 Warning--empty school in powellMultipleAntennaSoftwareGPS
 Warning--empty year in powellMultipleAntennaSoftwareGPS
 Warning--empty journal in bahramiGNSSDopplerPositioning
 Warning--empty year in bahramiGNSSDopplerPositioning
 Warning--empty booktitle in moralesInertialNavigationSystem2018
+Warning--empty author in GLONASSInterfaceControl1998a
+Warning--empty journal in GLONASSInterfaceControl1998a
 Warning--empty booktitle in orabiOpportunisticNavigationDoppler2021
-You've used 17 entries,
+You've used 18 entries,
             1791 wiz_defined-function locations,
-            564 strings with 7670 characters,
-and the built_in function-call counts, 4242 in all, are:
-= -- 405
-> -- 146
-< -- 6
-+ -- 57
+            568 strings with 7770 characters,
+and the built_in function-call counts, 4415 in all, are:
+= -- 420
+> -- 147
+< -- 7
++ -- 58
 - -- 40
-* -- 266
-:= -- 621
-add.period$ -- 54
-call.type$ -- 17
-change.case$ -- 14
+* -- 275
+:= -- 639
+add.period$ -- 56
+call.type$ -- 18
+change.case$ -- 15
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 217
-empty$ -- 414
+cite$ -- 26
+duplicate$ -- 231
+empty$ -- 433
 format.name$ -- 40
-if$ -- 980
+if$ -- 1024
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 15
-newline$ -- 89
+int.to.str$ -- 18
+missing$ -- 16
+newline$ -- 93
 num.names$ -- 16
-pop$ -- 66
+pop$ -- 73
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 127
+skip$ -- 136
 stack$ -- 0
-substring$ -- 276
-swap$ -- 73
-text.length$ -- 6
+substring$ -- 280
+swap$ -- 78
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 6
-while$ -- 40
-width$ -- 19
-write$ -- 191
-(There were 6 warnings)
+warning$ -- 8
+while$ -- 41
+width$ -- 20
+write$ -- 199
+(There were 8 warnings)

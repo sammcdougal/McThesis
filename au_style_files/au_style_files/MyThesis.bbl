@@ -94,6 +94,10 @@ Tyler~G.R. Reid, Bryan Chan, Ashish Goel, Kazuma Gunning, Brian Manning, Jerami
   {Symposium} ({PLANS})}, pages 342--352, April 2020.
 \newblock ISSN: 2153-3598.
 
+\bibitem{GLONASSInterfaceControl1998a}
+{GLONASS} {Interface} {Control} {Document}.
+\newblock page~47, 1998.
+
 \bibitem{orabiOpportunisticNavigationDoppler2021}
 Mohamad Orabi, Joe Khalife, and Zak Kassas.
 \newblock Opportunistic {Navigation} with {Doppler} {Measurements} from
