@@ -223,7 +223,8 @@ BPSK Modulation, how it works, who uses it, why is it used.
 
 QPSK modulation. QPSK modulation has data on the in-phase and quadrature branches of the signal.
 
-
+\section{Satellite Based Navigation}
+This section will go through some of the basics of satellite navigation. 
 
 \chapter {Simulation Tool}
 In this section, the function and versitility of the simulator will be described.
@@ -340,7 +341,7 @@ With the calculated received times and designated satellites, we can generate th
     \label{fig:SigGenBlock}
 \end{figure}
 
-A section of signal noise is generated for the amount of samples in the signal block. The signal noise and data message are input to the signal generation block. We start by loading in settings, Doppler frequency, preamble, and sync message. The sync message was chosen to be a 127 bit long gold code with an appended zero due to its autocorrelation abilities (Dinan, 1998).  We then combine the preamble and sync messages on their respective branches along with the in-phase and quadrature bit vectors to produce our full data message. From there we up-sample via zero insertion and filtering with a root-raised-cosine (RRC) pulse shaping filter. The amplitude of the signal is calculated as equation \ref{eqn:amplitude} and the phase is calculated in equation \ref{eqn:phase}
+A section of signal noise is generated for the amount of samples in the signal block. The signal noise and data message are input to the signal generation block. We start by loading in settings, Doppler frequency, preamble, and sync message. The sync message was chosen to be a 127 bit long gold code with an appended zero due to its autocorrelation abilities \cite{dinanSpreadingCodesDirect1998}.  We then combine the preamble and sync messages on their respective branches along with the in-phase and quadrature bit vectors to produce our full data message. From there we up-sample via zero insertion and filtering with a root-raised-cosine (RRC) pulse shaping filter. The amplitude of the signal is calculated as equation \ref{eqn:amplitude} and the phase is calculated in equation \ref{eqn:phase}
 
 \begin{equation}
     A = \sqrt{Ips^2 + Qps^2}
@@ -367,7 +368,9 @@ where \textit{A} is the amplitude and $\theta$ is the phase. From here the decla
 
 - Decoding of the bits
  
-\chapter{Testing Setup}
+\chapter{Testing Setup and Positioning Techniques}
+\section{Doppler Positioning}
+\section{Pseudorange Based}
 \begin{itemize}
     \item     - Mention things about the configuration:
     \item     - satellite orbits
@@ -382,7 +385,18 @@ where \textit{A} is the amplitude and $\theta$ is the phase. From here the decla
 
 
 \chapter{Results}
-
+\section{Static Clean Data}
+\subsection{Doppler Positioning}
+\subsection{Pseudorange Based Positioning}
+\section{Static Clean Data Played Through USRP}
+\subsection{Doppler Positioning}
+\subsection{Pseudorange Based Positioning}
+\section{Static Dirty Data}
+\subsection{Doppler Positioning}
+\subsection{Pseudorange Based Positioning}
+\section{Dynamic Clean Data}
+\section{Dynamic Clean Data Played Through USRP}
+\section{Dynamic Dirty Data}
     - positioning results
 
     - Doppler Positioning 
@@ -409,7 +423,8 @@ where \textit{A} is the amplitude and $\theta$ is the phase. From here the decla
 
         - Run this simulation for 2 different satellite constellations
 
-        - See if I have to run it for a dynamic rover
+        - See if I have to run it for a dynamic rover 
+            - Update:I do.
 
 
 
