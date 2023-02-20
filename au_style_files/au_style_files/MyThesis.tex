@@ -394,8 +394,33 @@ where \textit{A} is the amplitude and $\theta$ is the phase. From here the decla
 - Receiver outputs. Decoded Navigation Message, Doppler Frequency, location of the bit (to get a range), Failed bursts, Successful Bursts, output bits for bit error calculation,
 
 \chapter{Testing Setup and Positioning Techniques}
-\section{Doppler Positioning}
-\section{Pseudorange Based}
+This chapter will discuss positioning techniques used for validation of results in this thesis. Two specific positioning techniques are Doppler based and Pseudorange based. These techniques will be used along with the outputs of the receiver in order to gain a positioning solution.
+ 
+\section{Doppler Positioning} \label{sec:DopplerPosTechnique}
+Doppler positioning is not a new technique. In fact it was used with the original TRANSIT sytem in the 1960's and positioning accuracy was found to be within 500 meters. Doppler shift occurs as a result of a transmitter moving relative to an observer. As the transmitter moves closer, the frequency of the signal increases as the wave is being pushed closer to the observer. The opposite is true as the transmitter moves away from the user. The basis of Doppler positioning is using the change in signal frequency to gain an understanding of the motion of the transmitter. That information along with known satellite states can be used to gain a positioning solution.
+
+The outputs of the receiver detailed in this thesis include the satellite position vector $\mathbf{r_{sv}}$, the satellite velocity vector $\mathbf{v_{sv}}$ and the received Doppler frequency $f_{Doppler}$. By rearanging \ref{eqn:doppler}, the pseudorange rate of the $k^{th}$ satellite can be calculated in \ref{eqn:prrfromdoppler}.
+
+\begin{equation}
+    \dot{\rho^{k}} = f_{Doppler}^{k} \cdot -\lambda
+    \label{eqn:prrfromdoppler}
+\end{equation}
+
+Using \ref{eqn:prrfromdoppler} and \ref{eqn:rangerate} to rearange \ref{eqn:pseudorangerate}, the following equation is developed.
+
+\begin{equation}
+    \dot{\rho^{k}} = (\mathbf{v^{k}} - \mathbf{v_u}) \cdot \frac{(\mathbf{x^k} - \mathbf{x_u})}{\| \mathbf{x^k} - \mathbf{x_u}\|} + \dot{b} + \epsilon^{k}
+    \label{eqn:extendedprreqn}
+\end{equation}
+For a static receiver $\mathbf{v_u}$ in equation \ref{eqn:extendedprreqn} will be zero resulting in equation \ref{eqn:staticextendedprreqn}.
+
+\begin{equation}
+    \dot{\rho^{k}} = \mathbf{v^{k}} \cdot \frac{(\mathbf{x^k} - \mathbf{x_u})}{\| \mathbf{x^k} - \mathbf{x_u}\|} + \dot{b} + \epsilon^{k}
+    \label{eqn:staticextendedprreqn}
+\end{equation}
+
+
+\section{Pseudorange Based} \label{sec:PseudorangePosTechnique}
 \begin{itemize}
     \item     - Mention things about the configuration:
     \item     - satellite orbits
@@ -410,8 +435,28 @@ where \textit{A} is the amplitude and $\theta$ is the phase. From here the decla
 
 
 \chapter{Results}
+
+This chapter will be used to show the results from simulations run in this thesis. The purpose of these results is to show that the simulation tool is capable of producing a signal that gives realistic results. 
+
 \section{Static Clean Data}
+The data set generated for this scenario is a static data set with zero clock error, zero thermal signal noise, and zero atmospheric errors. The purpose of this experiment was to examine what the cleanest possible data set would produce.  
 \subsection{Doppler Positioning}
+The first positioning strategy for this data set is using the received Doppler measurements in a batched fashion using the equations in section \ref{sec:DopplerPosTechnique}. 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]{Iridium Doppler Positioning from Cleanest Set.pdf}
+    \caption{Position Estimate from Batched Doppler Measurements}
+    \label{fig:cleaniriddopgeo}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]{Iridium RMSE plot Doppler Cleanest file.pdf}
+    \caption{RMS Error of Batched Doppler Estimates}
+    \label{fig:RMSErrorBatchDoppler}
+\end{figure}
+
+
 \subsection{Pseudorange Based Positioning}
 \section{Static Clean Data Played Through USRP}
 \subsection{Doppler Positioning}

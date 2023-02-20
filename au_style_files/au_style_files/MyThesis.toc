@@ -28,20 +28,20 @@
 \contentsline {section}{\numberline {3.5}Receiver}{20}%
 \contentsline {chapter}{\numberline {4}Testing Setup and Positioning Techniques}{21}%
 \contentsline {section}{\numberline {4.1}Doppler Positioning}{21}%
-\contentsline {section}{\numberline {4.2}Pseudorange Based}{21}%
-\contentsline {chapter}{\numberline {5}Results}{22}%
-\contentsline {section}{\numberline {5.1}Static Clean Data}{22}%
-\contentsline {subsection}{\numberline {5.1.1}Doppler Positioning}{22}%
-\contentsline {subsection}{\numberline {5.1.2}Pseudorange Based Positioning}{22}%
-\contentsline {section}{\numberline {5.2}Static Clean Data Played Through USRP}{22}%
-\contentsline {subsection}{\numberline {5.2.1}Doppler Positioning}{22}%
-\contentsline {subsection}{\numberline {5.2.2}Pseudorange Based Positioning}{22}%
-\contentsline {section}{\numberline {5.3}Static Dirty Data}{22}%
-\contentsline {subsection}{\numberline {5.3.1}Doppler Positioning}{22}%
-\contentsline {subsection}{\numberline {5.3.2}Pseudorange Based Positioning}{22}%
-\contentsline {section}{\numberline {5.4}Dynamic Clean Data}{22}%
-\contentsline {section}{\numberline {5.5}Dynamic Clean Data Played Through USRP}{22}%
-\contentsline {section}{\numberline {5.6}Dynamic Dirty Data}{22}%
-\contentsline {chapter}{\numberline {6}Conclusions and Future Work}{24}%
-\contentsline {chapter}{Bibliography}{25}%
-\contentsline {chapter}{Appendices}{28}%
+\contentsline {section}{\numberline {4.2}Pseudorange Based}{22}%
+\contentsline {chapter}{\numberline {5}Results}{23}%
+\contentsline {section}{\numberline {5.1}Static Clean Data}{23}%
+\contentsline {subsection}{\numberline {5.1.1}Doppler Positioning}{23}%
+\contentsline {subsection}{\numberline {5.1.2}Pseudorange Based Positioning}{25}%
+\contentsline {section}{\numberline {5.2}Static Clean Data Played Through USRP}{25}%
+\contentsline {subsection}{\numberline {5.2.1}Doppler Positioning}{25}%
+\contentsline {subsection}{\numberline {5.2.2}Pseudorange Based Positioning}{25}%
+\contentsline {section}{\numberline {5.3}Static Dirty Data}{25}%
+\contentsline {subsection}{\numberline {5.3.1}Doppler Positioning}{25}%
+\contentsline {subsection}{\numberline {5.3.2}Pseudorange Based Positioning}{25}%
+\contentsline {section}{\numberline {5.4}Dynamic Clean Data}{25}%
+\contentsline {section}{\numberline {5.5}Dynamic Clean Data Played Through USRP}{25}%
+\contentsline {section}{\numberline {5.6}Dynamic Dirty Data}{25}%
+\contentsline {chapter}{\numberline {6}Conclusions and Future Work}{26}%
+\contentsline {chapter}{Bibliography}{27}%
+\contentsline {chapter}{Appendices}{30}%
