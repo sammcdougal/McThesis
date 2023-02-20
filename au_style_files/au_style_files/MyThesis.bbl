@@ -1,5 +1,11 @@
 \begin{thebibliography}{10}
 
+\bibitem{AmplitudeShiftKeying}
+Amplitude {Shift} {Keying}.
+
+\bibitem{FrequencyShiftKeying}
+Frequency {Shift} {Keying}.
+
 \bibitem{misraGlobalPositioningSystem2012}
 Pratap Misra and Per Enge.
 \newblock {\em Global {Positioning} {System}; {Signals}, {Measurements}, and
@@ -118,6 +124,17 @@ Iridium {NEXT}: {In} {Review}, February 2019.
 
 \bibitem{Starlink}
 Starlink.
+
+\bibitem{goldOptimalBinarySequences1967}
+R.~Gold.
+\newblock Optimal binary sequences for spread spectrum multiplexing
+  ({Corresp}.).
+\newblock {\em IEEE Transactions on Information Theory}, 13(4):619--621,
+  October 1967.
+\newblock Conference Name: IEEE Transactions on Information Theory.
+
+\bibitem{GLONASSSignalPlan}
+{GLONASS} {Signal} {Plan} - {Navipedia}.
 
 \bibitem{curtisOrbitalMechanicsEngineering2008}
 Howard~D. Curtis.

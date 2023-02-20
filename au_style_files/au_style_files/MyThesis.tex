@@ -158,9 +158,15 @@ In Chapter 2, the background of satellite orbits, signal types, and modulation t
 
 \section{Satellite Orbit Zones}
 
-With regard to space vehicles, there are three main orbital zones. These zones are low Earth orbit (LEO), medium Earth orbit (MEO), and geosynchronous Earth orbit (GEO). These zones are differentiated by the altitude of the orbit above the surface of the Earth. Due to the nature of the orbits, the satellites in these orbital zones have varying mission types. 
+With regard to space vehicles, there are three main orbital zones. These zones are low Earth orbit (LEO), medium Earth orbit (MEO), and geosynchronous Earth orbit (GEO). These zones are differentiated by the altitude of the orbit above the surface of the Earth. Due to the nature of the orbits, the satellites in these orbital zones have varying mission types. Figure \ref{fig:satorbzone} gives a reference to each of the orbital zones. 
 
-Include some image of orbital zones. That way users can see with respect to the earth how far away each satellite is. 
+\begin{figure}
+    \centering
+    \includegraphics[width=4in]{satellite_orbit_zones.JPG}
+    \caption{Visual Representation Orbit Zones}
+    \label{fig:satorbzone}
+
+\end{figure}
 
 
 The furthest of the orbit zones is GEO. These satellites have an orbit altitude of 35,786 kilometers. Geosynchronous orbits are positioned at this precise altitude to allow the satellite orbit period to equal the same time as the rotation of the Earth for one day. The length of the orbit lasts one sidereal day. To an observer on Earth, the satellite would appear to stay in the same place throughout the course of its life. Another form of geosynchronous orbit is the geostationary orbit. Geostationary orbits are geosynchronous orbits specifically located at the Earth's equator and have a near zero inclination angle. GEO satellites are stationed where they are due to their specific mission type. One of the best attributes a GEO satellites has is a large footprint. The large footprint, along with the twenty four hour coverage, means these satellites are great for Earth observation. This also means that fewer satellites are required to be in orbit for full Earth coverage. Many of the current GEO satellites are used for weather, climate surveying, and oceanic observations \cite{usdepartmentofcommerceSatellites}. The Geostationary Operational Environmental Satellites (GOES) are the current Earth observation satellites operated by NASA and NOAA \cite{garnerGOESOverviewHistory2015}. GEO satellites are not conducive for navigation. This is due to the nature of the orbit. Since the orbit is so high, gaining a precise navigation message can be difficult due to loss of signal power and the amount of time it takes for the signal to reach Earth. Another issue with GEO satellites is the cost of launching these satellites. Launching satellites into GEO can cary a much higher price than satellites in LEO or MEO. These points were taken into consideration when GPS was first being thought about. (Maybe include an image of GEO coverage).
@@ -171,43 +177,69 @@ MEO is an orbital zone between LEO and GEO. MEO satellites have orbit altitudes 
 LEO satellites are different than the previously mentioned zones. LEO satellites have orbits from 300 kilometers to 1500 kilometers. With this altitude, the orbit periods for LEO satellites tend to be 60 to 90 minutes, however the ammount of time that a satellite may be in view is lower. This poses issues in terms of global coverage. Satellite constellations with orbit periods on this time scale require far more satellites for full global coverage, and even more satellites for a possible navigation constellation. Reid et al says that it would take nearly 300 LEO satellites in order to provide global coverage \cite{reidSatelliteNavigationAge2020}. 
 Current LEO constellations, such as Iridium and Orbcomm, are designed for communications. The Iridium constellation uses global coverage for satellite phones, where the Orbcomm constellation uses ``LEO satellites to provide worldwide geographic coverage for sending and receiving alphanumeric packages," \cite{orabiOpportunisticNavigationDoppler2021}. The data messages on these satellites are unknown as they are proprietary to the companies who sent them into space. This makes it difficult to design receivers and evaluate the navigation performance of these signals. However, a customized navigation message can be put on a similar signal. 
 
-With current interests in LEO navigation, a signal simulation tool can be very useful as developing and launching satellites is very expensive.
-
 \subsection{Current LEO Constellations}
 Current LEO constellations were not designed for navigation, specifically. Most are used for satellite communications, internet, and Earth observations. Some of the major constellations in LEO are Iridium/IridiumNEXT, Orbcomm, and Starlink. The IridiumNEXT \cite{IridiumNEXTReview2019}, which will be refered to as Iridium, is a telecomunications satellite network that comprises of 66 active satellites and 9 in-orbit spares. The 66 active satellites are grouped into 6 orbital planes with 11 satellites in each plane. These satellites are in near polar orbits which means the coverage at the poles is very high, however coverage at the equator is low. The main mission for Iridium is to provide telecomunications with sat-phones. Orbcomm is similar to Iridium as it is a satellite communications constellation, however the physical constellation is different. Orbcomm has 48 satellites with varying inclination angles. The Starlink constellation is a satellite broadband internet provider \cite{Starlink}. This constellation utilizes LEO orbit in an effort reduce latency with internet signals. Instead of using typical terestrial based techniques for internet providing, satellites are used to give coverage in places where internet may not be readily available. However to accomplish this goal, a massive constellation of satellites must be deployed. Currently, there are nearly 3,600 Starlink satellites in LEO with more planned for launch. All of these constellations have one thing in common. The original purpose of the mission was not for navigation. 
 
 \section{Channel Access Methods}
-This section will describe different signal types used in satellite communications.
 
 Channel access methods are ways of communicating through mediums between multiple devices. Channel access methods allow users to send information back and forth between terminals. Channel access methods are used to manage telecomunications and wireless traffic. As there are multiple users trying to use or access the same information or services, channel access methods are used to differentiate between the users and the information being passed through the mediums. Three forms of channel access methods that will be examied are time division multiple access (TDMA), code division multiple access (CDMA), and frequency division multiple access (FDMA). 
 
 \subsection{Time Division Multiple Access}
-TDMA signals. Talk about specific constellations, why it is used, how it opperates, how it is modulated. 
 
-Time division multiple access signals use time to differentiate incoming signals. This results in the signal being burst-like in nature and non-continuous between received signals. The carrier frequency, however, can remain the same accross all users. TDMA signals are typically used by telecomunication satellites such as Iridium. These signals are ideal for communications because as the users are separated in time, the possibility of data interference between users is low. 
+Time division multiple access signals use time to differentiate incoming signals. This results in the signal being burst-like in nature and non-continuous between received signals. The carrier frequency, however, can remain the same accross all users. TDMA signals are typically used by telecomunication satellites such as Iridium. These signals are ideal for communications because as the users are separated in time, the possibility of data interference between users is low. A visual representation of a TDMA signal can be seen in figure \ref{fig:TDMAVisual}.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=5in]{TDMA_signal}
+    \caption{Visual Representation of TDMA Signal}
+    \label{fig:TDMAVisual}
+\end{figure}
+The burst nature of the signal can be seen in this image. The large bulk of the signal is noise, and the parts extending out of the noise are the the bursts. This shows the separation of the signal accross time. 
 
 \subsection{Code Division Multiple Access}
-CDMA signal. Will mention things such as how codes are generated, why they are important, what they allow the user to do.
 
-CDMA signal uses deterministic binary sequence codes to differentiate incoming signals. A code is modulated onto a continuous carrier wave. These codes are designed specifically to have small cross correlation in order to eliminate errors and deciphur different satellite's signals in the same frequency band. The gold code, also known as a chipping sequence, 
+Similar to TDMA, CDMA signals are broadcast at a single carrier frequency. However unlike TDMA, CDMA signals use deterministic binary sequence codes to differentiate signals. In the case of satellites, each satellite is given its own pseudo-random noise (PRN) sequence. These codes are designed specifically to have very low cross correlation in order to eliminate errors and deciphur different satellite's signals in the same frequency band. Cross correlation is a measure of similarity between two or more sequences. They also employ a high level of autocorrelation which is important for signal tracking \cite{goldOptimalBinarySequences1967}. Some notable GNSSs that employ CDMA are GPS and Galileo.
 
 \subsection{Frequency Division Multiple Access}
+
 FDMA signals. What constellations use this signal type, why is it used, how does it opperate. 
-An example being FM radio. Each station has its own frequency band that it opperates in.
+Similar to CDMA, FDMA signals are continuous. However, these signals are not transmitted at the same carrier frequency. FDMA signals use different freqency bands to transmit data and information. For example, FM radio uses this technique to differentiate between radio channels such as sports talk radio and the local country music station. Similar to the radio in a car, some satellite constellations use the same idea, except each satellite transmits at a specific frrequency band. For example, GLONASS uses an FDMA for their satellites but also use a PRN code. Unlike GPS, however, they all transmit the same PRN sequence \cite{GLONASSSignalPlan}. 
 
 \section{Modulation}
-This will probably be a brief section on Modulation type
+In the world of satellite navigation and telecomunications, the term modulation refers to the process of incorporating data onto a carrier wave. Three forms of modulation include amplitude shift keying (ASK), frequency shift keying (FSK), and phase shift keying (PSK). ASK is the process of changing the amplitude of the sine wave to represent ones and zeros of binary data, FSK is the process of changing the frequency of the sine wave to represent ones and zeros of binary data, and PSK changes the phase of the signal to incorporate the data. ASK and FSK are shown in figure \ref{fig:ASKsig} and \ref{fig:FSKsig} respectively.
+
+\begin{figure}[h]
+
+    \centering
+    \includegraphics[width=4.0in]{ask_modulated_waveform.jpg}
+    \caption{Amplitude Shift Keying Visualization \cite{AmplitudeShiftKeying} }
+    \label{fig:ASKsig}
+
+\end{figure}
+
+\begin{figure}[h]
+
+    \centering
+    \includegraphics[width=4.0in]{fsk_modulated_output_wave.jpg}
+    \caption{Amplitude Shift Keying Visualization \cite{FrequencyShiftKeying} }
+    \label{fig:FSKsig}
+
+\end{figure}
+
+Two forms of PSK are binary phase shift keying (BPSK) and quadrature phase shift keying (QPSK) and will be discussed below.
 
 \subsection{Binary Phase Shift Keying}
 
-BPSK Modulation, how it works, who uses it, why is it used.
-
+BPSK is accomplished by shifting the phase of the signal by 180 degrees. By doing so, only one bit can be modulated per symbol. BPSK is used in GPS navigation due to its 
 \subsection{Quadrature Phase Shift Keying}
 
 QPSK modulation. QPSK modulation has data on the in-phase and quadrature branches of the signal.
 
 \section{Satellite Based Navigation}
 This section will go through some of the basics of satellite navigation. 
+\subsection{Trilateration}
+\subsection{Ranging Process}
+\subsection{Clocks and Accurate Timing}
+
 
 \chapter {Simulation Tool}
 In this section, the function and versitility of the simulator will be described.
@@ -235,9 +267,9 @@ The simulation settings file is integral to this simulation tool. All other comp
 \section{Measurement Simulation}
 The next block of the simulation tool is the measurement generation. The measurement generation is where the ranges, range rates, and times are calculated. The purpose of this section is to have a set of truth values that will be used later in the simulation. The block diagram for the measurement generation is shown in figure \ref{fig:MeasBlock}.
 
-\begin{figure}[ht]
+\begin{figure}[h]
     \centering
-    \includegraphics[width=4in]{MeasurementGenBlockDiagram}
+    \includegraphics[width=5in]{MeasurementGenBlockDiagram}
     \caption{Measurement Generation Block Diagram}
     \label{fig:MeasBlock}
 \end{figure}
