@@ -17,31 +17,31 @@
 \contentsline {subsection}{\numberline {2.4.1}Binary Phase Shift Keying}{10}%
 \contentsline {subsection}{\numberline {2.4.2}Quadrature Phase Shift Keying}{10}%
 \contentsline {section}{\numberline {2.5}Satellite Based Navigation}{10}%
-\contentsline {subsection}{\numberline {2.5.1}Trilateration}{10}%
-\contentsline {subsection}{\numberline {2.5.2}Ranging Process}{10}%
-\contentsline {subsection}{\numberline {2.5.3}Clocks and Accurate Timing}{10}%
-\contentsline {chapter}{\numberline {3}Simulation Tool}{11}%
-\contentsline {section}{\numberline {3.1}Simulator Overview}{11}%
-\contentsline {section}{\numberline {3.2}Simulation Settings}{12}%
-\contentsline {section}{\numberline {3.3}Measurement Simulation}{13}%
-\contentsline {section}{\numberline {3.4}Signal Simulation}{16}%
-\contentsline {section}{\numberline {3.5}Receiver}{19}%
-\contentsline {chapter}{\numberline {4}Testing Setup and Positioning Techniques}{20}%
-\contentsline {section}{\numberline {4.1}Doppler Positioning}{20}%
-\contentsline {section}{\numberline {4.2}Pseudorange Based}{20}%
-\contentsline {chapter}{\numberline {5}Results}{21}%
-\contentsline {section}{\numberline {5.1}Static Clean Data}{21}%
-\contentsline {subsection}{\numberline {5.1.1}Doppler Positioning}{21}%
-\contentsline {subsection}{\numberline {5.1.2}Pseudorange Based Positioning}{21}%
-\contentsline {section}{\numberline {5.2}Static Clean Data Played Through USRP}{21}%
-\contentsline {subsection}{\numberline {5.2.1}Doppler Positioning}{21}%
-\contentsline {subsection}{\numberline {5.2.2}Pseudorange Based Positioning}{21}%
-\contentsline {section}{\numberline {5.3}Static Dirty Data}{21}%
-\contentsline {subsection}{\numberline {5.3.1}Doppler Positioning}{21}%
-\contentsline {subsection}{\numberline {5.3.2}Pseudorange Based Positioning}{21}%
-\contentsline {section}{\numberline {5.4}Dynamic Clean Data}{21}%
-\contentsline {section}{\numberline {5.5}Dynamic Clean Data Played Through USRP}{21}%
-\contentsline {section}{\numberline {5.6}Dynamic Dirty Data}{21}%
-\contentsline {chapter}{\numberline {6}Conclusions and Future Work}{23}%
-\contentsline {chapter}{Bibliography}{24}%
-\contentsline {chapter}{Appendices}{27}%
+\contentsline {subsection}{\numberline {2.5.1}Trilateration}{11}%
+\contentsline {subsection}{\numberline {2.5.2}Ranging Process}{11}%
+\contentsline {subsection}{\numberline {2.5.3}Clocks and Accurate Timing}{11}%
+\contentsline {chapter}{\numberline {3}Simulation Tool}{12}%
+\contentsline {section}{\numberline {3.1}Simulator Overview}{12}%
+\contentsline {section}{\numberline {3.2}Simulation Settings}{13}%
+\contentsline {section}{\numberline {3.3}Measurement Simulation}{14}%
+\contentsline {section}{\numberline {3.4}Signal Simulation}{17}%
+\contentsline {section}{\numberline {3.5}Receiver}{20}%
+\contentsline {chapter}{\numberline {4}Testing Setup and Positioning Techniques}{21}%
+\contentsline {section}{\numberline {4.1}Doppler Positioning}{21}%
+\contentsline {section}{\numberline {4.2}Pseudorange Based}{21}%
+\contentsline {chapter}{\numberline {5}Results}{22}%
+\contentsline {section}{\numberline {5.1}Static Clean Data}{22}%
+\contentsline {subsection}{\numberline {5.1.1}Doppler Positioning}{22}%
+\contentsline {subsection}{\numberline {5.1.2}Pseudorange Based Positioning}{22}%
+\contentsline {section}{\numberline {5.2}Static Clean Data Played Through USRP}{22}%
+\contentsline {subsection}{\numberline {5.2.1}Doppler Positioning}{22}%
+\contentsline {subsection}{\numberline {5.2.2}Pseudorange Based Positioning}{22}%
+\contentsline {section}{\numberline {5.3}Static Dirty Data}{22}%
+\contentsline {subsection}{\numberline {5.3.1}Doppler Positioning}{22}%
+\contentsline {subsection}{\numberline {5.3.2}Pseudorange Based Positioning}{22}%
+\contentsline {section}{\numberline {5.4}Dynamic Clean Data}{22}%
+\contentsline {section}{\numberline {5.5}Dynamic Clean Data Played Through USRP}{22}%
+\contentsline {section}{\numberline {5.6}Dynamic Dirty Data}{22}%
+\contentsline {chapter}{\numberline {6}Conclusions and Future Work}{24}%
+\contentsline {chapter}{Bibliography}{25}%
+\contentsline {chapter}{Appendices}{28}%

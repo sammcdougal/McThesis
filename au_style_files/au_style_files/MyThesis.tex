@@ -229,13 +229,20 @@ Two forms of PSK are binary phase shift keying (BPSK) and quadrature phase shift
 
 \subsection{Binary Phase Shift Keying}
 
-BPSK is accomplished by shifting the phase of the signal by 180 degrees. By doing so, only one bit can be modulated per symbol. BPSK is used in GPS navigation due to its 
+BPSK is accomplished by shifting the phase of the signal by 180 degrees depending on the sign of the data bit. By doing so, only one bit can be modulated per symbol. GPS uses BPSK modulation for its CA codes, navigation data, and P(Y) codes (encrypted message). BPSK is used due to its resiliance to bit error rate.
+(Find and include an image of BPSK)  
+
 \subsection{Quadrature Phase Shift Keying}
 
-QPSK modulation. QPSK modulation has data on the in-phase and quadrature branches of the signal.
+QPSK modulation uses 4 possible phases of the signal to to modulate the data onto the carrier wave. The phase possibilities are 90 degree offsets. With this, two bits are transmitted in one symbol. This allows for faster data rates of the signal. 
+
+(Find and include an image of QPSK)
 
 \section{Satellite Based Navigation}
 This section will go through some of the basics of satellite navigation. 
+
+space segment, control segment, user segment. 
+
 \subsection{Trilateration}
 \subsection{Ranging Process}
 \subsection{Clocks and Accurate Timing}
