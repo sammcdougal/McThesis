@@ -198,15 +198,14 @@ The burst nature of the signal can be seen in this image. The large bulk of the 
 
 \subsection{Code Division Multiple Access}
 
-Similar to TDMA, CDMA signals are broadcast at a single carrier frequency. However unlike TDMA, CDMA signals use deterministic binary sequence codes to differentiate signals. In the case of satellites, each satellite is given its own pseudo-random noise (PRN) sequence. These codes are designed specifically to have very low cross correlation in order to eliminate errors and deciphur different satellite's signals in the same frequency band. Cross correlation is a measure of similarity between two or more sequences. They also employ a high level of autocorrelation which is important for signal tracking \cite{goldOptimalBinarySequences1967}. Some notable GNSSs that employ CDMA are GPS and Galileo.
+Similar to TDMA, CDMA signals are broadcast at a single carrier frequency. However unlike TDMA, CDMA signals use deterministic binary sequence codes to differentiate signals. In the case of satellites, each satellite is given its own pseudo-random noise (PRN) sequence. These codes are designed specifically to have very low cross correlation in order to eliminate errors and deciphur different satellite's signals in the same frequency band. Cross correlation is a measure of similarity between two or more sequences. They also employ a high level of autocorrelation which is important for signal tracking \cite{goldOptimalBinarySequences1967}. Two notable GNSSs that employ CDMA signals are GPS and Galileo.
 
 \subsection{Frequency Division Multiple Access}
 
-FDMA signals. What constellations use this signal type, why is it used, how does it opperate. 
-Similar to CDMA, FDMA signals are continuous. However, these signals are not transmitted at the same carrier frequency. FDMA signals use different freqency bands to transmit data and information. For example, FM radio uses this technique to differentiate between radio channels such as sports talk radio and the local country music station. Similar to the radio in a car, some satellite constellations use the same idea, except each satellite transmits at a specific frrequency band. For example, GLONASS uses an FDMA for their satellites but also use a PRN code. Unlike GPS, however, they all transmit the same PRN sequence \cite{GLONASSSignalPlan}. 
+Similar to CDMA, FDMA signals are continuous. However, these signals are not transmitted at the same carrier frequency. FDMA signals use different freqency bands to transmit data and information. For example, FM radio uses this technique to differentiate between radio channels such as sports talk radio and the local country music station. Similar to the radio in a car, some satellite constellations use the same idea, except each satellite transmits at a specific frrequency band. For example, GLONASS uses FDMA signals for their satellites but also use a PRN code. Unlike GPS, however, they all transmit the same PRN sequence \cite{GLONASSSignalPlan}. 
 
 \section{Modulation}
-In the world of satellite navigation and telecomunications, the term modulation refers to the process of incorporating data onto a carrier wave. Three forms of modulation include amplitude shift keying (ASK), frequency shift keying (FSK), and phase shift keying (PSK). ASK is the process of changing the amplitude of the sine wave to represent ones and zeros of binary data, FSK is the process of changing the frequency of the sine wave to represent ones and zeros of binary data, and PSK changes the phase of the signal to incorporate the data. ASK and FSK are shown in figure \ref{fig:ASKsig} and \ref{fig:FSKsig} respectively.
+In the world of satellite navigation and telecomunications, the term modulation refers to the process of incorporating data onto a carrier wave. This data is represented in binary form through 1's and 0's. When a signal is generated, these ones and zeros are converted into 1's and -1's for the purpose of signal modulation. Three forms of modulation include amplitude shift keying (ASK), frequency shift keying (FSK), and phase shift keying (PSK). ASK is the process of changing the amplitude of the sine wave to represent ones and zeros of binary data, FSK is the process of changing the frequency of the sine wave to represent ones and zeros of binary data, and PSK changes the phase of the signal to incorporate the data. ASK and FSK are shown in figure \ref{fig:ASKsig} and \ref{fig:FSKsig} respectively.
 
 \begin{figure}[h]
 
@@ -230,24 +229,36 @@ Two forms of PSK are binary phase shift keying (BPSK) and quadrature phase shift
 
 \subsection{Binary Phase Shift Keying}
 
-BPSK is accomplished by shifting the phase of the signal by 180 degrees depending on the sign of the data bit. By doing so, only one bit can be modulated per symbol. GPS uses BPSK modulation for its CA codes, navigation data, and P(Y) codes (encrypted message). BPSK is used due to its resiliance to bit error rate.
-(Find and include an image of BPSK)  
+BPSK is accomplished by shifting the phase of the signal by 180 degrees depending on the sign of the data bit. For example, when the sign of the data bit in the message changes, the phase of the signal flips by 180 degrees. By doing so, only one bit can be modulated per symbol. GPS uses BPSK modulation for its CA codes, navigation data, and P(Y) codes (encrypted message). BPSK is used due to its resiliance to bit error rate. A visual depiction of the BPSK signal can be seen in figure \ref{fig:BPSKsig}. In the figure, the phase change of the signal by 180 degrees can be seen at the change of each data bit. 
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=4.0in]{Example-of-BPSK-modulation-format-a-binary-signal-and-b-BPSK-modulated-signal.png}
+    \caption{Binary Phase Shift Keying Visualization \cite{mahdirajiAdvancedModulationFormats2010} }
+    \label{fig:BPSKsig}
+\end{figure}
 \subsection{Quadrature Phase Shift Keying}
 
-QPSK modulation uses 4 possible phases of the signal to to modulate the data onto the carrier wave. The phase possibilities are 90 degree offsets. With this, two bits are transmitted in one symbol. This allows for faster data rates of the signal. 
+QPSK modulation uses 4 possible phases of the signal to to modulate the data onto the carrier wave. The phase possibilities are 90 degree offsets. With this, two bits are transmitted in one symbol. This allows for faster data rates of the signal. Figure \ref{fig:QPSKmod} shows a visual example of QPSK modulation.
 
-(Find and include an image of QPSK)
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=4.0in]{QPSK_sig.JPG}
+    \caption{Quadrature Phase Shift Keying Visualization \cite{mahdirajiAdvancedModulationFormats2010} }
+    \label{fig:QPSKmod}
+\end{figure}
 
 \section{Satellite Based Navigation}\label{sec:satellitenav}
-Satellite navigation employs trilateration as a way to solve the age old problem of determining where ones self is on planet Earth. Trilateration is the process of using ranges to determine unknown locations of things. In a 2-Dimentional example, three transmitters produce circles with radius $r$. With knowledge of the location of the transmitters, the ranges can be used to calculate a circle around the transmitter. The intersection point of all three circles will enclose the positioning result. The process of trilateration with satellites is the same except in 3 dimensional space. 
+Satellite navigation employs trilateration as a way to solve the age old problem of determining where ones self is on planet Earth. Trilateration is the process of using ranges to determine unknown locations of things. In a 2-dimentional example, three transmitters produce circles with radius $r$. With knowledge of the location of the transmitters, the ranges can be used to calculate a circle around the transmitter. The intersection point of all three circles will enclose the positioning result. This can be seen in figure \ref{fig:Trilateration}.
 
-space segment, control segment, user segment. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=4.0in]{Trilateration.JPG}
+    \caption{Visual Depiction of Trilateration}
+    \label{fig:Trilateration}
+\end{figure}
 
-\subsection{Trilateration}
-\subsection{Ranging Process}
-\subsection{Clocks and Accurate Timing}
-
+The process of trilateration with satellites is the same except in 3-dimensional space. In the case of GPS, the satellites are the transmitters. Satellites make excelent transmitters in this case becasue of their ability to cover large areas continuously. An important point to mention is that the in the previous example it is assumed that the satellite and receiver are tied to the same clock. This means that the user has a perfect known time of the transmission of the signal from the satellite and perfect knowledge of the time of reception. However, this is not the case in real world examples. In fact, the each satellite is tied to its own clock while each receiver is also tied to a separate clock. This offset in time can cause very large errors in positioning. To account for this, GPS ground stations survey and monitor the status of the satellite clocks to ensure maximum clock accuracy. While this takes care of the satellite part of the clock issue, the receiver clock still contains error. This error can be estimated along with the receiver states with the addition of a fourth measurement. 
 
 \chapter {Simulation Tool}
 In this section, the function and versitility of the simulator will be described.

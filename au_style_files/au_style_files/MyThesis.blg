@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: MyThesis.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: unsrt.bst
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+Database file #1: MyLibrary.bib
+Warning--empty booktitle in mahdirajiAdvancedModulationFormats2010
+Warning--empty publisher in mahdirajiAdvancedModulationFormats2010
+Warning--empty school in powellMultipleAntennaSoftwareGPS
+Warning--empty year in powellMultipleAntennaSoftwareGPS
+Warning--empty journal in bahramiGNSSDopplerPositioning
+Warning--empty year in bahramiGNSSDopplerPositioning
+Warning--empty booktitle in moralesInertialNavigationSystem2018
+Warning--empty author in GLONASSInterfaceControl1998a
+Warning--empty journal in GLONASSInterfaceControl1998a
+Warning--empty booktitle in orabiOpportunisticNavigationDoppler2021
+You've used 27 entries,
+            1791 wiz_defined-function locations,
+            611 strings with 8854 characters,
+and the built_in function-call counts, 5523 in all, are:
+= -- 500
+> -- 172
+< -- 7
++ -- 72
+- -- 45
+* -- 310
+:= -- 768
+add.period$ -- 73
+call.type$ -- 27
+change.case$ -- 24
+chr.to.int$ -- 0
+cite$ -- 37
+duplicate$ -- 287
+empty$ -- 606
+format.name$ -- 45
+if$ -- 1293
+int.to.chr$ -- 0
+int.to.str$ -- 27
+missing$ -- 18
+newline$ -- 128
+num.names$ -- 20
+pop$ -- 129
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 186
+stack$ -- 0
+substring$ -- 305
+swap$ -- 86
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 10
+while$ -- 47
+width$ -- 29
+write$ -- 264
+(There were 10 warnings)
