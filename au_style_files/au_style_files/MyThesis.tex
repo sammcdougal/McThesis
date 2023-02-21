@@ -16,6 +16,7 @@
 \usepackage[nottoc,notlof,notlot]{tocbibind} 
 \usepackage{graphicx}
 \usepackage{subcaption}
+\usepackage{amsmath}
 \renewcommand\cftchapafterpnum{\vskip\baselineskip}  
 \renewcommand\cftsecafterpnum{\vskip\baselineskip \normalfont}
 \renewcommand\cftsubsecafterpnum{\vskip\baselineskip \normalfont}
@@ -238,7 +239,7 @@ QPSK modulation uses 4 possible phases of the signal to to modulate the data ont
 
 (Find and include an image of QPSK)
 
-\section{Satellite Based Navigation}
+\section{Satellite Based Navigation}\label{sec:satellitenav}
 This section will go through some of the basics of satellite navigation. 
 
 space segment, control segment, user segment. 
@@ -396,7 +397,7 @@ where \textit{A} is the amplitude and $\theta$ is the phase. From here the decla
 \chapter{Testing Setup and Positioning Techniques}
 This chapter will discuss positioning techniques used for validation of results in this thesis. Two specific positioning techniques are Doppler based and Pseudorange based. These techniques will be used along with the outputs of the receiver in order to gain a positioning solution.
  
-\section{Doppler Positioning} \label{sec:DopplerPosTechnique}
+\section{Doppler Based Positioning} \label{sec:DopplerPosTechnique}
 Doppler positioning is not a new technique. In fact it was used with the original TRANSIT sytem in the 1960's and positioning accuracy was found to be within 500 meters. Doppler shift occurs as a result of a transmitter moving relative to an observer. As the transmitter moves closer, the frequency of the signal increases as the wave is being pushed closer to the observer. The opposite is true as the transmitter moves away from the user. The basis of Doppler positioning is using the change in signal frequency to gain an understanding of the motion of the transmitter. That information along with known satellite states can be used to gain a positioning solution.
 
 The outputs of the receiver detailed in this thesis include the satellite position vector $\mathbf{r_{sv}}$, the satellite velocity vector $\mathbf{v_{sv}}$ and the received Doppler frequency $f_{Doppler}$. By rearanging \ref{eqn:doppler}, the pseudorange rate of the $k^{th}$ satellite can be calculated in \ref{eqn:prrfromdoppler}.
@@ -419,8 +420,82 @@ For a static receiver $\mathbf{v_u}$ in equation \ref{eqn:extendedprreqn} will b
     \label{eqn:staticextendedprreqn}
 \end{equation}
 
+With knowledge of the satellite states from the decoded navigation message, the unknowns are $\mathbf{x_u}$ and $\dot{b}$, where
+\begin{equation}
+\mathbf{x_u} = 
+\begin{bmatrix}
+        x_u\\
+        y_u\\
+        z_u 
+\end{bmatrix}.
+\end{equation}
+With four unknowns, at least four measurements will be needed to solve for a positioning solution. An iterative process can be used to solve for the unknowns. 
+First, an initial estimate of the states must be made. This will be represented by
+\begin{equation}
+    \mathbf{\hat{x}} = 
+    \begin{bmatrix}
+        \hat{x}_u\\
+        \hat{y}_u\\
+        \hat{z}_u\\
+        \hat{\dot{b}}
+    \end{bmatrix}
+    \label{eqn:dopplerestimates}
+\end{equation}
+where the $\mathbf{x}$ is the vector of all unknown states, including the clock term.
+Next is a vector of pseudorange rate measurements from \ref{eqn:prrfromdoppler} taking the form
+\begin{equation}
+\mathbf{\dot{\rho}} = \begin{bmatrix}
+    \dot{\rho}_1 \\
+    \dot{\rho}_2 \\
+    \vdots\\
+    \dot{\rho}_n
+\end{bmatrix}
+\end{equation}
+where $n$ is the number of measurements being used. Next an estimate of the pseudorange rate is calculated for each satellite by combining \ref{eqn:dopplerestimates} and \ref{eqn:staticextendedprreqn} to form 
 
-\section{Pseudorange Based} \label{sec:PseudorangePosTechnique}
+\begin{equation}
+    \mathbf{\hat{\dot{\rho}}} = \begin{bmatrix} 
+        \mathbf{v_1} \cdot \frac{(\mathbf{x_1} - \mathbf{\hat{x_u}})}{\| \mathbf{x_1} - \mathbf{\hat{x_u}}\|} + \hat{\dot{b}} \\ 
+        \mathbf{v_2} \cdot \frac{(\mathbf{x_2} - \mathbf{\hat{x_u}})}{\| \mathbf{x_2} - \mathbf{\hat{x_u}}\|} + \hat{\dot{b}} \\ 
+        \vdots \\
+        \mathbf{v_n} \cdot \frac{(\mathbf{x_n} - \mathbf{\hat{x_u}})}{\| \mathbf{x_n} - \mathbf{\hat{x_u}}\|} + \hat{\dot{b}} 
+    \end{bmatrix}
+    \label{eqn:pseudorangerateEstimate}
+\end{equation}
+
+The measurement matrix $\mathbf{H(\mathbf{\hat{x}})}$ takes the form below where it is an $n \times 4$ matrix, where $n$ is the number of measurements being used.
+\begin{equation}
+\mathbf{H(\mathbf{\hat{x}})} = \begin{bmatrix}
+    \frac{(\mathbf{x_1} - \mathbf{\hat{x_u}})}{\| \mathbf{x_1} - \mathbf{\hat{x_u}}\|} \times \left(\frac{(\mathbf{x_1} - \mathbf{\hat{x_u}})}{\| \mathbf{x_1} - \mathbf{\hat{x_u}}\|} \times \frac{\mathbf{v_1}}{\| \mathbf{x_1} - \mathbf{\hat{x_u}}\|}\right) && 1 \\
+    \frac{(\mathbf{x_2} - \mathbf{\hat{x_u}})}{\| \mathbf{x_2} - \mathbf{\hat{x_u}}\|} \times \left(\frac{(\mathbf{x_2} - \mathbf{\hat{x_u}})}{\| \mathbf{x_2} - \mathbf{\hat{x_u}}\|} \times \frac{\mathbf{v_2}}{\| \mathbf{x_2} - \mathbf{\hat{x_u}}\|}\right) && 1 \\
+    \vdots && \vdots\\
+    \frac{(\mathbf{x_n} - \mathbf{\hat{x_u}})}{\| \mathbf{x_n} - \mathbf{\hat{x_u}}\|} \times \left(\frac{(\mathbf{x_n} - \mathbf{\hat{x_u}})}{\| \mathbf{x_n} - \mathbf{\hat{x_u}}\|} \times \frac{\mathbf{v_n}}{\| \mathbf{x_n} - \mathbf{\hat{x_u}}\|}\right) && 1 \\
+\end{bmatrix}
+\label{eqn:DopplerHMatrix}
+\end{equation}
+With this form, an estimate of the position and clock drift can be calculated using an iterative process. The first step of the process is to fill in equation \ref{eqn:DopplerHMatrix} with the initial guess position guess, satellite positions, satellite velocities. The next process is to calculate the pseudorange rates using \ref{eqn:pseudorangerateEstimate}. The next process is to create a delta pseudorange rate using equation \ref{eqn:deltarangerate}.
+
+\begin{equation}
+\delta \mathbf{\dot{\rho}} = \mathbf{\dot{\rho}} - \mathbf{\hat{\dot{\rho}}}
+\label{eqn:deltarangerate}
+\end{equation}
+By using the delta pseudorange rate, the error of the original estimate is what is being calculated. This is calculated through least squares shown in equation \ref{eqn:LeastSquares}.
+
+\begin{equation}
+\mathbf{\tilde{x}} = \mathbf{(H^TH)^T H^T \delta \dot{\rho}}
+    \label{eqn:LeastSquares}
+\end{equation}
+The new position estimate is calculated through \ref{eqn:NextEstimateIteration}.
+\begin{equation}
+    \mathbf{\hat{x}_{new}} = \mathbf{\hat{x}_{old}} + \mathbf{\tilde{x}}
+\label{eqn:NextEstimateIteration}
+\end{equation}
+This process is continued iteratively until some threshold is met. Once the threshold is met, the process is concluded and the position and clock drift are output.
+
+This process is typically employed using four or more measurements at the same time. For this thesis, a batched technique will be used. Since the nature of the signal used in this thesis is discontinuous, only one measurement is received at each time. One way to combat this is to use batched measurements. Batching measurements means taking measurements over a select period of time and treating them as if they all have come at one time. The advantage of batching measurements is that it allows the user to have enough measurements to gain an accurate position. Typically, when batching measurements, many measurements must be used in order to gain geometric diversity appart from each other. One disadvantage of batching measurements is that it can take longer periods of time to gather enough measurements in order to gain a position estimate. Long term, the act of batching measurements is similar to averaging them all over time. 
+
+\section{Pseudorange Based Positioning} \label{sec:PseudorangePosTechnique}
+Pseudorange based positioning is also not a new concept. Pseudoranges are used to solve the trilateration problem discussed in section \ref{sec:satellitenav}. Equation \ref{eqn:pseudorange} previously discussed is the pseudorange equation. It includes the true range, satellite and receiver clock errors, atmospheric errors, and unmodeled effects. Similar to the Doppler positioning in section \ref{sec:DopplerPosTechnique}, an iterative process is used to solve for a positioning solution. 
 \begin{itemize}
     \item     - Mention things about the configuration:
     \item     - satellite orbits
