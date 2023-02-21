@@ -1,47 +1,46 @@
-\contentsline {chapter}{Abstract}{ii}%
-\contentsline {chapter}{Acknowledgments}{iii}%
-\contentsline {chapter}{\numberline {1} Introduction}{1}%
-\contentsline {section}{\numberline {1.1} \normalfont Motivation}{1}%
-\contentsline {section}{\numberline {1.2} Prior Work }{1}%
-\contentsline {section}{\numberline {1.3} Contributions}{3}%
-\contentsline {section}{\numberline {1.4}Thesis Outline}{3}%
-\contentsline {chapter}{\numberline {2}Background}{4}%
-\contentsline {section}{\numberline {2.1}Satellite Orbit Zones}{4}%
-\contentsline {section}{\numberline {2.2}Low Earth Orbit Satellites}{6}%
-\contentsline {subsection}{\numberline {2.2.1}Current LEO Constellations}{6}%
-\contentsline {section}{\numberline {2.3}Channel Access Methods}{7}%
-\contentsline {subsection}{\numberline {2.3.1}Time Division Multiple Access}{7}%
-\contentsline {subsection}{\numberline {2.3.2}Code Division Multiple Access}{8}%
-\contentsline {subsection}{\numberline {2.3.3}Frequency Division Multiple Access}{9}%
-\contentsline {section}{\numberline {2.4}Modulation}{9}%
-\contentsline {subsection}{\numberline {2.4.1}Binary Phase Shift Keying}{10}%
-\contentsline {subsection}{\numberline {2.4.2}Quadrature Phase Shift Keying}{10}%
-\contentsline {section}{\numberline {2.5}Satellite Based Navigation}{10}%
-\contentsline {subsection}{\numberline {2.5.1}Trilateration}{11}%
-\contentsline {subsection}{\numberline {2.5.2}Ranging Process}{11}%
-\contentsline {subsection}{\numberline {2.5.3}Clocks and Accurate Timing}{11}%
-\contentsline {chapter}{\numberline {3}Simulation Tool}{12}%
-\contentsline {section}{\numberline {3.1}Simulator Overview}{12}%
-\contentsline {section}{\numberline {3.2}Simulation Settings}{13}%
-\contentsline {section}{\numberline {3.3}Measurement Simulation}{14}%
-\contentsline {section}{\numberline {3.4}Signal Simulation}{17}%
-\contentsline {section}{\numberline {3.5}Receiver}{20}%
-\contentsline {chapter}{\numberline {4}Testing Setup and Positioning Techniques}{21}%
-\contentsline {section}{\numberline {4.1}Doppler Based Positioning}{21}%
-\contentsline {section}{\numberline {4.2}Pseudorange Based Positioning}{24}%
-\contentsline {chapter}{\numberline {5}Results}{25}%
-\contentsline {section}{\numberline {5.1}Static Clean Data}{25}%
-\contentsline {subsection}{\numberline {5.1.1}Doppler Positioning}{25}%
-\contentsline {subsection}{\numberline {5.1.2}Pseudorange Based Positioning}{27}%
-\contentsline {section}{\numberline {5.2}Static Clean Data Played Through USRP}{27}%
-\contentsline {subsection}{\numberline {5.2.1}Doppler Positioning}{27}%
-\contentsline {subsection}{\numberline {5.2.2}Pseudorange Based Positioning}{27}%
-\contentsline {section}{\numberline {5.3}Static Dirty Data}{27}%
-\contentsline {subsection}{\numberline {5.3.1}Doppler Positioning}{27}%
-\contentsline {subsection}{\numberline {5.3.2}Pseudorange Based Positioning}{27}%
-\contentsline {section}{\numberline {5.4}Dynamic Clean Data}{27}%
-\contentsline {section}{\numberline {5.5}Dynamic Clean Data Played Through USRP}{27}%
-\contentsline {section}{\numberline {5.6}Dynamic Dirty Data}{27}%
-\contentsline {chapter}{\numberline {6}Conclusions and Future Work}{28}%
-\contentsline {chapter}{Bibliography}{29}%
-\contentsline {chapter}{Appendices}{32}%
+\contentsline {chapter}{Abstract}{ii}{}%
+\contentsline {chapter}{Acknowledgments}{iii}{}%
+\contentsline {chapter}{\numberline {1} Introduction}{1}{}%
+\contentsline {section}{\numberline {1.1} \normalfont Motivation}{1}{}%
+\contentsline {section}{\numberline {1.2} Prior Work }{1}{}%
+\contentsline {section}{\numberline {1.3} Contributions}{3}{}%
+\contentsline {section}{\numberline {1.4}Thesis Outline}{3}{}%
+\contentsline {chapter}{\numberline {2}Background}{4}{}%
+\contentsline {section}{\numberline {2.1}Satellite Orbit Zones}{4}{}%
+\contentsline {section}{\numberline {2.2}Low Earth Orbit Satellites}{6}{}%
+\contentsline {subsection}{\numberline {2.2.1}Current LEO Constellations}{6}{}%
+\contentsline {section}{\numberline {2.3}Channel Access Methods}{7}{}%
+\contentsline {subsection}{\numberline {2.3.1}Time Division Multiple Access}{7}{}%
+\contentsline {subsection}{\numberline {2.3.2}Code Division Multiple Access}{8}{}%
+\contentsline {subsection}{\numberline {2.3.3}Frequency Division Multiple Access}{8}{}%
+\contentsline {section}{\numberline {2.4}Modulation}{8}{}%
+\contentsline {subsection}{\numberline {2.4.1}Binary Phase Shift Keying}{9}{}%
+\contentsline {subsection}{\numberline {2.4.2}Quadrature Phase Shift Keying}{10}{}%
+\contentsline {section}{\numberline {2.5}Satellite Based Navigation}{10}{}%
+\contentsline {subsection}{\numberline {2.5.1}Trilateration}{10}{}%
+\contentsline {subsection}{\numberline {2.5.2}Ranging Process}{10}{}%
+\contentsline {subsection}{\numberline {2.5.3}Clocks and Accurate Timing}{10}{}%
+\contentsline {chapter}{\numberline {3}Simulation Tool}{11}{}%
+\contentsline {section}{\numberline {3.1}Simulator Overview}{11}{}%
+\contentsline {section}{\numberline {3.2}Simulation Settings}{12}{}%
+\contentsline {section}{\numberline {3.3}Measurement Simulation}{13}{}%
+\contentsline {section}{\numberline {3.4}Signal Simulation}{16}{}%
+\contentsline {section}{\numberline {3.5}Receiver}{19}{}%
+\contentsline {chapter}{\numberline {4}Testing Setup and Positioning Techniques}{20}{}%
+\contentsline {section}{\numberline {4.1}Doppler Based Positioning}{20}{}%
+\contentsline {section}{\numberline {4.2}Pseudorange Based Positioning}{23}{}%
+\contentsline {chapter}{\numberline {5}Results}{25}{}%
+\contentsline {section}{\numberline {5.1}Static Clean Data}{25}{}%
+\contentsline {subsection}{\numberline {5.1.1}Doppler Positioning}{25}{}%
+\contentsline {subsection}{\numberline {5.1.2}Pseudorange Based Positioning}{26}{}%
+\contentsline {section}{\numberline {5.2}Static Clean Data Played Through USRP}{26}{}%
+\contentsline {subsection}{\numberline {5.2.1}Doppler Positioning}{26}{}%
+\contentsline {subsection}{\numberline {5.2.2}Pseudorange Based Positioning}{26}{}%
+\contentsline {section}{\numberline {5.3}Static Dirty Data}{26}{}%
+\contentsline {subsection}{\numberline {5.3.1}Doppler Positioning}{26}{}%
+\contentsline {subsection}{\numberline {5.3.2}Pseudorange Based Positioning}{26}{}%
+\contentsline {section}{\numberline {5.4}Dynamic Clean Data}{26}{}%
+\contentsline {section}{\numberline {5.5}Dynamic Clean Data Played Through USRP}{26}{}%
+\contentsline {section}{\numberline {5.6}Dynamic Dirty Data}{26}{}%
+\contentsline {chapter}{\numberline {6}Conclusions and Future Work}{29}{}%
+\contentsline {chapter}{Appendices}{30}{}%
