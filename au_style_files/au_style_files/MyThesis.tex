@@ -396,6 +396,7 @@ where \textit{Ips} and \textit{Qps} are the pulse shaped in-phase and quadrature
 where \textit{A} is the amplitude and $\theta$ is the phase. From here the declared signal power is added along side the signal noise. The output of the signal generation function is a full IQ signal with signal noise. The signal is then split into real and imaginary parts, where they are interleaved and written to the bin file. To save computational memory, the signal variables are cleared with each iteration. This process is performed for each block of signal throughout the simulation. At the end of the simulation, if there is a received time outside the bounds of the simulation time, then the simulation will end the file with signal noise.
 
 \section{Receiver}
+For this thesis, a specialized receiver was designed to process the data. 
 - Include stuff about burst receiver
 
 - Maximum likilehood burst detection
@@ -516,9 +517,9 @@ Pseudorange based positioning is also not a new concept. Pseudoranges are used t
     \item     - how it works
     \item     - how USRPs work in brief
 
-
 \end{itemize}
 
+\section{Augmented Satellite Orbits}
 
 \chapter{Results}
 
