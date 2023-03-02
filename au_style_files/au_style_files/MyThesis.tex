@@ -185,7 +185,7 @@ Current LEO constellations were not designed for navigation, specifically. Most 
 
 Channel access methods are ways of communicating through mediums between multiple devices. Channel access methods allow users to send information back and forth between terminals. Channel access methods are used to manage telecomunications and wireless traffic. As there are multiple users trying to use or access the same information or services, channel access methods are used to differentiate between the users and the information being passed through the mediums. Three forms of channel access methods that will be examied are time division multiple access (TDMA), code division multiple access (CDMA), and frequency division multiple access (FDMA). 
 
-\subsection{Time Division Multiple Access}
+\subsection{Time Division Multiple Access}\label{sec:TDMAsection}
 
 Time division multiple access signals use time to differentiate incoming signals. This results in the signal being burst-like in nature and non-continuous between received signals. The carrier frequency, however, can remain the same accross all users. TDMA signals are typically used by telecomunication satellites such as Iridium. These signals are ideal for communications because as the users are separated in time, the possibility of data interference between users is low. A visual representation of a TDMA signal can be seen in figure \ref{fig:TDMAVisual}.
 \begin{figure}[h!]
@@ -260,7 +260,7 @@ Satellite navigation employs trilateration as a way to solve the age old problem
 
 The process of trilateration with satellites is the same except in 3-dimensional space. In the case of GPS, the satellites are the transmitters. Satellites make excelent transmitters in this case becasue of their ability to cover large areas continuously. An important point to mention is that the in the previous example it is assumed that the satellite and receiver are tied to the same clock. This means that the user has a perfect known time of the transmission of the signal from the satellite and perfect knowledge of the time of reception. However, this is not the case in real world examples. In fact, each satellite is tied to its own clock while each receiver is also tied to a separate clock. This offset in time can cause very large errors in positioning. To account for this, GPS ground stations survey and monitor the status of the satellite clocks to ensure maximum clock accuracy. While this takes care of the satellite part of the clock issue, the receiver clock still contains error. This error can be estimated along with the receiver states with the addition of a fourth measurement. With four unknown variables (receiver position $x$, $y$, $z$, and clock bias $b$), four measurements must be available in order to estimate the unknowns. 
 
-Satellites use radio frequencies (RF) to transmit information to users on the surface of the Earth. These RF signals have encoded data called navigation messages that users can receive and unpack with specialized RF receivers. The navigation message can contain information such as satellite positions and velocities, clock corrections, and orbital parameters. These parameters are used for obtaining the precise location of satellites to obtain ranges that is used for solving the trilateration problem.
+Satellites use radio frequencies (RF) to transmit information to users on the surface of the Earth. These RF signals have encoded data called navigation messages that users can receive and unpack with specialized RF receivers. The navigation message can contain information such as satellite positions and velocities, clock corrections, and orbital parameters. These parameters are used for obtaining the precise location of satellites to obtain ranges that is used for solving the positioning problem. 
 
 \chapter {Simulation Tool}
 In this section, the function and versitility of the simulator will be described.
@@ -356,7 +356,7 @@ The final outputs from the measurement generation are pseudoranges, Doppler Meas
 
 \section{Signal Simulation}
 
-The signal simulation begins directly after the measurement generation. The current simulation is for a TDMA signal. The beginning of the simulation begins the transmission of a burst. Only one burst occurs within the specified burst period. Figure \ref{fig:SigSimBlock} gives an overview of the signal simulation.
+The signal simulation begins directly after the measurement generation. The current simulation is for a TDMA signal as described in section \ref{sec:TDMAsection}. The beginning of the simulation begins the transmission of a burst. Only one burst occurs within the specified burst period. Figure \ref{fig:SigSimBlock} gives an overview of the signal simulation.
 
 \begin{figure}[h]
     \centering
