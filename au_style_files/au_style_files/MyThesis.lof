@@ -11,10 +11,10 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Overall Simulation Diagram\relax }}{13}{}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Measurement Generation Block Diagram\relax }}{16}{}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Propagated Satellites from SGP4\relax }}{21}{}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Signal Simulation Block Diagram\relax }}{25}{}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Signal Generation Block Diagram\relax }}{26}{}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Signal Simulation Block Diagram\relax }}{27}{}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Signal Generation Block Diagram\relax }}{31}{}%
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Position Estimate from Batched Doppler Measurements\relax }}{34}{}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces RMS Error of Batched Doppler Estimates\relax }}{34}{}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Position Estimate from Batched Doppler Measurements\relax }}{39}{}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces RMS Error of Batched Doppler Estimates\relax }}{39}{}%
 \addvspace {10pt}

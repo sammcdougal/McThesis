@@ -252,6 +252,7 @@ BPSK is accomplished by shifting the phase of the signal by 180 degrees dependin
     \label{fig:BPSKsig}
 \end{figure}
 \subsection{Quadrature Phase Shift Keying}
+\label{sec:QPSK}
 
 QPSK modulation uses 4 possible phases of the signal to to modulate the data onto the carrier wave. The phase possibilities are 90 degree offsets. With this, two bits are transmitted in one symbol. This allows for faster data rates of the signal. Figure \ref{fig:QPSKmod} shows a visual example of QPSK modulation.
 
@@ -487,15 +488,50 @@ The first error generated is clock error. The clock bias and clock drift are cal
 
 \end{center}
 
-Next the tropospheric delay is calculated from the settings defined previously. The model used is found in \cite{misraGlobalPositioningSystem2012}. The Saastamoinen model is used for calculating the wet and dry tropospheric delays. They are given as follows. 
+Next the tropospheric delay is calculated from the settings defined previously. The model used is found in \cite{misraGlobalPositioningSystem2012}. In this thesis the tropospheric delay is modeled as a function of elevation angle with the definition of obliquity factors. This is also refered to as mapping functions. The equation for tropospheric delay is 
 
 \begin{equation}
-    a = 1
+    \tilde{T} = \tilde{T}_{z,d} \cdot m_d(el) + \tilde{T}_{z,w} \cdot m_w(el)
+    \label{eqn:TropError}
 \end{equation}
-    
-Finally, the addition of white Gaussian noise is added for errors not modeled (i.e. Ionosphere delay, multipath, etc). 
+where $\tilde{T}_{z,d}$ and $\tilde{T}_{z,w}$ are the dry and wet tropospheric zenith delay, respectively, and $m_d$ and $m_w$ are the mapping functions for the dry and wet components. The Saastamoinen model is used for calculating the dry tropospheric zenith delay is calculated as
+
+\begin{equation}
+    \tilde{T}_{z,d} = 0.002277(1+0.0026cos2\phi +0.00028H)P_0
+    \label{eqn:DryZenith}
+\end{equation}
+where $\phi$ is the latitude of the receiver, \textit{H} is the height of the receiver, and $P_0$ is the total pressure. 
+The wet tropospheric zenith delay is calculated as 
+
+\begin{equation}
+    \tilde{T}_{z,w} = 0.002277 \left( \frac{1255}{T_0} + 0.05 \right) e_0
+    \label{eqn:WetZenith}
+\end{equation}
+where $T_0$ is the temperature in Kelvin and $e_0$ is the partial pressure due to water vapor.
+
+The mapping function for the dry delay is 
+\begin{equation}
+    m_d(el) = \frac{1}{sin(el)+\frac{0.00143}{tan(el)+0.0445}}
+    \label{eqn:drymapping}
+\end{equation}
+and the mapping for the wet delay is
+\begin{equation}
+    m_w(el) = \frac{1}{sin(el)+\frac{0.00035}{tan(el)+0.017}}
+    \label{eqn:wetmapping}
+\end{equation}
+
+Finally, the addition of white Gaussian noise is added for errors not modeled (i.e. Ionosphere delay, multipath, etc).
+
+The final outputs of the error generation are as follows
+\begin{description}
+    \item[Satellite Clock Error] The error caused by satellite clocks. This is a MATLAB structure that is indexed for each satellite in view with fields of bias and drift. The error caused by bias and drift have units of meters and meters per second, respectively.
+    \item[Receiver Clock Error] The error caused by the receiver clock. The receiver clock error is saved into the same structure as the satellite clock error labeled 'ClockError'. The units for error caused by the bias and drift are also meters and meters per second, respectively.
+    \item[Tropospheric Error] The error caused by the troposphere. This will be a matrix of tropospheric error for each satellite in view at each time step of the simulation. The units for tropospheric error are output in meters.
+\end{description}
 
 \subsection{Measurement Calculations}
+With the errors generated, the measurements are calculated. The measurement calculations section only has one input from the simulation settings. This input is the burst timing of the signal. The user will declare this in terms of seconds. This step needs to be included because the receive time of the signal is calculated based on the satellite burst time. This will be discussed later in the section. This subsection will give the equations used for calculating true ranges and range rates, pseudoranges and pseudorange rates, Doppler frequency, received time, and Kepler orbital parameters. 
+
 The true satellite to receiver ranges are calculated along with the range rates. Their equations are show below.
 \begin{equation}
     r = \sqrt{(x^{(k)}_{sv} - x_u)^2 + (y^{(k)}_{sv} - y_u)^2 + (z^{(k)}_{sv} - z_u)^2}
@@ -532,11 +568,22 @@ where $t_{tx}$ is the transmit time, $\rho$ is the pseudorange calculated in equ
 
 An option the user has for a data message type is Kepler orbital parameters or classical orbital elements (COE). The calculation of COE uses the ECI satellite positions and velocities calculated previously. These terms are: \textit{h} magnitude of angular momentum; \textit{e} eccentricity; \textit{RAAN} right ascension of the ascending node, \textit{i} inclination angle; \textit{w} argument of perigee; \textit{TA} true anomaly; \textit{a} semi major axis. This process is described in. \cite{curtisOrbitalMechanicsEngineering2008}.
 
-The final outputs from the measurement generation are pseudoranges, Doppler Measurements, transmit times, received times, satellite positions, and satellite velocities. Classical orbital elements will be another output if the user has declared to use them for the navigation message. Once the measurements are calculated, the signal can be generated.
+The final outputs from the measurement generation are as follows:
+\begin{description}
+    \item[Satellite States] The positions and velocities of satellites that are in view for the duration of the simulation in meters and meters per second, respectively for both the ECEF and ECI frames. 
+    \item[True Range] The true range of the satellite to the receiver in meters.
+    \item[True Range Rate] The true range rate of the satellite to the receiver in meters per second.
+    \item[Pseudorange] The calculated pseudoranges of the satellite to the receiver in meters
+    \item[Pseudorange Rate] The calculated pseudorange rate of the satellite to the receiver in meters per second.
+    \item[Doppler Frequency] The calculated Doppler frequency in Hz.
+    \item[Transmit Time] The transmit time of the satellites in seconds of simulation and in GPS time.
+    \item[Received Time] The received time of the signal in seconds.
+    \item[COE] Classical orbit elements that have been calculated for a possible data message.    
+\end{description}
 
 \section{Signal Simulation}
-
-The signal simulation begins directly after the measurement generation. The current simulation is for a TDMA signal as described in section \ref{sec:TDMAsection}. The beginning of the simulation begins the transmission of a burst. Only one burst occurs within the specified burst period. Figure \ref{fig:SigSimBlock} gives an overview of the signal simulation.
+\subsection{Introduction}
+The signal simulation begins directly after the measurement generation and is, naturally, where the signal is created. This simulation tool is for a QPSK TDMA signal as described in section \ref{sec:QPSK} and \ref{sec:TDMAsection}, respectively. Figure \ref{fig:SigSimBlock} gives an overview of the signal simulation. Inside the signal simulation the data message is generated and converted to binary data, received times are converted from seconds to samples, signal noise is generated, the signal is generated, separated into real and imaginary parts, interleaved, and written to a bin file. The signal output will be a file of in-phase and quadrature (IQ) data.
 
 \begin{figure}[h]
     \centering
@@ -545,11 +592,97 @@ The signal simulation begins directly after the measurement generation. The curr
     \label{fig:SigSimBlock}
 \end{figure}
 
+The main settings used for the signal simulation are as follows
+\begin{itemize}
+    \item Carrier frequency in Hz
+    \item Carrier wavelength 
+    \item Signal sampling frequency in Hz 
+    \item Code frequency
+    \item Symbols per burst
+    \item Code period 
+    \item Burst length in seconds
+    \item Block size
+    \item Signal noise power in decibels
+    \item Signal noise power in watts
+    \item Carrier to noise ratio
+    \item Signal power in decibels
+    \item Signal power in watts
+    \item Noise toggle switch (on/off)
+    \item Generate signal (on/off)
+    \item Burst time in seconds
+\end{itemize}
+The following subsections will procede as follows: initial calculations, data message generation, and signal generation.
 
+\subsection{Initial Calculations}
+Initial calculations that are made for the signal simulation are initial signal noise and satellite transmission determination. Since the beginning of the simulation begins the transmission of a burst and the simulation is based on the what is seen by the receiver, an initial section of noise must be calculated to account for the transmission of the initial burst. Also, since only one burst occurs within the specified burst period, satellites must be chosen to transmit at specific times. The inputs for this section are as follows:
+\begin{description}
+    \item[Signal Noise Toggle] The signal noise toggle switch is used to turn on and off the signal noise. 
+    \item[Signal Noise] The power of the noise floor.
+    \item[Sampling Frequency] The sampling frequency of the signal in Hz.
+\end{description}
 
 The simulation starts by determining what satellite is transmitting and stores it into an array. This process is probabilistic and one satellite in view is chosen at random to transmit. This process is performed for each burst at the start of the signal simulation. Once the burst transmission list has been determined, the first part of the signal is generated. The first part of the output file will be signal noise. The signal noise will be the length of the first transit time in terms of samples. For example, if the first transit time is 0.003009 seconds and the sampling frequency is one megahertz, the first 3009 samples will be noise. Next a bin file is generated and signal noise is written to the file. 
 
-With the calculated received times and designated satellites, we can generate the signal in blocks. We start by gathering the information for the data message. In this case, we gather satellite positions and velocities, satellite number, and transit time. Next, we convert those terms into fixed point binary strings. The data bits are generated in a separate function that is specific to the data message type. The length of each word is predetermined inside the data bit generation function.  The fractional length is determine based on the amount of precision the user desires. The decision to sign the word is also declared.  The outputs of the bit generation function are two row vectors of in-phase and quadrature bits. Non return to zero (NRZ) coding is used to represent the binary ones and zeros. The number of samples in the signal block is determined by examining the begin time of the current burst and the begin time of the next burst. The difference in time is calculated and multiplied it by the signal sampling frequency in order to calculate the number of samples in the block. Next is the generation of the signal shown in figure \ref{fig:SigGenBlock}. 
+\subsection{Data Message Generation}
+The data message is a part of the signal used to gain information about the object transmitting the signal. For satellites, the data message is a package of numerical values representing the state of the satellite. This can be the satellite position and velocity, orbital elements, clock states, etc. With the calculated received times and designated satellites, the signal can be generated in blocks started by gathering the information for the data message. For this simulation, there are two options for a navigation message. The first option is to broadcast the satellite positions and velocities at the time of broadcast, or the Kepler orbit parameters at the time of transmission can be used. Next, those terms are converted into fixed point binary strings. The data bits are generated in a separate function that is specific to the data message type. The length of each word is predetermined inside the data bit generation function.  The fractional length is determine based on the amount of precision the user desires. The decision to sign the word is also declared. The branch of in-phase or quadrature has also been predetermined. The outputs of the bit generation function are two row vectors of in-phase and quadrature bits. Non return to zero (NRZ) coding is used to represent the binary ones and zeros. Next, the number of samples in the signal block is determined by examining the begin time of the current burst and the begin time of the next burst. The difference in time is calculated and multiplied it by the signal sampling frequency in order to calculate the number of samples in the block. Options for the data message types can be seen in table \ref{table:SVPosDataMes} and table \ref{table:COEdatMes} below.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    Satellite Position and Velocity ECEF \\
+    \hline\hline
+    Term & Total bits & Fractional bits & Branch \\
+    \hline
+    Satellite ID & 8 & 0 & Q \\
+    \hline
+    Satellite Pos. & 32 & 7 & Q \\
+    \hline
+    Satellite Vel. & 32 & 7 & Q \\
+    \hline
+    Transmit Time & 64 & 0 & I \\
+    \hline
+\end{tabular}
+\caption{Satellite Position and Velocity Data Message}
+\label{table:SVPosDataMes}
+\end{center}
+\end{table}
+
+\begin{table}
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            Kepler Elements \\
+            \hline\hline
+            Term & Total bits & Fractional bits & Branch \\
+            \hline
+            Sat ID & 8 & 0 & I \\
+            \hline
+            \textit{h} & 48 & 32 & Q \\
+            \hline
+            \textit{e} & 48 & 57 & Q \\
+            \hline
+            \textit{RAAN} & 48 & 45 & Q \\
+            \hline
+            \textit{i} & 48 & 47 & Q \\
+            \hline
+            \textit{w} & 48 & 47 & Q \\
+            \hline
+            \textit{TA} & 48 & 45 & Q \\
+            \hline
+            \textit{a} & 48 & 35 & Q \\
+            \hline
+            Transmit time & 48 & 17 & I \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{COE Data Message}
+    \label{table:COEdatMes}
+\end{table}
+The satellite positions and velocities mentioned in table \ref{table:SVPosDataMes} are for each individual cartesian component of the satellite position and velocity.
+
+\subsection{Signal Generation}
+Next is the generation of the signal shown in figure \ref{fig:SigGenBlock}. This is where all parts of the signal are combined together and generated. 
 
 \begin{figure}[h]
     \centering
@@ -557,8 +690,17 @@ With the calculated received times and designated satellites, we can generate th
     \caption{Signal Generation Block Diagram}
     \label{fig:SigGenBlock}
 \end{figure}
+The inputs to the signal generation block are as follows:
+\begin{description}
+    \item[Signal power] The power of the signal.
+    \item[Sampling frequency] The sampling frequency of the signal in Hz.
+    \item[Block size] The size of the block in terms of samples.
+    \item[Doppler frequency] The previously calculated received Doppler frequency. 
+    \item[Signal noise] A section of signal noise generated for the length of the burst.
+    \item[Data message] The in-phase and quadrature bit vectors of the data message.
+\end{description}
 
-A section of signal noise is generated for the amount of samples in the signal block. The signal noise and data message are input to the signal generation block. We start by loading in settings, Doppler frequency, preamble, and sync message. The sync message was chosen to be a 127 bit long gold code with an appended zero due to its autocorrelation abilities \cite{dinanSpreadingCodesDirect1998}.  We then combine the preamble and sync messages on their respective branches along with the in-phase and quadrature bit vectors to produce our full data message. From there we up-sample via zero insertion and filtering with a root-raised-cosine (RRC) pulse shaping filter. The amplitude of the signal is calculated as equation \ref{eqn:amplitude} and the phase is calculated in equation \ref{eqn:phase}
+A section of signal noise is generated for the amount of samples in the signal block. The sync message and preamble are a set of alphanumeric values that when converted to binary values have good autocorrelation properties \cite{dinanSpreadingCodesDirect1998}. The autocorrelation is important for the receiving and decoding of the signal and will be discussed further in this chapter. The preamble and sync messages are combined to their respective branches along with the in-phase and quadrature bit vectors to produce the full data message. If the number of bits used by the data message is lower than the number of bits in the burst, the remaining bits will be assigned random binary values. Up-sampleing via zero insertion and filtering with a root-raised-cosine (RRC) pulse shaping filter is performed. The signal has to be up-sampled in order to meet the requirements set by the sampling frequency. The amplitude of the signal is calculated as equation \ref{eqn:amplitude} and the phase is calculated in equation \ref{eqn:phase}
 
 \begin{equation}
     A = \sqrt{Ips^2 + Qps^2}
@@ -577,6 +719,13 @@ where \textit{Ips} and \textit{Qps} are the pulse shaped in-phase and quadrature
 \end{equation}
 where \textit{A} is the amplitude and $\theta$ is the phase. From here the declared signal power is added along side the signal noise. The output of the signal generation function is a full IQ signal with signal noise. The signal is then split into real and imaginary parts, where they are interleaved and written to the bin file. To save computational memory, the signal variables are cleared with each iteration. This process is performed for each block of signal throughout the simulation. At the end of the simulation, if there is a received time outside the bounds of the simulation time, then the simulation will end the file with signal noise.
 
+\subsection{Final Outputs}
+The final outputs of the signal simulation are as follows:
+\begin{description}
+    \item[Bin file] A bin file with the generated signal where the real and imaginary parts of the signal have been interleaved.
+    \item[I and Q bit matrix] A matrix with the in-phase and quadrature bit vectors of each burst are saved. These values are saved for analysis of bit rate error that will be observed in the results section of this thesis.
+    \item[Navigation Data] A matrix of navigation data which includes the satellite number, satellite states, and transmit time for each burst is saved for analytical purposes later in this thesis.
+\end{description}
 \section{Receiver}
 For this thesis, a specialized receiver was designed to process the data. 
 - Include stuff about burst receiver
@@ -701,7 +850,6 @@ Pseudorange based positioning is also not a new concept. Pseudoranges are used t
 
 \end{itemize}
 
-\section{Augmented Satellite Orbits}
 
 \chapter{Results}
 
