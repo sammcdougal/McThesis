@@ -157,6 +157,20 @@ In Chapter 2, the background of satellite orbits, signal types, and modulation t
 
 \chapter{Background}
 
+\section{Satellite Based Navigation}\label{sec:satellitenav}
+Satellite navigation employs trilateration as a way to solve the age old problem of determining where ones self is on planet Earth. Trilateration is the process of using ranges to determine unknown locations of things. In a 2-dimentional example, three transmitters produce circles with radius $r$. With knowledge of the location of the transmitters, the ranges can be used to calculate a circle around the transmitter. The intersection point of all three circles will enclose the positioning result. This can be seen in figure \ref{fig:Trilateration}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=4.0in]{Trilateration.JPG}
+    \caption{Visual Depiction of Trilateration}
+    \label{fig:Trilateration}
+\end{figure}
+
+The process of trilateration with satellites is the same except in 3-dimensional space. In the case of GPS, the satellites are the transmitters. Satellites make excelent transmitters in this case becasue of their ability to cover large areas continuously. An important point to mention is that the in the previous example it is assumed that the satellite and receiver are tied to the same clock. This means that the user has a perfect known time of the transmission of the signal from the satellite and perfect knowledge of the time of reception. However, this is not the case in real world examples. In fact, each satellite is tied to its own clock while each receiver is also tied to a separate clock. This offset in time can cause very large errors in positioning. To account for this, GPS ground stations survey and monitor the status of the satellite clocks to ensure maximum clock accuracy. While this takes care of the satellite part of the clock issue, the receiver clock still contains error. This error can be estimated along with the receiver states with the addition of a fourth measurement. With four unknown variables (receiver position $x$, $y$, $z$, and clock bias $b$), four measurements must be available in order to estimate the unknowns. 
+
+Satellites use radio frequencies (RF) to transmit information to users on the surface of the Earth. These RF signals have encoded data called navigation messages that users can receive and unpack with specialized RF receivers. The navigation message can contain information such as satellite positions and velocities, clock corrections, and orbital parameters. These parameters are used for obtaining the precise location of satellites to obtain ranges that is used for solving the positioning problem. 
+
 \section{Satellite Orbit Zones}
 
 With regard to space vehicles, there are three main orbital zones. These zones are low Earth orbit (LEO), medium Earth orbit (MEO), and geosynchronous Earth orbit (GEO). These zones are differentiated by the altitude of the orbit above the surface of the Earth. Due to the nature of the orbits, the satellites in these orbital zones have varying mission types. Figure \ref{fig:satorbzone} gives a reference to each of the orbital zones. 
@@ -248,19 +262,6 @@ QPSK modulation uses 4 possible phases of the signal to to modulate the data ont
     \label{fig:QPSKmod}
 \end{figure}
 
-\section{Satellite Based Navigation}\label{sec:satellitenav}
-Satellite navigation employs trilateration as a way to solve the age old problem of determining where ones self is on planet Earth. Trilateration is the process of using ranges to determine unknown locations of things. In a 2-dimentional example, three transmitters produce circles with radius $r$. With knowledge of the location of the transmitters, the ranges can be used to calculate a circle around the transmitter. The intersection point of all three circles will enclose the positioning result. This can be seen in figure \ref{fig:Trilateration}.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=4.0in]{Trilateration.JPG}
-    \caption{Visual Depiction of Trilateration}
-    \label{fig:Trilateration}
-\end{figure}
-
-The process of trilateration with satellites is the same except in 3-dimensional space. In the case of GPS, the satellites are the transmitters. Satellites make excelent transmitters in this case becasue of their ability to cover large areas continuously. An important point to mention is that the in the previous example it is assumed that the satellite and receiver are tied to the same clock. This means that the user has a perfect known time of the transmission of the signal from the satellite and perfect knowledge of the time of reception. However, this is not the case in real world examples. In fact, each satellite is tied to its own clock while each receiver is also tied to a separate clock. This offset in time can cause very large errors in positioning. To account for this, GPS ground stations survey and monitor the status of the satellite clocks to ensure maximum clock accuracy. While this takes care of the satellite part of the clock issue, the receiver clock still contains error. This error can be estimated along with the receiver states with the addition of a fourth measurement. With four unknown variables (receiver position $x$, $y$, $z$, and clock bias $b$), four measurements must be available in order to estimate the unknowns. 
-
-Satellites use radio frequencies (RF) to transmit information to users on the surface of the Earth. These RF signals have encoded data called navigation messages that users can receive and unpack with specialized RF receivers. The navigation message can contain information such as satellite positions and velocities, clock corrections, and orbital parameters. These parameters are used for obtaining the precise location of satellites to obtain ranges that is used for solving the positioning problem. 
 
 \chapter {Simulation Tool}
 In this section, the function and versitility of the simulator will be described.
@@ -286,7 +287,8 @@ In part, the simulation settings allow this tool to be modular. The file begins 
 The simulation settings file is integral to this simulation tool. All other components of this simulator are dependent on it. These specific dependencies will be explained in detail in the remaining subsections.
 
 \section{Measurement Simulation}
-The next block of the simulation tool is the measurement generation. The measurement generation is where the ranges, range rates, and times are calculated. The purpose of this section is to have a set of truth values that will be used later in the simulation. The block diagram for the measurement generation is shown in figure \ref{fig:MeasBlock}.
+\subsection{Introduction}
+The next block of the simulation tool is the measurement generation. The measurement generation is where satellites are propagated, ranges, range rates, and times are calculated. The purpose of this section is to have a set of truth values that will be used later in the simulation. The block diagram for the measurement generation is shown in figure \ref{fig:MeasBlock}.
 
 \begin{figure}[h]
     \centering
@@ -295,7 +297,133 @@ The next block of the simulation tool is the measurement generation. The measure
     \label{fig:MeasBlock}
 \end{figure}
 
-The measurement generation begins the same as all  other blocks: inputting the simulation settings file. Again, this allows the user to have all of the same settings, constants, and configurations across all platforms. User positions are generated based on the initial input in the settings file. If a static receiver is declared, then the user position will remain the same and be populated at the set measurement sampling frequency. Along with the population of user positions, satellite positions and velocities are also propagated at this time. For this simulation, a simplified general perturbation (SGP) two line element (TLE) propagator is used to give truth values for satellite positions and velocities. The SGP4 TLE propagator outputs satellite positions and velocities in meters and meters per second, respectively, for the Earth centered inertial (ECI) and ECEF coordinate frames. Figure \ref{fig:bothpropsats} shows the propagated satellite orbits in view for the Iridium and Orbcomm constellations over the duration of the simulation. 
+The measurement simulation begins with the input of the simulation settings file. The following settings are the main terms used in the measurement simulation:
+\begin{itemize}
+    \item User Position and Velocity
+    \item Year, Month, Day, Hour, Minute, Second of begining of simulation
+    \item Simulation length in seconds
+    \item Sampling frequency of measurement simulation
+    \item Weather settings
+    \begin{itemize}
+        \item Temperature in Kelvin
+        \item Temperature in Celcius
+        \item Barometric pressure in millibars
+        \item Humidity as a percentage
+    \end{itemize}
+    \item Clock settings
+     \begin{itemize}
+        \item Receiver clock type
+        \item Satellite clock type
+     \end{itemize}
+     \item Satellite propagation settings
+     \begin{itemize}
+        \item TLE file name
+        \item TLE Objects
+        \item TLE exclude numbers
+        \item Mask angle
+        \item Augmented number of satellite orbital planes
+        \item Augmented number of satellites per orbital plane
+        \item Augmented inclination angle 
+        \item Augmented orbit altitude in meters 
+     \end{itemize}
+     \item Burst time (seconds)
+     \item Toggle switches
+     \begin{itemize}
+        \item Receiver type (static/dynamic)
+        \item Receiver clock (on/off)
+        \item Satellite clock (on/off)
+        \item Tropospheric error (on/off)
+        \item Satellite augmentation (on/off)
+        \item Additional Noise (on/off)
+     \end{itemize}
+\end{itemize}
+
+A breakdown of the following subsections are as follows: satellite propagation, error generation, measurement calculation, and final outputs from the measurement simulation. 
+
+\subsection{Satellite Propagation}
+For this simulation tool, the simplified general perturbation (SGP4) two line element (TLE) satellite propagator is used. SGP4 is a propagation technique used to calculate positions and velocities of satellites, space debris, and orbital junk. The SGP4 TLE propagator is used to calculate near Earth objects which are classified as having orbit periods less than 225 minutes. This corresponds well for LEO satellites as the orbital period is typically between 90 and 120 minutes. The perturbations accounted for in SGP4 include solar radiation, drag, and gravitational perturbations caused by the sun and the moon. SGP4 uses TLE files as a basis of propagation. TLE files are generated for tracking space objects. These files can be found on CelesTrak.org and can be pulled in the form of a text file for current day data. TLE files are 2 lines of 69 columns with orbital and satellite data. The information inside the TLE files is shown below.
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Columns Used & Term & Line Number \\
+        \hline
+        1 & Line number & 1 \\
+        \hline
+        3-7 & USSC satellite catalog number & 1 \\
+        \hline
+        8 & Classification & 1 \\
+        \hline
+        10-11 & Launch year & 1\\
+        \hline
+        12-14 & Launch number of year & 1 \\
+        \hline
+        15-17 & Part of launch & 1 \\
+        \hline 
+        19-20 & Epoch year & 1 \\
+        \hline
+        21-32 & Epoch day plus fractional & 1 \\
+        \hline
+        34-43 & Balistic coefficient & 1 \\
+        \hline
+        45-52 & Second derivative of mean motion & 1 \\
+        \hline
+        54-61 & B-star drag term & 1 \\
+        \hline
+        65-68 & Element Set number & 1 \\
+        \hline
+        69 & Checksum & 1 \\
+        \hline\hline
+        1 & Line number & 2 \\
+        \hline
+        3-7 & USSC satellite catalog number & 2 \\
+        \hline
+        9-16 & Inclination angle & 2 \\
+        \hline
+        18-25 & RAAN & 2 \\
+        \hline
+        27-33 & Eccentricity & 2 \\
+        \hline
+        35-42 & Argument of perigee & 2 \\
+        \hline
+        44-51 & Mean anomaly & 2 \\
+        \hline
+        53-63 & Mean motion & 2 \\
+        \hline
+        64-68 & Revolution number at epoch & 2 \\
+        \hline
+        69 & Checksum & 2 \\
+        \hline\hline
+        
+    \end{tabular}
+
+\end{center}
+
+The TLE files found on CelesTrak.org are for current space objects and satellite constellations. This simulation tool includes the option to augment the pre-existing satellite constellations with more satellites. In this case, TLEs are generated based on input values declared by the user. These terms are then used for the propagation of the satellites along with the following settings:
+\begin{description}
+    \item[TLE file name] This is the name of the text file with the list of TLEs for the satellite constellation being examined.
+    \item[Objects] The objects are the names of the satellites in the constellation. This needs to be declared for when the TLE file is parsed.
+    \item[Exclude] In some instances, there will be duplicates of satellites in a TLE file. These satellites need to be ignored when generating satellite data. Another instance would be when a collision has occured with a satellite and the data tracked in the TLE is the crash object and the debris caused by it.
+    \item[Simulation length] This is the length of the simulation in seconds as previously mentioned.
+    \item[Simulation start time] The begining time of the simulation in year, month, day, hour, minute, seconds at UTC time. Primarily the hour-minute-second because this is used for determining how far past the current epoch the satellite is being propagated at. 
+    \item[Measurement sampling frequency] This is the rate at which measurements are generated for the simulation. 
+    \item[Receiver Position] A vector of predetermined receiver positions in the ECEF coordinate frame. For a static receiver the vector of user positions has been generated forward for the length of the simulation at the desired sampling frequency. The vector of user positions will remain the same through the simulation as the points are not changing in the ECEF frame. For a dynamic receiver the user will input a pre-recorded or generated path that has been sampled to the sampling frequency of the simulation.
+    \item[Mask angle] The mask angle is declared in degrees. A mask angle is a term used to describe the the range of view that a receiver will receive a signal from. For example, if a receiver was in an open area where the horizon is unobstructed, then the mask angle could be chosen to be zero degrees. However in most situations, the mask angle will be higher than zero due to unrealistic field of view of satellites at the horizon.
+    \item[Augmentation settings] As previously mentioned, the simulation tool allows the user to declare additional satellites to the current constellation being examined. The inputs from the user are number of orbital planes, number of satellites per plane, inclination angle, and orbit altitude. This feature is important for examining future constellations or investigating the performance of constellations that have not been conceived.
+\end{description}
+
+The SGP4 TLE propagator begins with the input of the TLE file and the simulation settings. The TLE file is parsed and a MATLAB structure is used to store each element for each individual satellite. If declared the augmented satellite orbits are generated and added to the TLE structure. An Earth orientation parameters (EOP) file is hardcoded into the simulator, however this file needs to be updated periodically manually by the user. This data can also be aquired from the CelesTrak website. Time units are established and the begin time, end time, and time-step are calculated along with the time vector for the simulation. Memory is allocated for the position and velocity of each satellite in the ECEF and Earth centered inertial (ECI) coordinate frames. Next the satellites are propagated one at a time for the length of the simulation. The position and velocity vectors are put into the respective variable for ECEF and ECI. The azimuth and elevation angle are calculated for each satellite at each timestep of the simulation using the satellite positions and user positions. The elevation angles will have values $-90^{\circ} < El < 90^{\circ}$. A visibility analysis can be performed with the elevation angles. The visibility analysis takes the elevation angles and finds the satellites that are above the mask angle to eliminate them from the simulation. The output of the visibility analysis is a list of satellites and the times that they are in view. This greatly reduces the computation time for the rest of the simulation because the simulator does not calculate measurements or signals for the out of view satellites. New variables of satellite positions and velocities are generated and filled for satellites that are in view. Mathematically this is represented in equation \ref{eqn:VisAnal} where \textit{MA} is the mask angle and \textit{El} is the elevation angle.
+\begin{equation}
+    SV_{data} = 
+    \left\{
+        \begin{array}{lr}
+            Fill cell, MA < El < 90^\circ \\
+            NaN, MA > El
+        \end{array}
+    \right.
+    \label{eqn:VisAnal}
+\end{equation}
+Each satellite state component ($x_{sv},y_{sv},z_{sv}$ and $\dot{x_{sv}},\dot{y_{sv}},\dot{z_{sv}}$) for both coordinate frames are saved into individual matricies. The dimensions for each matrix is $m \times n$, where \textit{m} is the length of the time vector and \textit{n} is the number of satellites propagated.
+Figure \ref{fig:bothpropsats} shows the propagated satellite orbits in view above Auburn Alabama for the Iridium and Orbcomm constellations over the duration of a 15 minute simulation. 
 
 \begin{figure}[ht]
     \centering
@@ -315,10 +443,60 @@ The measurement generation begins the same as all  other blocks: inputting the s
     \label{fig:bothpropsats}
 \end{figure}
 
+The final outputs from the satellite propagation stage are as follows:
+\begin{description}
+    \item[Satellite Positions] The 3-dimensional satellite position vectors in ECEF and ECI for all satellites propagated.
+    \item[Satellite Velocity] The 3-dimensional satellite velocity vectors in ECEF and ECI for all satellites propagated.
+    \item[Elevation Angle] The elevation angle of the satellites with respect to the user position.
+    \item[In-view states] The 3-dimensional satellite position and velocity vectors in ECEF and ECI for in-view satellites.
+\end{description}
 
-With both the user position and satellite positions, a visibility analysis can be performed on the satellites. Another important output of the satellite propagation is the elevation angles of the satellites with respect to the user. The visibility analysis takes the elevation angles and finds the satellites that are above the mask angle to eliminate them from the simulation. The output of the visibility analysis is a list of satellites and the times that they are in view. This greatly reduces the computation time for the rest of the simulation because the simulator only has to compute values and signals for the specified satellites that are in view. An option the user has for a data message type is Kepler orbital parameters or classical orbital elements (COE). The calculation of COE uses the ECI satellite positions and velocities calculated previously. These terms are: \textit{h} magnitude of angular momentum; \textit{e} eccentricity; \textit{RAAN} right ascension of the ascending node, \textit{i} inclination angle; \textit{w} argument of perigee; \textit{TA} true anomaly; \textit{a} semi major axis. This process is described in. \cite{curtisOrbitalMechanicsEngineering2008}.
+With the satellites propagated and a visibility analysis conducted, the next step is to calculate errors.
 
-After the visibility analysis, errors will be generated for the satellites that are in view. The first error generated is clock error. Clock bias and drift are generated for the receiver and the satellites. This option can be turned off and the errors will be incorporated as zeros in the simulation. Next the tropospheric delay is calculated from the settings defined previously. Finally, the addition of white Gaussian noise is added for errors not modeled (i.e. Ionosphere delay, multipath, etc). Simultaneously, the true satellite to receiver ranges are calculated along with the range rates. Their equations are show below.
+\subsection{Error Generation}
+
+After the visibility analysis, errors will be generated for the satellites that are in view. Measurement errors need to be calculated for computing the received time of the signal. Two primary sources of error modeled in this thesis are clock error and tropospheric delay. As previously discussed, clocks are imperfect and have a tendency to have a bias and drift over time due to the oscillator inside of the clock. For example, satellite clocks are more accurate because they use atomic clocks where receivers typically use a crystal oscillator. The tradeoff is cost because atomic clocks are significantly more expensive than crystal oscillators. The satellite clock and receiver clock will have independed biases and drifts. The satellite is assumed to be capable of knowing and transmitting its bias and drift, while the receiver clock must be estimated by the receiver. Tropospheric delay is the error caused by gasses in the Earth's atmosphere. The atmosphere is composed of dry gasses and water vapor. These molecules have a refractive properties that effect RF signals. The input settings for these errors are as follows:
+
+\begin{description}
+    \item[Clock Toggle] There is a setting in the simulator where the user can choose to turn on or off the generated clock error. There is a switch for both the satellite clocks and the receiver clocks.
+    \item[Clock Type] The user will declare what type of clock to model for both the satellite and the receiver. Inside the clock error generation function, there are pre-set clocks and clock terms.
+    \item[Troposphere Toggle] There is a toggle switch to turn the tropospheric delay on or off.
+    \item[Temperature] There are two inputs for temperature. One is in Kelvin and the other is in degrees Celcius. 
+    \item[Atmospheric Pressure] The atmospheric pressure is delcared in millibars.
+    \item[Humidity] The humidity of the current time of simulation is input as a percentage.     
+\end{description}
+
+
+The first error generated is clock error. The clock bias and clock drift are calculated for each satellite in view over the simulation based on the clock type described by the user. Next the receiver clock is modeled and the bias and drift are generated. As previously mentioned, this option can be turned off and the errors will be incorporated as zeros in the simulation. The current clock types in the simulator are shown in the table \ref{table:ClockTypes}. 
+
+\begin{center}
+\begin{tabular}{|c|c|}
+    \hline
+    Oscillator & Acronym\\
+    \hline\hline
+    Cesium & Cesium\\
+    \hline
+    Rubidium & Rubidium\\
+    \hline
+    Oven Controlled Crystal Oscillator & OCXO\\
+    \hline
+    Temperature Controlled Crystal Oscillator & TCXO\\
+    \hline
+\end{tabular}
+\label{table:ClockTypes}
+
+\end{center}
+
+Next the tropospheric delay is calculated from the settings defined previously. The model used is found in \cite{misraGlobalPositioningSystem2012}. The Saastamoinen model is used for calculating the wet and dry tropospheric delays. They are given as follows. 
+
+\begin{equation}
+    a = 1
+\end{equation}
+    
+Finally, the addition of white Gaussian noise is added for errors not modeled (i.e. Ionosphere delay, multipath, etc). 
+
+\subsection{Measurement Calculations}
+The true satellite to receiver ranges are calculated along with the range rates. Their equations are show below.
 \begin{equation}
     r = \sqrt{(x^{(k)}_{sv} - x_u)^2 + (y^{(k)}_{sv} - y_u)^2 + (z^{(k)}_{sv} - z_u)^2}
     \label{eqn:rangeeqn}
@@ -351,6 +529,8 @@ Where in equation \ref{eqn:pseudorange}, $\rho$ is the observed pseudorange calc
     \label{receivetime}
 \end{equation}
 where $t_{tx}$ is the transmit time, $\rho$ is the pseudorange calculated in equation \ref{eqn:pseudorange}, and \textit{c} is the speed of light. For a TDMA signal, burst timing needs to be calculated. For example, if the burst timing 70 milliseconds, then a burst will at $t=0s$, $t=0.07s$, $t=0.14s$ and so on. For this instance, the received time of the signal is also calculated on the burst interval using equation \ref{receivetime}.
+
+An option the user has for a data message type is Kepler orbital parameters or classical orbital elements (COE). The calculation of COE uses the ECI satellite positions and velocities calculated previously. These terms are: \textit{h} magnitude of angular momentum; \textit{e} eccentricity; \textit{RAAN} right ascension of the ascending node, \textit{i} inclination angle; \textit{w} argument of perigee; \textit{TA} true anomaly; \textit{a} semi major axis. This process is described in. \cite{curtisOrbitalMechanicsEngineering2008}.
 
 The final outputs from the measurement generation are pseudoranges, Doppler Measurements, transmit times, received times, satellite positions, and satellite velocities. Classical orbital elements will be another output if the user has declared to use them for the navigation message. Once the measurements are calculated, the signal can be generated.
 
