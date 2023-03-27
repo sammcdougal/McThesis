@@ -155,4 +155,12 @@ E.H. Dinan and B.~Jabbari.
 \newblock {\em IEEE Communications Magazine}, 36(9):48--54, September 1998.
 \newblock Conference Name: IEEE Communications Magazine.
 
+\bibitem{samuel_mcdougal_single-antenna_2022}
+{Samuel McDougal}, Samuel Morgan, and Scott Martin.
+\newblock Single-{Antenna} {Low} {Earth} {Orbit} {Signal} {Simulator} for
+  {Hardware} in the {Loop} {Testing}.
+\newblock In {\em 35th {International} {Technical} {Meeting} of the {Satellite}
+  {Division} of the {Institute} of {Navigation} ({ION} {GNSS}+ 2022}, pages
+  2349--2361, Denver, CO, September 2022.
+
 \end{thebibliography}

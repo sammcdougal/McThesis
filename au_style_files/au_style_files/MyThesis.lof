@@ -15,6 +15,20 @@
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Signal Generation Block Diagram\relax }}{31}{}%
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Position Estimate from Batched Doppler Measurements\relax }}{39}{}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces RMS Error of Batched Doppler Estimates\relax }}{39}{}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Position Estimate from Batched Doppler Measurements\relax }}{44}{}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces RMS Error of Batched Doppler Estimates\relax }}{44}{}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Position Estimate from Pseudoranges\relax }}{45}{}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces RMS Error from Pseudoranges\relax }}{45}{}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces PDOP from Pseudoranges\relax }}{46}{}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces USRP Doppler Positioning Estimate\relax }}{46}{}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces RMS Error of Doppler Positioning Estimate\relax }}{47}{}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces PDOP from Doppler Positioning Estimate\relax }}{47}{}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces USRP Pseurorange Positioning Estimate\relax }}{48}{}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces RMS Error USRP Pseurorange Positioning Estimate\relax }}{48}{}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces USRP Pseurorange Positioning Estimate PDOP\relax }}{49}{}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Dirty Doppler Positioning Estimate\relax }}{49}{}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces RMS Error Dirty Doppler Positioning Estimate\relax }}{50}{}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Dirty Pseudorange Positioning Estimate\relax }}{50}{}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces PDOP Dirty Pseudorange Positioning Estimate\relax }}{51}{}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces RMS Error Dirty Pseudorange Positioning Estimate\relax }}{51}{}%
 \addvspace {10pt}

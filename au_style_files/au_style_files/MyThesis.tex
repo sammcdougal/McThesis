@@ -681,7 +681,7 @@ The data message is a part of the signal used to gain information about the obje
 \end{table}
 The satellite positions and velocities mentioned in table \ref{table:SVPosDataMes} are for each individual cartesian component of the satellite position and velocity.
 
-\subsection{Signal Generation}
+\subsection{Signal Generation}\label{sec:signalgen}
 Next is the generation of the signal shown in figure \ref{fig:SigGenBlock}. This is where all parts of the signal are combined together and generated. 
 
 \begin{figure}[h]
@@ -727,16 +727,65 @@ The final outputs of the signal simulation are as follows:
     \item[Navigation Data] A matrix of navigation data which includes the satellite number, satellite states, and transmit time for each burst is saved for analytical purposes later in this thesis.
 \end{description}
 
-\section{Receiver}
-For this thesis, a specialized receiver was designed to process and verify the signal. 
-- Include stuff about burst receiver
+\section{Receiver}\label{sec:receiver}
+For this thesis, a specialized receiver was designed to process and verify the signal. The receiver is based on the receiver in \cite{samuel_mcdougal_single-antenna_2022} The purpose of a receiver is to take incoming RF data and process it into observables. These observables can be used to form a positioning solution. The inputs to the receiver are as follows:
+\begin{description}
+    \item[Sampling frequency] The sampling frequency of the signal. 
+    \item[Sampling period] The period of the sampling frequency.
+    \item[Burst length] The length of the burst in terms of samples.
+    \item[Bin filename] The name of the bin file generated in \ref{sec:signalgen}
+    \item[Preamble and Sync] The preamble and sync message to calculate a local replica.
+    \item[Burst time] The period of time between bursts.  
+\end{description}
 
-- Maximum likilehood burst detection
-    - find source for this so I can talk about it in detail.
+The receiver employs a matched filter. A matched filter is a way of detecting the signal by comparing it to a local replica of some part of the signal. In order to perform a matched filter some prior knowledge of the signal must be known. In the case of this simulator the known part of the signal that remains constant across all bursts is the preamble and sync message. The preamble and sync message need to contain strong auto correlation properties in order to perform the match filtering. With a local replica of the known preamble and sync message, bursts can be detected. Before burst detection can procede, the a coarse frequency estimate must be performed. This is because matched filters work at low frequency. As the incoming signal is pulse shaped, the bandwidth is lowered and creates a peak at the center frequency. This is used to estimate the Doppler frequency in equation \ref{eqn:firstdopplerestimate}.
 
-- Decoding of the bits
+\begin{equation}
+    f_d = argmax(R(f))
+    \label{eqn:firstdopplerestimate}
+\end{equation}
+Here $f_d$ is the estimated Doppler frequency and $R(f)$ is the Forier transform of the received signal. Next the Doppler frequency is removed by equation \ref{eqn:dopplerremove}
+\begin{equation}
+    r_{new}(t) = e^{-j2\pi f_d t} \times r(t)
+    \label{eqn:dopplerremove}
+\end{equation}
+where $r_{new}(t)$ is the new signal without the Doppler frequency and $r(t)$ is the previous raw input signal. This process is performed across the bin file until the end of the file. The output of this is an estimate of the Doppler frequency, burst location, and burst number. The burst location will be used later to calculate a pseudorange. 
 
-- Receiver outputs. Decoded Navigation Message, Doppler Frequency, location of the bit (to get a range), Failed bursts, Successful Bursts, output bits for bit error calculation,
+Next, a raised rood cosine filter is used to filter the signal to raise the signal to noise ratio which helps with signal demodulation. An approximate symbol timing is used to provide a decimation period. The decimation period allows the received signal to be resampled at one sample per symbol. This is followed by removing residual frequency and phase. This is performed through a frequency and phase discriminator. The equation for the frequency discriminator is 
+
+\begin{equation}
+    f_{remaining} = \frac{atan2(cross,dot)}{t_2 - t_1}
+    \label{eqn:freqdisc}
+\end{equation}
+where \textit{cross} and \textit{dot} are 
+\begin{equation}
+    cross = I_1Q_2 - I_2Q_2
+\end{equation}
+\begin{equation}
+    dot = I_1I_2 + Q_1Q_2
+\end{equation}
+where $I_1$ and $Q_1$ are the sums of the first half of the tone and $I_2$ and $Q_2$ are the the sums of the second half of the tone. The remaining frequency can be wiped off by substituting $f_d$ with $f_{remaining}$ and $r$ with $r_{new}$ in equation \ref{eqn:dopplerremove}. The phase is calculated as 
+\begin{equation}
+    \theta = atan2(Q/I)-\frac{\pi}{4}
+\end{equation}
+and the phase error is removed by 
+\begin{equation}
+    D(t) = e^(j\theta)r(t)
+\end{equation}
+where \textit{r(t)} is the post frequency descriminated signal and \textit{D(t)} is the output data bits.
+
+
+Once the navigation bits have been demodulated they can be parsed and converted from binary values to full numerical values. The terms and values in table \ref{table:SVPosDataMes} and table \ref{table:COEdatMes} are used to know what the location in the vector of bits each word occupies and how to convert back to numerical values. 
+
+The final outputs of the receiver simulation are as follows:
+\begin{description}
+    \item[Decoded satellite data] The decoded navigation message of satellite number, satellite position, satellite velocity, and transmit time. If the chosen output is Kepler elements, the satellite positions and velocities will already be calculated.
+    \item[Estimated Doppler] The estimated Doppler frequency from the receiver in Hz.
+    \item[Range rate] The calculated range rate from the estimated Doppler frequency. 
+    \item[Output bits] The output bits from the navigation message are saved to compare with the generated values.
+    \item[Failed burst] This is a list of bursts that were observed, but the receiver failed to decode the data correctly.
+    \item[Delta burst time] This is the change in time from previous burst. This term will be used to calculate a pseudorange for possible positioning. 
+\end{description}
 
 \chapter{Testing Setup and Positioning Techniques}
 This chapter will discuss positioning techniques used for validation of results in this thesis. Two specific positioning techniques are Doppler based and Pseudorange based. These techniques will be used along with the outputs of the receiver in order to gain a positioning solution.
@@ -840,21 +889,91 @@ This process is typically employed using four or more measurements at the same t
 
 \section{Pseudorange Based Positioning} \label{sec:PseudorangePosTechnique}
 Pseudorange based positioning is also not a new concept. Pseudoranges are used to solve the trilateration problem discussed in section \ref{sec:satellitenav}. Equation \ref{eqn:pseudorange} previously discussed is the pseudorange equation. It includes the true range, satellite and receiver clock errors, atmospheric errors, and unmodeled effects. Similar to the Doppler positioning in section \ref{sec:DopplerPosTechnique}, an iterative process is used to solve for a positioning solution. However instead of using the range rate, the pseudorange is used. There are a few modifications that need to be made to the equations used in this process, however the process of solving for the position as a whole is quite similar. 
-\begin{itemize}
-    \item     - Mention things about the configuration:
-    \item     - satellite orbits
-    \item     - signal type
-    \item     - USRP playback and record
-    \item     - why important
-    \item     - how it works
-    \item     - how USRPs work in brief
 
+First, the burst location in \ref{sec:receiver} is used to generate a pseudorange. A hot start is assumed in order to gain the first range to the satellite. The burst location can be used to calculate how much the pseudorange has changed between bursts. This is modeled as 
+\begin{equation}
+    \rho_{k}(t) = \rho_{k}(t-1) + \frac{(bl(t) - bl(t-1))}{f_s} \cdot c
+    \label{eqn:pseudocalc}
+\end{equation}
+where \textit{bl} is the burst location in terms of samples, $f_s$ is the sampling frequency of the signal, and \textit{c} is the speed of light. This is performed for each satellite that has been received.
+
+The pseudorange model to the $k^{th}$ satellite is 
+\begin{equation}
+    \rho_k(t) = r^k(t) + b_u(t) - b_s(t) + T(t) + \epsilon(t)
+\end{equation}
+
+where $r^k$ is the range to the satellite, $b_u$ is the user clock bias, $b_s$ is the satellite clock bias, \textit{T} is the error caused by the troposphere, and $\epsilon$ is the unmodeled error. The range from the user to the satellite is calculated as 
+
+\begin{equation}
+    r^k = || \mathbf{x^k - x_u}||
+\end{equation}
+
+where $\mathbf{x^k}$ is the three dimensional satellite position and $\mathbf{x_u}$ is the three dimensional user position. The Newton-Raphson method is used to estimate the user position and user clock bias. An initial guess of user position is the same as \ref{eqn:dopplerestimates}. 
+Next, the measurement matrix is formed 
+\begin{equation}
+    \mathbf{\hat{\rho}} = \begin{bmatrix} 
+        -\frac{(\mathbf{x_1} - \mathbf{\hat{x_u}})}{\| \mathbf{x_1} - \mathbf{\hat{x_u}}\|} + \hat{\dot{b}} \\ 
+        -\frac{(\mathbf{x_2} - \mathbf{\hat{x_u}})}{\| \mathbf{x_2} - \mathbf{\hat{x_u}}\|} + \hat{\dot{b}} \\ 
+        \vdots \\
+        -\frac{(\mathbf{x_n} - \mathbf{\hat{x_u}})}{\| \mathbf{x_n} - \mathbf{\hat{x_u}}\|} + \hat{\dot{b}} 
+    \end{bmatrix}
+    \label{eqn:pseudorangeEstimate}
+\end{equation}
+
+The delta pseudorange is calculated as 
+\begin{equation}
+    \delta \rho = \rho - \hat{\rho}
+    \label{eqn:deltapseudo}
+\end{equation}
+
+The measurement matrix, \textit{H}, is 
+\begin{equation}
+    H = \begin{bmatrix}
+        (-\mathbf{1^1}) && 1 \\
+        (-\mathbf{1^2}) && 1 \\
+        \vdots && \vdots \\
+        (-\mathbf{1^k}) && 1
+    \end{bmatrix}
+\end{equation}
+where $\mathbf{(1)}$ is the unit vector of satellite position and user position. 
+
+The change in estimated position is calculated as 
+\begin{equation}
+    \begin{bmatrix}
+        \delta \mathbf{x} \\
+        \delta b
+    \end{bmatrix}
+    = (G^TG)^{-1}G^T\delta \mathbf{\rho}
+\end{equation}
+
+The next iteration of user position estimate is calculated as 
+
+\begin{equation}
+\hat{\mathbf{x}} = \mathbf{x_0} + \mathbf{\delta x}
+\end{equation}
+
+This process is solved itteritively until some threshold is met.
+
+\section{Testing Setup}
+The simulation is run through MATLAB as described at the begining of this thesis. The settings are declared, the measurements are generated, the signal is created, and the signal is processed by a software receiver. An additional step may be included where the signal is passed through a universal software radio periferal (USRP). The USRP demonstration is used to show that the signal generated in the simulation is capable of being passed through hardware. In this thesis an Ettus B200 mini USRP is used to perform a loopback function where the signal is played through the USRP and recorded by the same USRP. In order to do this, the generated signal cannot possess any errors. This is becuase the USRP will generate the errors on its own. The errors are background noise, transmitter clock error, and receiver clock error. The recorded signal is then passed through the software receiver for demodulation. This makes forming a position solution diffiult and the results poor becuase the errors caused by the clock are unknown to the user. 
+
+To show the versitility of the simulation tool, the following tests have been conducted.
+
+\begin{itemize}
+    \item Static receiver with no noise
+    \item Static receiver played through USRP
+    \item Static receiver with noise terms
+    \item Static receiver with augmented satellites
+    \item Dynamic receiver with no noise
+    \item Static receiver with different satellite constellations
 \end{itemize}
 
 
 \chapter{Results}
 
 This chapter will be used to show the results from simulations run in this thesis. The purpose of these results is to show that the simulation tool is capable of producing a signal that gives realistic results. 
+
+- Will input what the settings for each test are later
 
 \section{Static Clean Data}
 The data set generated for this scenario is a static data set with zero clock error, zero thermal signal noise, and zero atmospheric errors. The purpose of this experiment was to examine what the cleanest possible data set would produce.  
@@ -874,65 +993,151 @@ The first positioning strategy for this data set is using the received Doppler m
     \label{fig:RMSErrorBatchDoppler}
 \end{figure}
 
-
 \subsection{Pseudorange Based Positioning}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=5in]
+    {15min_irid_clean_pseudorangebased.pdf}
+    \caption{Position Estimate from Pseudoranges}
+    \label{fig:CleanPseudo15minIridPosit}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=5in]
+    {15min_irid_clean_pseudo_rmse.pdf}
+    \caption{RMS Error from Pseudoranges}
+    \label{fig:CleanPseudo15minIridRSME}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=5in]
+    {15min_irid_clean_pseudorange_pdop.pdf}
+    \caption{PDOP from Pseudoranges}
+    \label{fig:CleanPseudo15minIridPositPDOP}
+\end{figure}
+
 \section{Static Clean Data Played Through USRP}
+
+
 \subsection{Doppler Positioning}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=5in]
+    {15min_irid_USRP_dopplerposit.pdf}
+    \caption{USRP Doppler Positioning Estimate}
+    \label{fig:USRPDoppler15minIridPosit}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=5in]
+    {15min_irid_USRP_doppler_rsme.pdf}
+    \caption{RMS Error of Doppler Positioning Estimate}
+    \label{fig:USRPDoppler15minIridRMSE}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=5in]
+    {15min_irid_USRP_doppler_pdop.pdf}
+    \caption{PDOP from Doppler Positioning Estimate}
+    \label{fig:USRPDoppler15minIridPDOP}
+\end{figure}
+
+
 \subsection{Pseudorange Based Positioning}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=5in]
+    {15min_irid_USRP_pseudo.pdf}
+    \caption{USRP Pseurorange Positioning Estimate}
+    \label{fig:USRPpseudo15minIridPosit}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=5in]
+    {15min_irid_USRP_pseudo_rmse.pdf}
+    \caption{RMS Error USRP Pseurorange Positioning Estimate}
+    \label{fig:USRPpseudo15minIridRMSE}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=5in]
+    {15min_irid_USRP_pseudo_pdop.pdf}
+    \caption{USRP Pseurorange Positioning Estimate PDOP}
+    \label{fig:USRPpseudo15minIridPositpdop}
+\end{figure}
+
 \section{Static Dirty Data}
+
 \subsection{Doppler Positioning}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=5in]
+    {15min_irid_dirty_dopplerpos.pdf}
+    \caption{Dirty Doppler Positioning Estimate}
+    \label{fig:DirtyDoppler15minIridPosit}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=5in]
+    {15min_irid_dirty_doppler_pdop.pdf}
+    \caption{RMS Error Dirty Doppler Positioning Estimate}
+    \label{fig:DirtyDoppler15minIridPositpdop}
+\end{figure}
+
 \subsection{Pseudorange Based Positioning}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=5in]
+    {15min_irid_dirty_pseudo_posit.pdf}
+    \caption{Dirty Pseudorange Positioning Estimate}
+    \label{fig:DirtyPseudorange15minIridPosit}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=5in]
+    {15min_irid_dirty_pseudo_pdop.pdf}
+    \caption{PDOP Dirty Pseudorange Positioning Estimate}
+    \label{fig:PDOPDirtyPseudorange15minIridPosit}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=5in]
+    {15min_irid_dirty_pseudo_rmse.pdf}
+    \caption{RMS Error Dirty Pseudorange Positioning Estimate}
+    \label{fig:DirtyPseudorange15minIridPositrmse}
+\end{figure}
+
+\section{Static Augmented Satellites}
+
+\subsection{Doppler Positioning}
+
+\subsection{Pseudorange Based Positioning}
+
 \section{Dynamic Clean Data}
+
 \section{Dynamic Clean Data Played Through USRP}
+
 \section{Dynamic Dirty Data}
-    - positioning results
-
-    - Doppler Positioning 
-
-    - comparison of constellations 
-
-    - positioning algorithms
-
-    - batch recursive least squares
-
-    - 2d positioning and 3d positioning
-
-    - possible aided doppler positioning techniques
-
-    - How many bursts were detected and accurately decoded
-
-    - Possible testing configurations   
-        
-        - Full clean data (no clock, no noise, no trop)
-
-        - Full clean data run through USRP 
-
-        - Simulated dirty set with trop error, clock error, sig noise
-
-        - Run this simulation for 2 different satellite constellations
-
-        - See if I have to run it for a dynamic rover 
-            - Update:I do.
-
-
-
 
 \chapter{Conclusions and Future Work}
-- The simulator works well 
+The simulation tool works well for its purpose. It has shown the ability to generate realistic IQ data for LEO satellites. The ability to test different constellation configurations, signal types, data messages, error types, and other settings is vital to a simulation tool being good. 
 
-- addition of more signals
-
-- addition of multiple constellation
-
-- addition of more error terms
-
-
+The future work for this project can take the direction of making additions to the simulation tool. The addition of multiple signal types would be beneficial as new and emerging satellite constellations will need to be simulated. A modular software receiver tied directly to the signal simulation would make the process of receiving the signal more streamline. The addition of more error terms, such as ionospheric error would improve the quality of the simulation tool. 
 
 
 
 \bibliographystyle{unsrt}
 \bibliography{MyLibrary}
-
+%\bibliography{export-data-2}
 
 
 
