@@ -12,6 +12,14 @@ Ghafour~Amouzad Mahdiraji and Ahmad~Fauzi Abas.
   {Optical} {Telecommunication} {Systems}.
 \newblock March 2010.
 
+\bibitem{reidSatelliteNavigationAge2020}
+Tyler~G.R. Reid, Bryan Chan, Ashish Goel, Kazuma Gunning, Brian Manning, Jerami
+  Martin, Andrew Neish, Adrien Perkins, and Paul Tarantino.
+\newblock Satellite {Navigation} for the {Age} of {Autonomy}.
+\newblock In {\em 2020 {IEEE}/{ION} {Position}, {Location} and {Navigation}
+  {Symposium} ({PLANS})}, pages 342--352, April 2020.
+\newblock ISSN: 2153-3598.
+
 \bibitem{misraGlobalPositioningSystem2012}
 Pratap Misra and Per Enge.
 \newblock {\em Global {Positioning} {System}; {Signals}, {Measurements}, and
@@ -33,6 +41,14 @@ Phillip~Martin Corbell.
   {Techniques}}.
 \newblock PhD thesis, Air Force Institute of Technology, Wright-Patterson Air
   Force Base, Ohio, March 2000.
+
+\bibitem{samuel_mcdougal_single-antenna_2022}
+{Samuel McDougal}, Samuel Morgan, and Scott Martin.
+\newblock Single-{Antenna} {Low} {Earth} {Orbit} {Signal} {Simulator} for
+  {Hardware} in the {Loop} {Testing}.
+\newblock In {\em 35th {International} {Technical} {Meeting} of the {Satellite}
+  {Division} of the {Institute} of {Navigation} ({ION} {GNSS}+ 2022}, pages
+  2349--2361, Denver, CO, September 2022.
 
 \bibitem{powellMultipleAntennaSoftwareGPS}
 Russell Powell.
@@ -98,14 +114,6 @@ Joshua~J. Morales, Joe Khalife, Ali~A. Abdallah, Christian~T. Ardito, and
   {Satellite} {Doppler} {Measurements}.
 \newblock pages 2718--2725, Miami, Florida, October 2018.
 
-\bibitem{reidSatelliteNavigationAge2020}
-Tyler~G.R. Reid, Bryan Chan, Ashish Goel, Kazuma Gunning, Brian Manning, Jerami
-  Martin, Andrew Neish, Adrien Perkins, and Paul Tarantino.
-\newblock Satellite {Navigation} for the {Age} of {Autonomy}.
-\newblock In {\em 2020 {IEEE}/{ION} {Position}, {Location} and {Navigation}
-  {Symposium} ({PLANS})}, pages 342--352, April 2020.
-\newblock ISSN: 2153-3598.
-
 \bibitem{usdepartmentofcommerceSatellites}
 NOAA US~Department~of Commerce.
 \newblock Satellites.
@@ -160,13 +168,5 @@ E.H. Dinan and B.~Jabbari.
   cellular networks.
 \newblock {\em IEEE Communications Magazine}, 36(9):48--54, September 1998.
 \newblock Conference Name: IEEE Communications Magazine.
-
-\bibitem{samuel_mcdougal_single-antenna_2022}
-{Samuel McDougal}, Samuel Morgan, and Scott Martin.
-\newblock Single-{Antenna} {Low} {Earth} {Orbit} {Signal} {Simulator} for
-  {Hardware} in the {Loop} {Testing}.
-\newblock In {\em 35th {International} {Technical} {Meeting} of the {Satellite}
-  {Division} of the {Institute} of {Navigation} ({ION} {GNSS}+ 2022}, pages
-  2349--2361, Denver, CO, September 2022.
 
 \end{thebibliography}

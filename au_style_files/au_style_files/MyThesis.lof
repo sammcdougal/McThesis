@@ -1,47 +1,47 @@
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Visual Depiction of Trilateration\relax }}{5}{}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Visual Representation Orbit Zones\relax }}{6}{}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Visual Representation of TDMA Signal\relax }}{9}{}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Amplitude Shift Keying Visualization \cite {AmplitudeShiftKeying} \relax }}{11}{}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Frequency Shift Keying Visualization \cite {FrequencyShiftKeying} \relax }}{11}{}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Binary Phase Shift Keying Visualization \cite {mahdirajiAdvancedModulationFormats2010} \relax }}{12}{}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Quadrature Phase Shift Keying Visualization \cite {mahdirajiAdvancedModulationFormats2010} \relax }}{12}{}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Visual Depiction of Trilateration\relax }}{6}{}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Visual Representation Orbit Zones\relax }}{7}{}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Visual Representation of TDMA Signal\relax }}{10}{}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Amplitude Shift Keying Visualization \cite {AmplitudeShiftKeying} \relax }}{12}{}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Frequency Shift Keying Visualization \cite {FrequencyShiftKeying} \relax }}{12}{}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Binary Phase Shift Keying Visualization \cite {mahdirajiAdvancedModulationFormats2010} \relax }}{13}{}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Quadrature Phase Shift Keying Visualization \cite {mahdirajiAdvancedModulationFormats2010} \relax }}{13}{}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Overall Simulation Diagram\relax }}{13}{}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Measurement Generation Block Diagram\relax }}{16}{}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Propagated Satellites from SGP4\relax }}{21}{}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Signal Simulation Block Diagram\relax }}{27}{}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Signal Generation Block Diagram\relax }}{31}{}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Overall Simulation Diagram\relax }}{14}{}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Measurement Generation Block Diagram\relax }}{17}{}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Propagated Satellites from SGP4\relax }}{22}{}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Signal Simulation Block Diagram\relax }}{28}{}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Signal Generation Block Diagram\relax }}{32}{}%
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Position Estimate from Batched Doppler Measurements\relax }}{44}{}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces RMS Error of Batched Doppler Estimates\relax }}{45}{}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces PDOP of Batched Doppler Estimates\relax }}{46}{}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Position Estimate from Pseudoranges\relax }}{46}{}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces RMS Error from Pseudoranges\relax }}{47}{}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces PDOP from Pseudoranges\relax }}{48}{}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces USRP Doppler Positioning Estimate\relax }}{49}{}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces RMS Error of Doppler Positioning Estimate\relax }}{50}{}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces PDOP from Doppler Positioning Estimate\relax }}{50}{}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces USRP Pseurorange Positioning Estimate\relax }}{51}{}%
-\contentsline {figure}{\numberline {5.11}{\ignorespaces RMS Error USRP Pseurorange Positioning Estimate\relax }}{51}{}%
-\contentsline {figure}{\numberline {5.12}{\ignorespaces USRP Pseurorange Positioning Estimate PDOP\relax }}{52}{}%
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Noisy Doppler Positioning Estimate\relax }}{53}{}%
-\contentsline {figure}{\numberline {5.14}{\ignorespaces RMS Error Noisy Doppler Positioning Estimate\relax }}{54}{}%
-\contentsline {figure}{\numberline {5.15}{\ignorespaces Noisy Doppler Positioning PDOP\relax }}{55}{}%
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Noisy Pseudorange Positioning Estimate\relax }}{55}{}%
-\contentsline {figure}{\numberline {5.17}{\ignorespaces RMS Error Noisy Pseudorange Positioning Estimate\relax }}{56}{}%
-\contentsline {figure}{\numberline {5.18}{\ignorespaces PDOP Dirty Pseudorange Positioning Estimate\relax }}{56}{}%
-\contentsline {figure}{\numberline {5.19}{\ignorespaces Generated Augmented Satellite Constellation\relax }}{57}{}%
-\contentsline {figure}{\numberline {5.20}{\ignorespaces Skyplot of Augmented Constellation\relax }}{58}{}%
-\contentsline {figure}{\numberline {5.21}{\ignorespaces Doppler Position Estimates of Augmented Satellites\relax }}{58}{}%
-\contentsline {figure}{\numberline {5.22}{\ignorespaces RMS Error Doppler Position Estimates of Augmented Satellites\relax }}{59}{}%
-\contentsline {figure}{\numberline {5.23}{\ignorespaces PDOP of Doppler Position Estimates of Augmented Satellites\relax }}{60}{}%
-\contentsline {figure}{\numberline {5.24}{\ignorespaces Pseudorange Position Estimates of Augmented Satellites\relax }}{60}{}%
-\contentsline {figure}{\numberline {5.25}{\ignorespaces RMS Error of Pseudorange Position Estimates of Augmented Satellites\relax }}{61}{}%
-\contentsline {figure}{\numberline {5.26}{\ignorespaces PDOP of Pseudorange Position Estimates of Augmented Satellites\relax }}{61}{}%
-\contentsline {figure}{\numberline {5.27}{\ignorespaces Path Driven for Dynamic Data\relax }}{62}{}%
-\contentsline {figure}{\numberline {5.28}{\ignorespaces Generated Dynamic Doppler Measurements\relax }}{63}{}%
-\contentsline {figure}{\numberline {5.29}{\ignorespaces Jackson Labs Doppler Measurements\relax }}{64}{}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Position Estimate from Batched Doppler Measurements\relax }}{45}{}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces RMS Error of Batched Doppler Estimates\relax }}{46}{}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces PDOP of Batched Doppler Estimates\relax }}{47}{}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Position Estimate from Pseudoranges\relax }}{47}{}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces RMS Error from Pseudoranges\relax }}{48}{}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces PDOP from Pseudoranges\relax }}{49}{}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces USRP Doppler Positioning Estimate\relax }}{50}{}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces RMS Error of Doppler Positioning Estimate\relax }}{51}{}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces PDOP from Doppler Positioning Estimate\relax }}{51}{}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces USRP Pseurorange Positioning Estimate\relax }}{52}{}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces RMS Error USRP Pseurorange Positioning Estimate\relax }}{52}{}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces USRP Pseurorange Positioning Estimate PDOP\relax }}{53}{}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Noisy Doppler Positioning Estimate\relax }}{54}{}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces RMS Error Noisy Doppler Positioning Estimate\relax }}{55}{}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Noisy Doppler Positioning PDOP\relax }}{56}{}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Noisy Pseudorange Positioning Estimate\relax }}{56}{}%
+\contentsline {figure}{\numberline {5.17}{\ignorespaces RMS Error Noisy Pseudorange Positioning Estimate\relax }}{57}{}%
+\contentsline {figure}{\numberline {5.18}{\ignorespaces PDOP Dirty Pseudorange Positioning Estimate\relax }}{57}{}%
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Generated Augmented Satellite Constellation\relax }}{58}{}%
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Skyplot of Augmented Constellation\relax }}{59}{}%
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Doppler Position Estimates of Augmented Satellites\relax }}{59}{}%
+\contentsline {figure}{\numberline {5.22}{\ignorespaces RMS Error Doppler Position Estimates of Augmented Satellites\relax }}{60}{}%
+\contentsline {figure}{\numberline {5.23}{\ignorespaces PDOP of Doppler Position Estimates of Augmented Satellites\relax }}{61}{}%
+\contentsline {figure}{\numberline {5.24}{\ignorespaces Pseudorange Position Estimates of Augmented Satellites\relax }}{61}{}%
+\contentsline {figure}{\numberline {5.25}{\ignorespaces RMS Error of Pseudorange Position Estimates of Augmented Satellites\relax }}{62}{}%
+\contentsline {figure}{\numberline {5.26}{\ignorespaces PDOP of Pseudorange Position Estimates of Augmented Satellites\relax }}{62}{}%
+\contentsline {figure}{\numberline {5.27}{\ignorespaces Path Driven for Dynamic Data\relax }}{63}{}%
+\contentsline {figure}{\numberline {5.28}{\ignorespaces Generated Dynamic Doppler Measurements\relax }}{64}{}%
+\contentsline {figure}{\numberline {5.29}{\ignorespaces Jackson Labs Doppler Measurements\relax }}{65}{}%
 \addvspace {10pt}
