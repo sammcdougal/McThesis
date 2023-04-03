@@ -142,6 +142,12 @@ R.~Gold.
 \bibitem{GLONASSSignalPlan}
 {GLONASS} {Signal} {Plan} - {Navipedia}.
 
+\bibitem{brown_introduction_2012}
+R.G. Brown and P.Y.C Hwang.
+\newblock {\em Introduction to {Random} {Signals} and {Applied} {Kalman}
+  {Filtering}}.
+\newblock John Wiley and Sons, fourth edition, February 2012.
+
 \bibitem{curtisOrbitalMechanicsEngineering2008}
 Howard~D. Curtis.
 \newblock {\em Orbital mechanics for engineering students}.

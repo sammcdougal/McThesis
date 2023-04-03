@@ -38,20 +38,21 @@
 \contentsline {section}{\numberline {4.3}Testing Setup}{41}{}%
 \contentsline {chapter}{\numberline {5}Results}{43}{}%
 \contentsline {section}{\numberline {5.1}Static Clean Data}{43}{}%
-\contentsline {subsection}{\numberline {5.1.1}Doppler Positioning}{43}{}%
+\contentsline {subsection}{\numberline {5.1.1}Doppler Positioning}{44}{}%
 \contentsline {subsection}{\numberline {5.1.2}Pseudorange Based Positioning}{45}{}%
-\contentsline {section}{\numberline {5.2}Static Clean Data Played Through USRP}{45}{}%
-\contentsline {subsection}{\numberline {5.2.1}Doppler Positioning}{45}{}%
-\contentsline {subsection}{\numberline {5.2.2}Pseudorange Based Positioning}{45}{}%
-\contentsline {section}{\numberline {5.3}Static Dirty Data}{45}{}%
-\contentsline {subsection}{\numberline {5.3.1}Doppler Positioning}{45}{}%
-\contentsline {subsection}{\numberline {5.3.2}Pseudorange Based Positioning}{45}{}%
-\contentsline {section}{\numberline {5.4}Static Augmented Satellites}{45}{}%
-\contentsline {subsection}{\numberline {5.4.1}Doppler Positioning}{45}{}%
-\contentsline {subsection}{\numberline {5.4.2}Pseudorange Based Positioning}{45}{}%
-\contentsline {section}{\numberline {5.5}Dynamic Clean Data}{45}{}%
-\contentsline {section}{\numberline {5.6}Dynamic Clean Data Played Through USRP}{45}{}%
-\contentsline {section}{\numberline {5.7}Dynamic Dirty Data}{45}{}%
-\contentsline {chapter}{\numberline {6}Conclusions and Future Work}{52}{}%
-\contentsline {chapter}{Bibliography}{53}{}%
-\contentsline {chapter}{Appendices}{56}{}%
+\contentsline {section}{\numberline {5.2}Static Clean Data Played Through USRP}{47}{}%
+\contentsline {subsection}{\numberline {5.2.1}Doppler Positioning}{48}{}%
+\contentsline {subsection}{\numberline {5.2.2}Pseudorange Based Positioning}{49}{}%
+\contentsline {section}{\numberline {5.3}Static Noisy Data}{52}{}%
+\contentsline {subsection}{\numberline {5.3.1}Doppler Positioning}{53}{}%
+\contentsline {subsection}{\numberline {5.3.2}Pseudorange Based Positioning}{54}{}%
+\contentsline {section}{\numberline {5.4}Static Augmented Satellites}{57}{}%
+\contentsline {subsection}{\numberline {5.4.1}Doppler Positioning}{57}{}%
+\contentsline {subsection}{\numberline {5.4.2}Pseudorange Based Positioning}{59}{}%
+\contentsline {section}{\numberline {5.5}Dynamic Clean Data}{62}{}%
+\contentsline {chapter}{\numberline {6}Conclusions and Future Work}{65}{}%
+\contentsline {section}{\numberline {6.1}Summary}{65}{}%
+\contentsline {section}{\numberline {6.2}Conclusions}{66}{}%
+\contentsline {section}{\numberline {6.3}Future Work}{67}{}%
+\contentsline {chapter}{Bibliography}{68}{}%
+\contentsline {chapter}{Appendices}{71}{}%

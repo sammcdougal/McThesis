@@ -468,7 +468,7 @@ After the visibility analysis, errors will be generated for the satellites that 
 \end{description}
 
 
-The first error generated is clock error. The clock bias and clock drift are calculated for each satellite in view over the simulation based on the clock type described by the user. Next the receiver clock is modeled and the bias and drift are generated. As previously mentioned, this option can be turned off and the errors will be incorporated as zeros in the simulation. The current clock types in the simulator are shown in the table \ref{table:ClockTypes}. 
+The first error generated is clock error. The clock bias and clock drift are calculated for each satellite in view over the simulation based on the clock type described by the user. Next the receiver clock is modeled and the bias and drift are generated. These terms will be calculated based on \cite{brown_introduction_2012}. As previously mentioned, this option can be turned off and the errors will be incorporated as zeros in the simulation. The current clock types in the simulator are shown in the table \ref{table:ClockTypes}. 
 
 \begin{center}
 \begin{tabular}{|c|c|}
@@ -965,26 +965,32 @@ To show the versitility of the simulation tool, the following tests have been co
     \item Static receiver with noise terms
     \item Static receiver with augmented satellites
     \item Dynamic receiver with no noise
-    \item Static receiver with different satellite constellations
 \end{itemize}
 
 
 \chapter{Results}
 
-This chapter will be used to show the results from simulations run in this thesis. The purpose of these results is to show that the simulation tool is capable of producing a signal that gives realistic results. 
+This chapter will be used to show the results from simulations run in this thesis. The purpose of these results is to show that the simulation tool is capable of producing a signal that gives realistic results. Five tests will be performed; they are a static receiver with no signal noise and no measurement noise, a static receiver where the signal has been played through a USRP, a static receiver with noise terms added, a static receiver with no noise and augmented satellites, and a dynamic receiver with no noise. 
 
-- Will input what the settings for each test are later
+While there are settings that will change between each simulation, some settings will remain constant. The sampling frequency of the measurements is 100Hz. Weather settings are set to 305.9 Kelvin, 85 percent humidity, and 1024 millibars of pressure. The mask angle is set to 1.7 degrees. The code frequency is 25,000 Hz. The signal sampling frequency is 1 MHz. the burst length is 20.32 milliseconds. The burst interval is 90 milliseconds. The data message used in the signal is the ECEF position and velocity vectors of the satellites.
+
+Figures and metrics used to show results will include geo plots of estimated receiver positions, root mean square error, and position dilution of precision (PDOP). PDOP is a measure of how good the positions of the satellites are for positioning. More diversity between satellite positions will result in a lower PDOP. Low PDOP values indicate the diversity of satellites is good for positioning. GPS satellites typically have a PDOP value lower than 2 \cite{misraGlobalPositioningSystem2012}. 
 
 \section{Static Clean Data}
-The data set generated for this scenario is a static data set with zero clock error, zero thermal signal noise, and zero atmospheric errors. The purpose of this experiment was to examine what the cleanest possible data set would produce.  
+The data set generated for this scenario is a static data set with zero clock error, zero thermal signal noise, and zero atmospheric errors. The purpose of this experiment was to examine what the cleanest possible data set would produce. The position of the receiver was placed in Auburn, Alabama with a location of [32.602236,-85.489192,201] in LLA. The simulation length is 15 minutes. The constellation used is the IridiumNext constellation. 
+
+For this data, the bit error rate of the decoded data is 99.07 percent for the in-phase branch and 99.087 percent for the quadrature branch. 
+
 \subsection{Doppler Positioning}
-The first positioning strategy for this data set is using the received Doppler measurements in a batched fashion using the equations in section \ref{sec:DopplerPosTechnique}. 
+The first positioning strategy for this data set is using the received Doppler measurements in a batched fashion using the equations in section \ref{sec:DopplerPosTechnique}. Figure \ref{fig:cleaniriddopgeo} shows the estimated receiver positions over the course of the simulation. The batch size for this was set at 2000 measurements. A few different batchh sizes were used, however below 2000 measurements the positioning error was greater due to less measurements, and above 2000 measurements the solution change was minimal. 
+
 \begin{figure}[h!]
     \centering
     \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]{Iridium Doppler Positioning from Cleanest Set.pdf}
     \caption{Position Estimate from Batched Doppler Measurements}
     \label{fig:cleaniriddopgeo}
 \end{figure}
+The RMS positioning error is shown in Figure \ref{fig:RMSErrorBatchDoppler}. The error in the Doppler positioning is caused by the error induced by the software receiver. In the software receiver, the Doppler frequency is estimated to a degree of plus or minus 50 Hz. This combined with the satellite geometry and batching of measurements causes the error shown. 
 
 \begin{figure}[h!]
     \centering
@@ -993,7 +999,18 @@ The first positioning strategy for this data set is using the received Doppler m
     \label{fig:RMSErrorBatchDoppler}
 \end{figure}
 
+Figure \ref{fig:PDOPBatchDoppler} shows the PDOP from the batched Doppler measurements. This helps add reasoning to the poor positioning results of the batched doppler positioning. With values ranging from 29 to 52, the PDOP is significantly larger than what would be expected from GPS to give a good positioning solution. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]{Irid_Clean_15min_doppler_PDOP.pdf}
+    \caption{PDOP of Batched Doppler Estimates}
+    \label{fig:PDOPBatchDoppler}
+\end{figure}
+
+
 \subsection{Pseudorange Based Positioning}
+The next positioning strategy for this data set is using the calculated pseudorange measurements from \ref{sec:PseudorangePosTechnique}. Figure \ref{fig:CleanPseudo15minIridPosit} shows a geo plot of the estimated receiver position. 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=5in]
@@ -1002,6 +1019,7 @@ The first positioning strategy for this data set is using the received Doppler m
     \label{fig:CleanPseudo15minIridPosit}
 \end{figure}
 
+Figure \ref{fig:CleanPseudo15minIridRSME} shows the root mean square error from truth of the estimated position. The positioning results from this are significantly better than the results from the Doppler positioning. In this technique, measurements are used from multiple satellites at different time points. A positioning solution is only calculated when there are a sufficient number of satellites with unique measurements in view. In most GPS instances, the pseudorange positioning error is 10-15 meters \cite{misraGlobalPositioningSystem2012}. In this instance, the positioning is not as accurate. This could be due to the lower sampling frequency used for this simulation. The resolution of the pseudorange measurements is lowered due to the lower sampling frequency. If the sampling frequency was higher, more change in bit location could be detected. 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=5in]
@@ -1010,6 +1028,7 @@ The first positioning strategy for this data set is using the received Doppler m
     \label{fig:CleanPseudo15minIridRSME}
 \end{figure}
 
+Figure \ref{fig:CleanPseudo15minIridPositPDOP} shows the PDOP. The PDOP for this simulation is also significantly better than that of the Doppler positioning PDOP and stays around a typical value that would be seen in GPS pseudorange positioning techniques.   
 \begin{figure}[h!]
     \centering
     \includegraphics[width=5in]
@@ -1019,120 +1038,258 @@ The first positioning strategy for this data set is using the received Doppler m
 \end{figure}
 
 \section{Static Clean Data Played Through USRP}
-
+For this simulation, everything from the previous simulation remains the same. The only difference between the two tests is before the signal is passed through the software receiver, it is played through a USRP. The USRP used is the B200 mini from Ettus Research. The USRP will add thermal background noise, transmitter and receiver clock error, and other unmodeled errors. These errors will contribute to poor positioning results as the errors cannot all be estimated with the algorithms used in this thesis. If the transmitter clock error was known, the receiver clock error could be estimated and vice versa. However the algorithm cannot estimate both errors simultaniously. In order to gain a positioning solution, satellite navigation data was filtered to remove outliers in satellite positions and velocities. In this simulation, 9,435 bursts were decoded and 506 bursts were not decoded properly resulting in 94.91 percent decoded. The quadrature bit error rate is 98.0448 percent, and the in-phase bit error rate is 97.8867 percent.
 
 \subsection{Doppler Positioning}
+The Doppler positioning geo plot is shown in Figure \ref{fig:USRPDoppler15minIridPosit}. Initially, the positioning results are not terrible, however at batch number 175, the solution begins to grow unbounded. Once the initial guess goes off track, the algorithm cannot correct for the large offset. The estimated position grows due to errors in the decoded satellite navigation message. Even after the error detection the solution grows to infinity. Since the next position estimate is initialized with the previous estimate,the position estimate will become increasingly worse. After batch number 275 the solution grows to infinity and the rest of the estimates cannot be computed. 
+
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=5in]
-    {15min_irid_USRP_dopplerposit.pdf}
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Irid_15min_USRP_Dopplerposit.pdf}
     \caption{USRP Doppler Positioning Estimate}
     \label{fig:USRPDoppler15minIridPosit}
 \end{figure}
 
+Figure \ref{fig:USRPDoppler15minIridRMSE} shows the error seen in Figure \ref{fig:USRPDoppler15minIridPosit}. Again, it can be seen that the error grows around batch number 170 and then returns closer to truth after batch number 250. It would have been expected to see 8000 batched positioning solutions, however less than 300 were computed. This because once the diverts from a value near truth, the solution grows unbounded towards infinity. 
+
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=5in]
-    {15min_irid_USRP_doppler_rsme.pdf}
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Irid_15min_USRP_DopplerRMSE.pdf}
     \caption{RMS Error of Doppler Positioning Estimate}
     \label{fig:USRPDoppler15minIridRMSE}
 \end{figure}
 
+Figure \ref{fig:USRPDoppler15minIridPDOP} shows that  at the begining of the simulation, the PDOP is poor. The PDOP remains around 3000 until near the end where it begins to decrease, however the measurement errors cause the estimate to grow unbounded and no more estimates to be calculated. 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=5in]
-    {15min_irid_USRP_doppler_pdop.pdf}
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Irid_15min_USRP_DopplerPDOP.pdf}
     \caption{PDOP from Doppler Positioning Estimate}
     \label{fig:USRPDoppler15minIridPDOP}
 \end{figure}
 
 
 \subsection{Pseudorange Based Positioning}
+Figure \ref{fig:USRPpseudo15minIridPosit} gives the geo plot of the pseudorange based positioning estimates. The pseudorange based positioning is better, but is still significantly poor when compared to the case with no noise. 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=5in]
-    {15min_irid_USRP_pseudo.pdf}
+    \includegraphics[trim=1.2in 3.3in 1.6in 3.3in,clip,width=5in]
+    {Irid_15min_USRP_Pseudoposit.pdf}
     \caption{USRP Pseurorange Positioning Estimate}
     \label{fig:USRPpseudo15minIridPosit}
 \end{figure}
-
+The position can be seen drifting across the geo plot. This may be caused by the clock error in the USRP. Figure \ref{fig:USRPpseudo15minIridRMSE} shows that the majority of the position estimates remain low, however there are still some outlier position estimates. Other possible errors could be caused by bit errors caused by the USRP. This would cause the change in bit location to have error contributing to noisy pseudorange measurements. 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=5in]
-    {15min_irid_USRP_pseudo_rmse.pdf}
+    \includegraphics[trim=1.2in 3.3in 1.6in 2.9in,clip,width=5in]
+    {Irid_15min_USRP_PseudoRMS.pdf}
     \caption{RMS Error USRP Pseurorange Positioning Estimate}
     \label{fig:USRPpseudo15minIridRMSE}
 \end{figure}
 
+Figure \ref{fig:USRPpseudo15minIridPositpdop} shows the PDOP from the pseudorange based positioning estimate. The PDOP is significantly better than the PDOP from the Doppler based positioning. However instead of being a smooth curve as expected, there are outliers along the curve that match the same position as the larger positioning errors. 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=5in]
-    {15min_irid_USRP_pseudo_pdop.pdf}
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Irid_15min_USRP_PseudoPDOP.pdf}
     \caption{USRP Pseurorange Positioning Estimate PDOP}
     \label{fig:USRPpseudo15minIridPositpdop}
 \end{figure}
 
-\section{Static Dirty Data}
+\section{Static Noisy Data}
+In this section, a simulated signal with signal noise and measurement noise is generated. The user clock was modeled as an OCXO. The satellite clock error is simulated as zero for simplicity. This is because the error caused by the satellite clock would be transmitted and imediately be removed from the measurement. The carrier to noise ratio for the signal is set to 65. The quadrature bit rate error is 98.5423 percent and the in-phase bit rate error is 99.1743 percent. 
 
 \subsection{Doppler Positioning}
+The Doppler positioning of this data set is shown in Figure \ref{fig:DirtyDoppler15minIridPosit}. This solution is better than the estimates provided from the USRP data set. The batch size used for this position estimate is 2000 measurements. 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=5in]
-    {15min_irid_dirty_dopplerpos.pdf}
-    \caption{Dirty Doppler Positioning Estimate}
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Irid_15min_noisy_positdoppler.pdf}
+    \caption{Noisy Doppler Positioning Estimate}
     \label{fig:DirtyDoppler15minIridPosit}
 \end{figure}
 
+Figure \ref{fig:DirtyDoppler15minIridPositrmse} shows the RMS error from truth. The closest estimate is near 1000 meters with a maximum error around 4250 meters. These errors can be attributed to the error caused by the received Doppler estimates and the clock drift. While the clock drift is estimated by the receiver, batching the estimates causes error. This is because the clock drift is averaged across all the measurements over time instead of instantaneously. For example, if the batch number is 2000 and the burst time is 0.09s, there are 180 seconds where the drift grows. 
+
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=5in]
-    {15min_irid_dirty_doppler_pdop.pdf}
-    \caption{RMS Error Dirty Doppler Positioning Estimate}
-    \label{fig:DirtyDoppler15minIridPositpdop}
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Irid_15min_noisy_RMSEdoppler.pdf}
+    \caption{RMS Error Noisy Doppler Positioning Estimate}
+    \label{fig:DirtyDoppler15minIridPositrmse}
+\end{figure}
+
+Figure \ref{fig:DirtyDoppler15minIridPDOP} shows the PDOP across the batches. The spike in error around batch number 3000 could be attributed to the spike in PDOP. At this point, the diversity in satellites is lower and most of the measurements are coming from one satellite instead of multiple. The drop in PDOP is where an additional satellite comes into view and there is more diversity in the satellite measurements. 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Irid_15min_noisy_PDOPdoppler.pdf}
+    \caption{Noisy Doppler Positioning PDOP}
+    \label{fig:DirtyDoppler15minIridPDOP}
 \end{figure}
 
 \subsection{Pseudorange Based Positioning}
+Figure \ref{fig:DirtyPseudorange15minIridPosit} shows the geo plot of the pseudorange based positioning. In this example, the pseudorange has Tropospheric noise, clock bias, and additional un-modeled effects with a mean of 5 meters of error. This figure shows receiver estimate when the errors have not been taken out of the measurement. The error is worse than the Doppler based positioning. 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=5in]
-    {15min_irid_dirty_pseudo_posit.pdf}
-    \caption{Dirty Pseudorange Positioning Estimate}
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Irid_15min_noisy_Positpseudo.pdf}
+    \caption{Noisy Pseudorange Positioning Estimate}
     \label{fig:DirtyPseudorange15minIridPosit}
 \end{figure}
-
+Figure \ref{fig:DirtyPseudorange15minIridPositrmse} shows the distribution RMS error of the pseudorange based positioning. At its highest, the error is nearly 30 kilometers, where the lowest is within 100 meters. 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=5in]
-    {15min_irid_dirty_pseudo_pdop.pdf}
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Irid_15min_noisy_RMSEpseudo.pdf}
+    \caption{RMS Error Noisy Pseudorange Positioning Estimate}
+    \label{fig:DirtyPseudorange15minIridPositrmse}
+\end{figure}
+
+The PDOP in Figure \ref{fig:PDOPDirtyPseudorange15minIridPosit} is the highest of all the simulations. It starts near 57 and eventually trails off to 22.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Irid_15min_noisy_PDOPpseudo.pdf}
     \caption{PDOP Dirty Pseudorange Positioning Estimate}
     \label{fig:PDOPDirtyPseudorange15minIridPosit}
 \end{figure}
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=5in]
-    {15min_irid_dirty_pseudo_rmse.pdf}
-    \caption{RMS Error Dirty Pseudorange Positioning Estimate}
-    \label{fig:DirtyPseudorange15minIridPositrmse}
-\end{figure}
 
 \section{Static Augmented Satellites}
+To show the versitility of the simulation tool, a simulation of augmented satellites was performed. In this simulation, the simulation length is 5 minutes. The main satellite constellation is the IridiumNext constellation. All noise terms are turned off. The augmented constellation has 8 orbital planes, 15 satellites per plane, an inclination angle of 45 degrees, and an orbit altitude of 800 kilometers. The receiver is placed at the 50 yard line of Jordan-Hare Stadium in Auburn, Alabama [32.602236,-85.489192,201]. The bit error rate for bith the in-phase and quadrature are 99.9624 percent. Figure \ref{fig:AugmentGlobe} shows the orbit paths of the IridiumNext constellation augmented with additional satellites. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Augment_Globe.pdf}
+    \caption{Generated Augmented Satellite Constellation}
+    \label{fig:AugmentGlobe}
+\end{figure}
+
+Figure \ref{fig:AugmentSky} shows the skyplot of the augmented satellites over the period of the simulation. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.7in,clip,width=5in]
+    {Augment_Skyplot.pdf}
+    \caption{Skyplot of Augmented Constellation}
+    \label{fig:AugmentSky}
+\end{figure}
 
 \subsection{Doppler Positioning}
+The same Doppler positioning technique is used for this example. Figure \ref{fig:Augmentdopplerposit} shows the estimated receiver positions. It can be seen that the grouping of receiver estimates seems to be biased by around 1000 meters. One possible reason for this is that the satellite positions do not favor the southwest area of the sky. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Augment_5min_Doppler_posit.pdf}
+    \caption{Doppler Position Estimates of Augmented Satellites}
+    \label{fig:Augmentdopplerposit}
+\end{figure}
+
+The constant bias can be seen in Figure \ref{fig:AugmentdopplerRMSE}. The positioning error is most likely caused by the error induced by the software receiver. 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Augment_5min_Doppler_RMSE.pdf}
+    \caption{RMS Error Doppler Position Estimates of Augmented Satellites}
+    \label{fig:AugmentdopplerRMSE}
+\end{figure}
+Figure \ref{fig:AugmentdopplerPDOP} shows the PDOP of each batched measurement. With the addition of more satellites, the PDOP fluctuates less and is the best of all simulations shown in this thesis. By adding more diversity to the satellites, the PDOP improves. While this is still not a GPS quality PDOP, it is more stable than the PDOP of the IridiumNext constellation.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Augment_5min_Doppler_PDOP.pdf}
+    \caption{PDOP of Doppler Position Estimates of Augmented Satellites}
+    \label{fig:AugmentdopplerPDOP}
+\end{figure}
 
 \subsection{Pseudorange Based Positioning}
+The pseudorange based positioning estimates are shown in Figure \ref{fig:Augmentpseudoposit}. While there are more position estimates in the Doppler solution, the RMS error is better in the pseudorange solution.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Augment_5min_pseudo_posit.pdf}
+    \caption{Pseudorange Position Estimates of Augmented Satellites}
+    \label{fig:Augmentpseudoposit}
+\end{figure}
+The RMS error is shown in \ref{fig:AugmentpseudoRMSE}. The error is lower than in any of the previous simulations. The error in the pseudorange is most likely caused by the low resolution caused by the low sampling frequency. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Augment_5min_pseudo_RMSE.pdf}
+    \caption{RMS Error of Pseudorange Position Estimates of Augmented Satellites}
+    \label{fig:AugmentpseudoRMSE}
+\end{figure}
+Figure \ref{fig:AugmentpseudoPDOP} shows that the increased number of satellites has improved the PDOP from the IridiumNext simulation. 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Augment_5min_pseudo_PDOP.pdf}
+    \caption{PDOP of Pseudorange Position Estimates of Augmented Satellites}
+    \label{fig:AugmentpseudoPDOP}
+\end{figure}
+Overall, the increased number of satellites has improved the positioning estimate. This is expected as more satellites result in an increased number of measurements and an increased diversity of satellite locations. 
 
 \section{Dynamic Clean Data}
+Another capability of this simulator is the ability to generate data for dynamic trajectories. For a dynamic trajectory simulation, the user will begin by setting the user position and velocity to a predetermined path. The position and velocity will be in the ECEF coordinate frame. The data set used for this test was taken by driving a path with a Lincoln MKZ that had an eTalin measurement device. A plot of the path driven is shown below in Figure \ref{fig:Dynamicpath}
 
-\section{Dynamic Clean Data Played Through USRP}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Dynamic_Etalin_PlotDriven.pdf}
+    \caption{Path Driven for Dynamic Data}
+    \label{fig:Dynamicpath}
+\end{figure}
 
-\section{Dynamic Dirty Data}
+The positioning techniques used in this thesis are not applicable to dynamic positioning because they are for a static receiver and require batched measurements to calculate a position. A positioning solution will not be calculated for the dynamic test. To show an output of the simulation, the received Doppler frequency of the generated signal will be compared against Doppler measurements from a Jackson Labs receiver. The Jackson Labs receiver is an Iridium specific receiver for the satellite timing and location (STL) signal. Figure \ref{fig:gendynamdop} shows the generated Doppler frequencies for the dynamic test. Figure \ref{fig:JLdynamdop} shows the live sky received Doppler frequencies from the Jackson Labs receiver.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Dynamic_Irid_Doppler-2.pdf}
+    \caption{Generated Dynamic Doppler Measurements}
+    \label{fig:gendynamdop}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[trim=1.2in 3.3in 1.75in 3.3in,clip,width=5in]
+    {Dynamic_JL_Doppler-2.pdf}
+    \caption{Jackson Labs Doppler Measurements}
+    \label{fig:JLdynamdop}
+\end{figure}
+
+It was important to sync the simulation time with the actual time of the data run to accurately simulate the satellites that were in view at the time of the data collection. Even with syncing up the time of simulation to the data collection, the simulated satellite positions were not accurate to the live sky data. Also, the assumption in this simulation tool is that the receiver will receive a burst at each interval, however in the real world this is not the case. There is also a larger mask angle from satellites in the real world due to buildings, trees, and landscape. This decreases the number of bursts received by the receiver. 
+
+The purpose of this experiment was to prove that a signal could be calculated for a dynamic data set. While the receiver position could not be estimated, the output and comparison of Doppler frequencies shows that the simulator is capable of generating a signal for a dynamic trajectory and successfully receive the data.  
 
 \chapter{Conclusions and Future Work}
-The simulation tool works well for its purpose. It has shown the ability to generate realistic IQ data for LEO satellites. The ability to test different constellation configurations, signal types, data messages, error types, and other settings is vital to a simulation tool being good. 
+\section{Summary}
+Chapter 1 discusses the motivation behind this thesis and why there is a need for a LEO satellite signal simulation tool. Having a simulation tool to test current and hypothetical signals and satellite constellations for investigative purposes is important in the engineering process. Before hardware is developed or satellites are launched, the constellation and signals need to be tested in software. Testing in software allows for changes to be made in the development process where the cost of changes are minimal. Once satellites are launched and hardware has been assembled, the margin to change is thin. Simulation tools allow for fast testing and validation of techniques and algorithms. This simulation in particular aids the engineering process by being able to generate signals for satellite constellations that can be processed through software receivers with the possibility of hardware receivers. This chapter also discusses prior work with LEO satellites and GNSS signal simulators. Most of the prior work is aimed at using LEO satellites as signals of opportunity to aid navigation solutions in areas of poor GNSS reception. This is followed by the contributions of this thesis and an outline. 
 
-The future work for this project can take the direction of making additions to the simulation tool. The addition of multiple signal types would be beneficial as new and emerging satellite constellations will need to be simulated. A modular software receiver tied directly to the signal simulation would make the process of receiving the signal more streamline. The addition of more error terms, such as ionospheric error would improve the quality of the simulation tool. 
+Chapter 2 begins with a brief introduction to satellite based navigation where the trilateration is introduced. This is followed by describing different orbit zones around the Earth and what satellites occupy that specific space. Next channel access methods such as TDMA, CDMA, and FDMA are mentioned in brief. Chapter 2 is concluded by mentioning different modulation techniques. 
 
+Chapter 3 discusses the simulation tool in parts. It begins by giving an overview of the entire simulation process. Next the simulation settings are defined along with all of the terms the user can change. The measurement simulation is discussed fully where the inputs and outputs are explained and what their purpose is later in the simulation. The mathematical calculation of measurements are also given in this section. The process of generating the signal is discussed. Finally, the receiver used in this thesis is described.
+
+Chapter 4 defines the testing setup and positioning techniques. In this thesis, multiple different simulations were conducted to show the versitility of the tool. The testing setup is mainly in software, but there is the introduction of a USRP to show the generated signal has the ability to be played into hardware. The positioning techniques used in this thesis are a batched Doppler least squares estimate and a pseudorange least squares estimate. 
+
+Chapter 5 provides the positioning results of the output signal data. Geographical plots of the position estimates, RMS error, and PDOP are used to show how the outputs of the signal are used. This is the validation that the generated signal could be used for navigation and that the generated signal is real. 
+
+\section{Conclusions}
+This thesis developed a simulation tool capable of generating navigation signals for LEO satellites. The simulation tool works well for its purpose. It has shown the ability to generate realistic IQ data for LEO satellites. The ability to test different constellation configurations, signal types, data messages, error types, and other settings is vital to a simulation tool worth being used. This thesis has accomplished making contributions in the field of navigation. A comprehensive simulation tool for generating measurements and signals for LEO satellites was developed. The signal showed that it could be played through a software receiver and a USRP. Positioning techniques for a TDMA signal were used to validate the signal. While the positioning results are not as robust as a standard GNSS positioning solution, the navigation data was proven to provide a positioning solution. 
+
+
+\section{Future Work}
+The future work for this project can take the direction of making additions to the simulation tool. The addition of multiple signal types would be beneficial as new and emerging satellite constellations will need to be simulated. A modular software receiver tied directly to the signal simulation would make the process of receiving the signal more streamline. The addition of more error terms, such as ionospheric error would improve the quality of the simulation tool. Another addition could be the addition of a clock model that more accurately describes the nature of clocks used in satellites and receivers. With new emerging satellite constellations such as Starlink and Xona, the addition of those satellite constellations and signals could be an avenue to pursue. 
+
+More future work could include developing a hardware receiver for a specific receiver to test the capability of this simulation tool. It could be interesting to see how this signal simulation would work with a hardware in the loop (HWIL) simulation. For an HWIL project, a predetermined signal type and data message structure would need to be decided before work on the hardware could begin. Once the signal had been decided upon, the user could begin rearanging the simulation tool to match the desired signal. 
+
+A futher expansion of this thesis is to develope a more rigorous navigation message. While the navigation message in this thesis works, the introduction of a higher fidelity satellite propagation model will require more terms to account for corrections. Also, the addition of more positioning techniques as forms of colaborative navigation could be interesting to investigate. 
 
 
 \bibliographystyle{unsrt}

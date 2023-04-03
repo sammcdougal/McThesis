@@ -13,45 +13,45 @@ Warning--empty booktitle in moralesInertialNavigationSystem2018
 Warning--empty author in GLONASSInterfaceControl1998a
 Warning--empty journal in GLONASSInterfaceControl1998a
 Warning--empty booktitle in orabiOpportunisticNavigationDoppler2021
-You've used 28 entries,
+You've used 29 entries,
             1791 wiz_defined-function locations,
-            618 strings with 9192 characters,
-and the built_in function-call counts, 5937 in all, are:
-= -- 544
-> -- 183
+            623 strings with 9337 characters,
+and the built_in function-call counts, 6111 in all, are:
+= -- 559
+> -- 191
 < -- 8
-+ -- 76
-- -- 48
-* -- 335
-:= -- 819
-add.period$ -- 76
-call.type$ -- 28
-change.case$ -- 25
++ -- 79
+- -- 50
+* -- 344
+:= -- 846
+add.period$ -- 79
+call.type$ -- 29
+change.case$ -- 26
 chr.to.int$ -- 0
-cite$ -- 38
-duplicate$ -- 310
-empty$ -- 645
-format.name$ -- 48
-if$ -- 1396
+cite$ -- 39
+duplicate$ -- 320
+empty$ -- 664
+format.name$ -- 50
+if$ -- 1437
 int.to.chr$ -- 0
-int.to.str$ -- 28
-missing$ -- 19
-newline$ -- 133
-num.names$ -- 21
-pop$ -- 135
+int.to.str$ -- 29
+missing$ -- 21
+newline$ -- 138
+num.names$ -- 22
+pop$ -- 141
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 203
+skip$ -- 206
 stack$ -- 0
 substring$ -- 345
-swap$ -- 98
+swap$ -- 99
 text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 10
-while$ -- 51
-width$ -- 30
-write$ -- 276
+while$ -- 52
+width$ -- 31
+write$ -- 287
 (There were 10 warnings)
